@@ -149,24 +149,60 @@
   line-height: 1.7;
 }
 
-/* Hero Image Container */
-.hero-image-container {
-  margin: 40px auto 0;
-  width: 100%;
-  max-width: 1200px;
-  height: 400px; /* Fixed height for rectangular shape */
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  position: relative;
+/* Hero Section */
+.main-content {
+  text-align: center;
+  padding: 20px 0 40px;
 }
 
+.hero-image-container {
+  margin: 40px auto 0;
+  width: 90%;
+  max-width: 1000px;
+  height: 350px;
+  border-radius: 100px/60px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.hero-image-container:hover {
+  transform: scale(1.02);
+  border-radius: 40px; 
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
 .hero-image {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Ensures image fills container */
+  object-fit: cover;
+  object-position: center;
   display: block;
-  transition: transform 0.3s ease;
+}
+
+.hero-image-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.5), transparent);
+  padding: 2rem;
+  color: white;
+  text-align: left;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .hero-image-container {
+    height: 250px;
+    border-radius: 60%;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-image-container {
+    height: 200px;
+    border-radius: 50%;
+  }
 }
 
 /* Optional: Add overlay text */
@@ -254,3 +290,41 @@
     flex: 0 0 100%;
   }
 }
+
+.navigation {
+  display: flex;
+  gap: 25px;
+  margin-bottom: 30px;
+}
+
+.navigation a {
+  text-decoration: none;
+  color: #3E4D34; 
+  font-weight: 600;
+  font-size: 1.1rem;
+  position: relative;
+  padding: 5px 0;
+  transition: color 0.2s;
+}
+
+.navigation a:hover {
+  color: #3E4D34; /* Change to your desired hover color */
+}
+
+/* Straight line underline effect */
+.navigation a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color:#3E4D34; 
+  transition: width 0.3s ease;
+}
+
+.navigation a:hover::after {
+  width: 100%;
+}
+
+  
