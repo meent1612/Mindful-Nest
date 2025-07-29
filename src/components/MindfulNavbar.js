@@ -13,7 +13,7 @@ const MindfulNavbar = () => {
         <nav className="mindful-nav">
           <ul className="nav-links">
             <li><Link to="/">Helplines</Link></li>
-            <li><Link to="/">About Us</Link></li>
+            <li><Link to="/about">About Us</Link></li>
             <li><Link to="/contact">Contact</Link></li> {/* Link to contact page */}
 
             <li><a href="/">Treatment</a></li>
