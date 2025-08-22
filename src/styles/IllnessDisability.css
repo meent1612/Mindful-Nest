@@ -1,0 +1,361 @@
+/* IllnessDisability.css */
+.illness-disability-page {
+  min-height: 100vh;
+  background: #ffffff;
+  padding: 2rem 0;
+}
+
+.illness-disability-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Breadcrumb */
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+  font-size: 0.9rem;
+  color: #4a5568;
+}
+
+.breadcrumb-link {
+  color: #3E4D34;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.breadcrumb-link:hover {
+  color: #2b6cb0;
+  text-decoration: underline;
+}
+
+.breadcrumb-separator {
+  margin: 0 0.5rem;
+  color: #a0aec0;
+}
+
+.breadcrumb-current {
+  color: #3E4D34;
+  font-weight: 600;
+}
+
+/* Section Label */
+.section-label {
+  color: #3E4D34;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 0.5rem;
+}
+
+/* Main Content */
+.illness-disability-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e8ebe6;
+}
+
+.illness-disability-title {
+  font-size: 2.5rem;
+  color: #3E4D34;
+  margin-bottom: 2rem;
+  font-weight: 700;
+  text-align: left;
+}
+
+/* Illness Disability Intro Layout */
+.illness-disability-intro {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  margin-bottom: 2.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 2px solid #e8ebe6;
+  align-items: center;
+}
+
+.illness-disability-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.illness-disability-subtitle {
+  font-size: 1.4rem;
+  color: #3E4D34;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+
+.illness-disability-description {
+  font-size: 1.1rem;
+  color: #4a5568;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+/* View FAQs Button */
+.view-faqs-btn {
+  background-color: #3E4D34;
+  color: white;
+  border: none;
+  padding: 12px 28px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: fit-content;
+  box-shadow: 0 2px 4px rgba(62, 77, 52, 0.2);
+}
+
+.view-faqs-btn:hover {
+  background-color: #2D3A27;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(62, 77, 52, 0.3);
+}
+
+/* Illness Disability Image */
+.illness-disability-image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.illness-disability-image {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Coping Strategies Card */
+.coping-strategies-section {
+  margin: 2.5rem 0;
+  padding: 2rem;
+  background: #f8f9f7;
+  border-radius: 12px;
+  border-left: 4px solid #3E4D34;
+}
+
+.coping-strategies-card {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+.coping-strategies-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.coping-strategies-card-title {
+  font-size: 1.5rem;
+  color: #3E4D34;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.coping-strategies-card-description {
+  color: #4a5568;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+}
+
+.coping-strategies-btn {
+  background-color: #3E4D34;
+  color: white;
+  border: none;
+  padding: 12px 28px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  width: fit-content;
+  box-shadow: 0 2px 4px rgba(62, 77, 52, 0.2);
+  text-align: center;
+}
+
+.coping-strategies-btn:hover {
+  background-color: #2D3A27;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(62, 77, 52, 0.3);
+}
+
+.coping-strategies-card-image {
+  display: flex;
+  justify-content: center;
+}
+
+.coping-strategies-card-img {
+  width: 100%;
+  max-width: 200px;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* FAQs Section */
+.faqs-section {
+  margin-top: 2rem;
+}
+
+.faqs-title {
+  font-size: 2rem;
+  color: #3E4D34;
+  margin-bottom: 2rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.faqs-list {
+  border-top: 1px solid #e8ebe6;
+}
+
+.faq-item {
+  border-bottom: 1px solid #e8ebe6;
+}
+
+.faq-question {
+  width: 100%;
+  padding: 1.5rem 0;
+  background: none;
+  border: none;
+  text-align: left;
+  font-size: 1.1rem;
+  color: #3E4D34;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: color 0.3s ease;
+}
+
+.faq-question:hover {
+  color: #2b6cb0;
+}
+
+.faq-toggle {
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: #3E4D34;
+  min-width: 20px;
+  text-align: center;
+}
+
+.faq-answer {
+  padding: 0 0 1.5rem 0;
+}
+
+.faq-answer p {
+  color: #4a5568;
+  line-height: 1.6;
+  margin: 0;
+  font-size: 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 968px) {
+  .illness-disability-intro {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    text-align: center;
+  }
+  
+  .illness-disability-text {
+    align-items: center;
+  }
+  
+  .illness-disability-image {
+    max-width: 350px;
+  }
+  
+  .coping-strategies-card {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 1.5rem;
+  }
+  
+  .coping-strategies-content {
+    align-items: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .illness-disability-content {
+    padding: 1.5rem;
+  }
+  
+  .illness-disability-title {
+    font-size: 2rem;
+  }
+  
+  .illness-disability-subtitle {
+    font-size: 1.2rem;
+  }
+  
+  .illness-disability-description {
+    font-size: 1rem;
+  }
+  
+  .faqs-title {
+    font-size: 1.7rem;
+  }
+  
+  .faq-question {
+    font-size: 1rem;
+    padding: 1.2rem 0;
+  }
+  
+  .view-faqs-btn {
+    padding: 10px 24px;
+    font-size: 0.95rem;
+  }
+  
+  .coping-strategies-card-title {
+    font-size: 1.3rem;
+  }
+  
+  .coping-strategies-card-description {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .illness-disability-container {
+    padding: 0 0.5rem;
+  }
+  
+  .illness-disability-content {
+    padding: 1rem;
+  }
+  
+  .illness-disability-title {
+    font-size: 1.8rem;
+  }
+  
+  .breadcrumb {
+    font-size: 0.8rem;
+  }
+  
+  .illness-disability-image {
+    max-width: 280px;
+  }
+  
+  .coping-strategies-section {
+    padding: 1.5rem;
+  }
+}
