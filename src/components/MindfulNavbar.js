@@ -1,26 +1,38 @@
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import NavDropdown from 'react-bootstrap/NavDropdown';
 import React from 'react';
 import '../styles/MindfulNavbar.css';
 import { Link } from 'react-router-dom';
 
 const MindfulNavbar = () => {
   return (
-    <header className="mindful-header">
-      <div className="mindful-container">
-        <div className="mindful-logo">
-          <Link to="/">Mindful Nest</Link>
-        </div>
-        
-        <nav className="mindful-nav">
-          <ul className="nav-links">
-            <li><Link to="/">Helplines</Link></li>
-            <li><Link to="/about">About Us</Link></li>
-            <li><Link to="/contact">Contact</Link></li> {/* Link to contact page */}
-
-            <li><a href="/">Treatment</a></li>
-          </ul>
-        </nav>
-      </div>
-    </header>
+    <Navbar expand="lg" className="bg-body-tertiary">
+      <Container>
+        <Navbar.Brand href="#home">Mindful Nest</Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="me-auto">
+            <Nav.Link as={Link} to="/helplines">Helplines</Nav.Link>
+            <Nav.Link as={Link} to="/about">About Us</Nav.Link>
+            <Nav.Link as={Link} to="/contact">Contact Us</Nav.Link>
+            <Nav.Link as={Link} to="/resources">Resources</Nav.Link>
+            <NavDropdown title="Dropdown" id="basic-nav-dropdown">
+              <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.2">
+                Another action
+              </NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item href="#action/3.4">
+                Separated link
+              </NavDropdown.Item>
+            </NavDropdown>
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
   );
 };
 

@@ -15,7 +15,7 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <MindfulNavbar /> {/* Navbar appears on all pages */}
+        <MindfulNavbar /> 
         <Routes>
           <Route path="/" element={<Homepage />} />         // Home page
           <Route path="/contact" element={<ContactUs />} />  // Contact page
