@@ -4,18 +4,18 @@ import Homepage from './components/Homepage';
 import ContactUs from './components/ContactUs';
 import AboutUs from './components/AboutUs';
 import MindfulNavbar from './components/MindfulNavbar';
-import MentalHealth from './components/MentalHealth';
 import HealthWellness from './components/HealthWellness';
 import Relationships from './components/Relationships';
 import Treatment from './components/Treatment';
 import Footer from './components/Footer';
+import MentalHealth from './components/MentalHealth';
 import './App.css';
 
 function App() {
   return (
     <Router>
       <div className="App">
-        <MindfulNavbar /> 
+        <MindfulNavbar />        
         <Routes>
           <Route path="/" element={<Homepage />} />         // Home page
           <Route path="/contact" element={<ContactUs />} />  // Contact page

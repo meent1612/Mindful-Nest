@@ -1,38 +1,61 @@
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
+import Nav from 'react-bootstrap/Nav';
+import Container from 'react-bootstrap/Container';
 import React from 'react';
 import '../styles/MindfulNavbar.css';
 import { Link } from 'react-router-dom';
 
 const MindfulNavbar = () => {
   return (
-    <Navbar expand="lg" className="bg-body-tertiary">
-      <Container>
-        <Navbar.Brand href="#home">Mindful Nest</Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
-            <Nav.Link as={Link} to="/helplines">Helplines</Nav.Link>
-            <Nav.Link as={Link} to="/about">About Us</Nav.Link>
-            <Nav.Link as={Link} to="/contact">Contact Us</Nav.Link>
-            <Nav.Link as={Link} to="/resources">Resources</Nav.Link>
-            <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
-                Another action
-              </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">
-                Separated link
-              </NavDropdown.Item>
-            </NavDropdown>
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
+    <>
+      {/* Top Container - Utility Links (Collapsible Navbar) */}
+      <Navbar expand="lg" className="utility-navbar">
+        <Container>
+          <Navbar.Toggle aria-controls="utility-nav" className="utility-toggle" />
+          <Navbar.Collapse id="utility-nav">
+            <Nav className="utility-nav-container">
+              <Nav.Link as={Link} to="/helplines" className="nav-link-utility">
+                Helplines
+              </Nav.Link>
+              <Nav.Link as={Link} to="/about" className="nav-link-utility">
+                About Us
+              </Nav.Link>
+              <Nav.Link as={Link} to="/contact" className="nav-link-utility">
+                Contact Us
+              </Nav.Link>
+              <Nav.Link as={Link} to="/resources" className="nav-link-utility">
+                Resources
+              </Nav.Link>
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
+
+      {/* Bottom Container - Main Categories (Static, non-collapsible) */}
+      <div className="main-categories-container">
+        <Container>
+          <div className="main-categories-content">
+            <Link to="/" className="navbar-brand-custom">
+              Mindful Nest
+            </Link>
+            <nav className="main-categories-nav">
+              <Link to="/mental-health" className="nav-link-main">
+                Mental Health
+              </Link>
+              <Link to="/health-wellness" className="nav-link-main">
+                Health & Wellness
+              </Link>
+              <Link to="/relationships" className="nav-link-main">
+                Relationships
+              </Link>
+              <Link to="/treatment" className="nav-link-main">
+                Treatment
+              </Link>
+            </nav>
+          </div>
+        </Container>
+      </div>
+    </>
   );
 };
 
