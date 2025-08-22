@@ -1,26 +1,61 @@
+import Navbar from 'react-bootstrap/Navbar';
+import Nav from 'react-bootstrap/Nav';
+import Container from 'react-bootstrap/Container';
 import React from 'react';
 import '../styles/MindfulNavbar.css';
 import { Link } from 'react-router-dom';
 
 const MindfulNavbar = () => {
   return (
-    <header className="mindful-header">
-      <div className="mindful-container">
-        <div className="mindful-logo">
-          <Link to="/">Mindful Nest</Link>
-        </div>
-        
-        <nav className="mindful-nav">
-          <ul className="nav-links">
-            <li><Link to="/">Helplines</Link></li>
-            <li><Link to="/about">About Us</Link></li>
-            <li><Link to="/contact">Contact</Link></li> {/* Link to contact page */}
+    <>
+      {/* Top Container - Utility Links (Collapsible Navbar) */}
+      <Navbar expand="lg" className="utility-navbar">
+        <Container>
+          <Navbar.Toggle aria-controls="utility-nav" className="utility-toggle" />
+          <Navbar.Collapse id="utility-nav">
+            <Nav className="utility-nav-container">
+              <Nav.Link as={Link} to="/helplines" className="nav-link-utility">
+                Helplines
+              </Nav.Link>
+              <Nav.Link as={Link} to="/about" className="nav-link-utility">
+                About Us
+              </Nav.Link>
+              <Nav.Link as={Link} to="/contact" className="nav-link-utility">
+                Contact Us
+              </Nav.Link>
+              <Nav.Link as={Link} to="/resources" className="nav-link-utility">
+                Resources
+              </Nav.Link>
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
 
-            <li><a href="/">Treatment</a></li>
-          </ul>
-        </nav>
+      {/* Bottom Container - Main Categories (Static, non-collapsible) */}
+      <div className="main-categories-container">
+        <Container>
+          <div className="main-categories-content">
+            <Link to="/" className="navbar-brand-custom">
+              Mindful Nest
+            </Link>
+            <nav className="main-categories-nav">
+              <Link to="/mental-health" className="nav-link-main">
+                Mental Health
+              </Link>
+              <Link to="/health-wellness" className="nav-link-main">
+                Health & Wellness
+              </Link>
+              <Link to="/relationships" className="nav-link-main">
+                Relationships
+              </Link>
+              <Link to="/treatment" className="nav-link-main">
+                Treatment
+              </Link>
+            </nav>
+          </div>
+        </Container>
       </div>
-    </header>
+    </>
   );
 };
 

@@ -4,7 +4,6 @@ import Homepage from './components/Homepage';
 import ContactUs from './components/ContactUs';
 import AboutUs from './components/AboutUs';
 import MindfulNavbar from './components/MindfulNavbar';
-import MentalHealth from './components/MentalHealth';
 import HealthWellness from './components/HealthWellness';
 import Nutrition from './components/Nutrition';
 import Relationships from './components/Relationships';
@@ -24,13 +23,14 @@ import WeightManagement from './components/WeightManagement';
 import Footer from './components/Footer';
 import WorkCareer from './components/WorkCareer';
 import IllnessDisability from './components/IllnessDisability';
+import MentalHealth from './components/MentalHealth';
 import './App.css';
 
 function App() {
   return (
     <Router>
       <div className="App">
-        <MindfulNavbar /> {/* Navbar appears on all pages */}
+        <MindfulNavbar />        
         <Routes>
         <Route path="/" element={<Homepage />} /> 
         <Route path="/contact" element={<ContactUs />} /> 
