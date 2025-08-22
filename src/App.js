@@ -8,6 +8,7 @@ import MentalHealth from './components/MentalHealth';
 import HealthWellness from './components/HealthWellness';
 import Relationships from './components/Relationships';
 import Treatment from './components/Treatment';
+import Footer from './components/Footer';
 import './App.css';
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
           <Route path="/relationships" element={<Relationships />} />
           <Route path="/treatment" element={<Treatment />} />
         </Routes>
+         <Footer />
       </div>
     </Router>
 
