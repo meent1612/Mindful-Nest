@@ -23,7 +23,13 @@ const BurnoutSymptoms = () => {
         <div className="burnout-symptoms-content">
           <p className="section-label">STRESS</p>
           <h1 className="burnout-symptoms-title">Burnout</h1>
-          
+          <div className="burnout-symptoms-image-container">
+              <img 
+                src={BurnoutMainImage}
+                alt="Burnout symptoms and recovery" 
+                className="burnout-symptoms-image"
+              />
+            </div>
           <div className="burnout-symptoms-intro">
             <div className="burnout-symptoms-text">
               <p className="burnout-symptoms-subtitle">
@@ -231,13 +237,7 @@ const BurnoutSymptoms = () => {
               </div>
             </div>
             
-            <div className="burnout-symptoms-image-container">
-              <img 
-                src={BurnoutMainImage}
-                alt="Burnout symptoms and recovery" 
-                className="burnout-symptoms-image"
-              />
-            </div>
+            
           </div>
         </div>
       </div>

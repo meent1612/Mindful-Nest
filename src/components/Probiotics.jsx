@@ -23,7 +23,13 @@ const Probiotics = () => {
         <div className="probiotics-content">
           <p className="section-label">NUTRITION</p>
           <h1 className="probiotics-title">Probiotics</h1>
-          
+          <div className="probiotics-image-container">
+              <img 
+                src={GutHealthImage}
+                alt="Probiotics and gut health" 
+                className="probiotics-image"
+              />
+            </div>
           <div className="probiotics-intro">
             <div className="probiotics-text">
               <p className="probiotics-subtitle">
@@ -135,16 +141,8 @@ const Probiotics = () => {
               </div>
             </div>
             
-            <div className="probiotics-image-container">
-              <img 
-                src={GutHealthImage}
-                alt="Probiotics and gut health" 
-                className="probiotics-image"
-              />
-            </div>
+            
           </div>
-
-          {/* Additional content sections would go here */}
         </div>
       </div>
     </div>

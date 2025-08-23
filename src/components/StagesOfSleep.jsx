@@ -26,7 +26,13 @@ const StagesOfSleep = () => {
         <div className="stages-of-sleep-content">
           <p className="section-label">SLEEP</p>
           <h1 className="stages-of-sleep-title">The Stages of Sleep</h1>
-          
+          <div className="stages-of-sleep-image-container">
+              <img 
+                src={StagesOfSleepImage1}
+                alt="Stages of sleep" 
+                className="stages-of-sleep-image"
+              />
+            </div>
           <div className="stages-of-sleep-intro">
             <div className="stages-of-sleep-text">
               <p className="stages-of-sleep-subtitle">
@@ -177,13 +183,7 @@ const StagesOfSleep = () => {
               </div>
             </div>
             
-            <div className="stages-of-sleep-image-container">
-              <img 
-                src={StagesOfSleepImage1}
-                alt="Stages of sleep" 
-                className="stages-of-sleep-image"
-              />
-            </div>
+            
           </div>
         </div>
       </div>
