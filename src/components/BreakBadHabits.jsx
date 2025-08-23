@@ -24,7 +24,13 @@ const BreakBadHabits = () => {
         <div className="break-bad-habits-content">
           <p className="section-label">MENTAL HEALTH</p>
           <h1 className="break-bad-habits-title">How to Break Bad Habits</h1>
-          
+          <div className="break-bad-habits-image-container">
+              <img 
+                src={BreakHabitsImage}
+                alt="Breaking bad habits and building new ones" 
+                className="break-bad-habits-image"
+              />
+            </div>
           <div className="break-bad-habits-intro">
             <div className="break-bad-habits-text">
               <p className="break-bad-habits-subtitle">
@@ -246,13 +252,7 @@ const BreakBadHabits = () => {
               </div>
             </div>
             
-            <div className="break-bad-habits-image-container">
-              <img 
-                src={BreakHabitsImage}
-                alt="Breaking bad habits and building new ones" 
-                className="break-bad-habits-image"
-              />
-            </div>
+            
           </div>
         </div>
       </div>

@@ -23,7 +23,13 @@ const SleepADHD = () => {
         <div className="sleep-adhd-content">
           <p className="section-label">SLEEP</p>
           <h1 className="sleep-adhd-title">The Connection Between Sleep and ADHD</h1>
-          
+           <div className="sleep-adhd-image-container">
+              <img 
+                src={SleepADHDImage}
+                alt="Connection between sleep and ADHD" 
+                className="sleep-adhd-image"
+              />
+            </div>
           <div className="sleep-adhd-intro">
             <div className="sleep-adhd-text">
               <p className="sleep-adhd-subtitle">
@@ -179,13 +185,7 @@ const SleepADHD = () => {
               </div>
             </div>
             
-            <div className="sleep-adhd-image-container">
-              <img 
-                src={SleepADHDImage}
-                alt="Connection between sleep and ADHD" 
-                className="sleep-adhd-image"
-              />
-            </div>
+           
           </div>
         </div>
       </div>

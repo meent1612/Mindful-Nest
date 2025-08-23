@@ -72,11 +72,7 @@
 
 /* Mental Health Benefits Intro Layout */
 .mental-health-benefits-intro {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 3rem;
   margin-bottom: 2.5rem;
-  align-items: start;
 }
 
 .mental-health-benefits-text {
@@ -116,35 +112,28 @@
   font-size: 1.1rem;
 }
 
-/* Mental Health Benefits Image */
+/* Mental Health Benefits Image - FIXED CENTERING */
 .mental-health-benefits-image-container {
+  width: 100%;
+  margin: 0 0 2rem 0;
+  padding-top: 1rem;
   display: flex;
   justify-content: center;
-  align-items: flex-start;
-  position: right;
-  top: 2rem;
+  align-items: center;
 }
 
 .mental-health-benefits-image {
+  max-width: 450px;
   width: 100%;
-  max-width: 350px;
   height: auto;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
+/* Clearfix for floated image - REMOVED since we're not floating anymore */
+
 /* Responsive Design */
 @media (max-width: 968px) {
-  .mental-health-benefits-intro {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-  
-  .mental-health-benefits-image-container {
-    order: -1;
-    position: static;
-  }
-  
   .mental-health-benefits-image {
     max-width: 400px;
   }
@@ -173,6 +162,10 @@
   
   .main-content p {
     font-size: 1rem;
+  }
+  
+  .mental-health-benefits-image {
+    max-width: 400px;
   }
 }
 

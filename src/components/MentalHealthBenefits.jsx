@@ -23,7 +23,13 @@ const MentalHealthBenefits = () => {
         <div className="mental-health-benefits-content">
           <p className="section-label">EXERCISE & FITNESS</p>
           <h1 className="mental-health-benefits-title">The Mental Health Benefits of Exercise</h1>
-          
+          <div className="mental-health-benefits-image-container">
+              <img 
+                src={MentalHealthExerciseImage}
+                alt="Mental health benefits of exercise" 
+                className="mental-health-benefits-image"
+              />
+            </div>
           <div className="mental-health-benefits-intro">
             <div className="mental-health-benefits-text">
               <p className="mental-health-benefits-subtitle">
@@ -113,13 +119,7 @@ const MentalHealthBenefits = () => {
               </div>
             </div>
             
-            <div className="mental-health-benefits-image-container">
-              <img 
-                src={MentalHealthExerciseImage}
-                alt="Mental health benefits of exercise" 
-                className="mental-health-benefits-image"
-              />
-            </div>
+            
           </div>
         </div>
       </div>

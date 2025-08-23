@@ -1,4 +1,4 @@
-/* StagesOfSleep.css */
+/* StagesOfSleep.css - Updated to match how-to-start style */
 .stages-of-sleep-page {
   min-height: 100vh;
   background: #ffffff;
@@ -18,6 +18,7 @@
   margin-bottom: 2rem;
   font-size: 0.9rem;
   color: #4a5568;
+  flex-wrap: wrap;
 }
 
 .breadcrumb-link {
@@ -64,82 +65,75 @@
 .stages-of-sleep-title {
   font-size: 2.5rem;
   color: #3E4D34;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
   font-weight: 700;
   text-align: left;
+  line-height: 1.3;
 }
 
-/* Stages of Sleep Intro Layout */
+/* Stages of Sleep Intro Layout - CHANGED */
 .stages-of-sleep-intro {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 3rem;
   margin-bottom: 2.5rem;
-  padding-bottom: 1.5rem;
-  border-bottom: 2px solid #e8ebe6;
-  align-items: start;
 }
 
 .stages-of-sleep-text {
   display: flex;
   flex-direction: column;
-  justify-content: center;
 }
 
 .stages-of-sleep-subtitle {
   font-size: 1.4rem;
   color: #3E4D34;
   font-weight: 600;
-  margin-bottom: 0.5rem;
-  line-height: 1.4;
+  margin-bottom: 2rem;
+  line-height: 1.5;
+  padding-bottom: 1.5rem;
+  border-bottom: 2px solid #e8ebe6;
 }
 
 .stages-of-sleep-description {
   font-size: 1.1rem;
   color: #4a5568;
-  line-height: 1.6;
-  margin-bottom: 1rem;
+  line-height: 1.7;
+  margin-bottom: 1.2rem;
 }
 
 /* Main Content Styles */
 .main-content h2 {
-  font-size: 1.8rem;
   color: #3E4D34;
-  margin: 2rem 0 1rem 0;
+  font-size: 1.8rem;
+  margin: 2rem 0 1rem;
   font-weight: 600;
 }
 
 .main-content h3 {
-  font-size: 1.4rem;
   color: #3E4D34;
-  margin: 1.5rem 0 0.8rem 0;
+  font-size: 1.4rem;
+  margin: 1.5rem 0 0.8rem;
   font-weight: 600;
 }
 
 .main-content p {
-  font-size: 1.1rem;
   color: #4a5568;
-  line-height: 1.6;
-  margin-bottom: 1rem;
+  line-height: 1.7;
+  margin-bottom: 1.2rem;
+  font-size: 1.1rem;
 }
 
 .main-content ol, .main-content ul {
   color: #4a5568;
-  line-height: 1.6;
+  line-height: 1.7;
   padding-left: 1.5rem;
-  margin-bottom: 1rem;
+  margin-bottom: 1.2rem;
 }
 
 .main-content li {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.6rem;
 }
 
-/* Two Column Section */
+/* Two Column Section - CHANGED */
 .two-column-section {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-  align-items: start;
+  display: block;
   margin: 1.5rem 0;
 }
 
@@ -150,35 +144,39 @@
 
 .section-image {
   width: 100%;
+  max-width: 450px;
+  margin: 1.5rem auto;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  display: block;
 }
 
-/* Stages of Sleep Image */
+/* Stages of Sleep Image - CHANGED (No float, properly centered) */
 .stages-of-sleep-image-container {
+  width: 100%;
+  margin: 0 0 2rem 0;
+  padding-top: 1rem;
   display: flex;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
 }
 
 .stages-of-sleep-image {
+  max-width: 450px;
   width: 100%;
-  max-width: 400px;
   height: auto;
   border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 /* Responsive Design */
 @media (max-width: 968px) {
-  .stages-of-sleep-intro,
-  .two-column-section {
-    grid-template-columns: 1fr;
-    gap: 2rem;
+  .stages-of-sleep-image {
+    max-width: 400px;
   }
   
-  .stages-of-sleep-image {
-    max-width: 350px;
+  .section-image {
+    max-width: 400px;
   }
 }
 
@@ -196,7 +194,8 @@
   }
   
   .stages-of-sleep-description,
-  .main-content p {
+  .main-content p,
+  .main-content li {
     font-size: 1rem;
   }
   
@@ -206,6 +205,14 @@
   
   .main-content h3 {
     font-size: 1.2rem;
+  }
+  
+  .stages-of-sleep-image {
+    max-width: 400px;
+  }
+  
+  .section-image {
+    max-width: 400px;
   }
 }
 
@@ -227,6 +234,10 @@
   }
   
   .stages-of-sleep-image {
+    max-width: 280px;
+  }
+  
+  .section-image {
     max-width: 280px;
   }
 }

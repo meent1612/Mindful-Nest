@@ -23,7 +23,13 @@ const HowToStartExercising = () => {
         <div className="how-to-start-content">
           <p className="section-label">EXERCISE & FITNESS</p>
           <h1 className="how-to-start-title">How to Start Exercising and Stick to It</h1>
-          
+          <div className="how-to-start-image-container">
+              <img 
+                src={ExerciseStickImage}
+                alt="Person enjoying exercise and sticking with it" 
+                className="how-to-start-image"
+              />
+            </div>
           <div className="how-to-start-intro">
             <div className="how-to-start-text">
               <p className="how-to-start-subtitle">
@@ -80,17 +86,9 @@ const HowToStartExercising = () => {
                 </p>
               </div>
             </div>
-            
-            <div className="how-to-start-image-container">
-              <img 
-                src={ExerciseStickImage}
-                alt="Person enjoying exercise and sticking with it" 
-                className="how-to-start-image"
-              />
-            </div>
           </div>
 
-          {/* Additional content sections would go here */}
+          
         </div>
       </div>
     </div>
