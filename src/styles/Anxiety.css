@@ -1,0 +1,375 @@
+.anxiety-page {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  line-height: 1.6;
+}
+
+.anxiety-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Hero Section Styles */
+.anxiety-hero {
+  background: linear-gradient(135deg, #f9f5ff 0%, #e6e6fa 100%);
+  padding: 60px 0;
+}
+
+.hero-content {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.hero-text {
+  flex: 1;
+}
+
+.hero-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.hero-image img {
+  max-width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.anxiety-main-title {
+  font-size: 3.5rem;
+  color: #6b5b95;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.anxiety-hero-text {
+  font-size: 1.2rem;
+  color: #4a4a6a;
+  margin-bottom: 30px;
+  line-height: 1.8;
+}
+
+.view-faqs-btn {
+  background: linear-gradient(to right, #6b5b95, #8a76b5);
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.view-faqs-btn:hover {
+  background: linear-gradient(to right, #5a4a84, #7a66a5);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(107, 91, 149, 0.3);
+}
+
+/* Anxiety Management Section */
+.anxiety-management {
+  padding: 80px 0;
+  background-color: #fff;
+}
+
+.management-content {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.management-image {
+  flex: 1;
+}
+
+.management-image img {
+  max-width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.management-text {
+  flex: 1;
+}
+
+.management-header {
+  margin-bottom: 30px;
+}
+
+.management-title {
+  font-size: 1.5rem;
+  color: #6b5b95;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+}
+
+.management-subtitle {
+  font-size: 2rem;
+  color: #4a4a6a;
+  font-weight: 600;
+}
+
+.management-card {
+  background: #f9f5ff;
+  padding: 25px;
+  border-radius: 10px;
+  border-left: 5px solid #6b5b95;
+}
+
+.management-card h4 {
+  color: #4a4a6a;
+  margin-bottom: 15px;
+  font-size: 1.3rem;
+}
+
+.management-card p {
+  color: #4a4a6a;
+  line-height: 1.7;
+}
+
+/* Anxiety Topics Grid */
+.anxiety-topics {
+  padding: 80px 0;
+  background: linear-gradient(135deg, #f9f5ff 0%, #e6e6fa 100%);
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #4a4a6a;
+  margin-bottom: 50px;
+  font-weight: 700;
+}
+
+.topics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.topic-card {
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.topic-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.topic-image {
+  height: 200px;
+  overflow: hidden;
+}
+
+.topic-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.topic-card:hover .topic-image img {
+  transform: scale(1.05);
+}
+
+.topic-content {
+  padding: 20px;
+}
+
+.topic-category {
+  color: #6b5b95;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+}
+
+.topic-title {
+  color: #4a4a6a;
+  font-size: 1.4rem;
+  margin: 10px 0;
+  font-weight: 600;
+}
+
+.topic-desc {
+  color: #4a4a6a;
+  line-height: 1.6;
+}
+
+/* FAQs Section */
+.anxiety-faqs {
+  padding: 80px 0;
+  background-color: #fff;
+}
+
+.faqs-title {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #4a4a6a;
+  margin-bottom: 50px;
+  font-weight: 700;
+}
+
+.faqs-list {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.faq-item {
+  border-bottom: 1px solid #eaeaea;
+  margin-bottom: 15px;
+}
+
+.faq-question {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #4a4a6a;
+}
+
+.faq-question:hover {
+  color: #6b5b95;
+}
+
+.faq-toggle {
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: #6b5b95;
+}
+
+.faq-answer {
+  padding: 0 0 20px 0;
+  color: #4a4a6a;
+  line-height: 1.7;
+}
+
+/* Resources Section */
+.anxiety-resources {
+  padding: 80px 0;
+  background: linear-gradient(135deg, #6b5b95 0%, #8a76b5 100%);
+  color: white;
+}
+
+.resources-title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.resources-subtitle {
+  text-align: center;
+  font-size: 1.2rem;
+  margin-bottom: 50px;
+  opacity: 0.9;
+}
+
+.resources-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.resource-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 30px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.resource-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+}
+
+.helpline-number {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 15px 0;
+  color: #ffd700;
+}
+
+.resource-link {
+  display: inline-block;
+  background: white;
+  color: #6b5b95;
+  padding: 10px 20px;
+  border-radius: 50px;
+  font-weight: 600;
+  margin-top: 15px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.resource-link:hover {
+  background: #f8f9fa;
+  transform: translateY(-2px);
+}
+
+.resource-btn {
+  background: white;
+  color: #6b5b95;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 50px;
+  font-weight: 600;
+  margin-top: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.resource-btn:hover {
+  background: #f8f9fa;
+  transform: translateY(-2px);
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .hero-content {
+    flex-direction: column;
+  }
+  
+  .management-content {
+    flex-direction: column;
+  }
+  
+  .anxiety-main-title {
+    font-size: 2.5rem;
+  }
+  
+  .resources-content {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .anxiety-container {
+    padding: 0 15px;
+  }
+  
+  .anxiety-main-title {
+    font-size: 2rem;
+  }
+  
+  .section-title, .faqs-title, .resources-title {
+    font-size: 2rem;
+  }
+  
+  .topic-card {
+    margin-bottom: 20px;
+  }
+}
