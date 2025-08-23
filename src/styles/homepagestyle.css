@@ -10,10 +10,13 @@
 
 /* Header Styles */
 .header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 40px;
+  font-family: 'Playfair Display', serif; /* new elegant font */
+  font-size: 11rem;       /* bigger */
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #3E4D34; 
+  letter-spacing: -1px;  /* tighter spacing for balance */
+  text-align: center;
 }
 
 /* Header Styles */

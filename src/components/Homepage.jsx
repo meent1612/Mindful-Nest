@@ -9,27 +9,16 @@ import supportImage from '../assets/mission04.png';
 
 const Homepage = () => {
   return (
-    <div className="homepage">
-      {/* Header Section */}
-      <header className="header">
-        <h1 className="logo">Mindful Nest</h1>
-       
-      </header>
-      
-      {/* Hero Section */}
+    <div className="homepage">      
       <main className="main-content">
-        <div className="divider"></div>
-        <h2 className="tagline">Your trusted guide to mental health & wellness</h2>
+        <header className="header"></header>        
+        <h1 className="tagline">Your trusted guide to mental health & wellness</h1>
         <p className="description">
           Start improving your mental health and well-being today. We will show you how.
         </p>
-
-        {/*  Link "Learn More" to About Us page */}
         <Link to="/about">
           <button className="learn-more-btn">Learn More</button>
-        </Link>
-        
-        {/* Hero Image with oval rectangular shape */}
+        </Link>        
         <div className="hero-image-container">
           <img 
             src={heroImage} 
