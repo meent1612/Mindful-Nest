@@ -13,12 +13,7 @@ const Homepage = () => {
       {/* Header Section */}
       <header className="header">
         <h1 className="logo">Mindful Nest</h1>
-        <nav className="navigation">
-          <Link to="/mental-health" className="nav-link">Mental Health</Link>
-          <Link to="/health-wellness" className="nav-link">Health & Wellness</Link>
-          <Link to="/relationships" className="nav-link">Relationships</Link>
-          <Link to="/treatment" className="nav-link">Treatment</Link>
-        </nav>
+       
       </header>
       
       {/* Hero Section */}
@@ -28,7 +23,11 @@ const Homepage = () => {
         <p className="description">
           Start improving your mental health and well-being today. We will show you how.
         </p>
-        <button className="learn-more-btn">Learn More</button>
+
+        {/*  Link "Learn More" to About Us page */}
+        <Link to="/about">
+          <button className="learn-more-btn">Learn More</button>
+        </Link>
         
         {/* Hero Image with oval rectangular shape */}
         <div className="hero-image-container">

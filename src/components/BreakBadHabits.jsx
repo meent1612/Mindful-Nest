@@ -1,14 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/BreakBadHabits.css';
-import PageNavigation from '../components/PageNavigation';
+//import PageNavigation from '../components/PageNavigation';
 import BreakHabitsImage from '../assets/break-bad-habits-main.webp'; 
 
 const BreakBadHabits = () => {
   return (
     <div className="break-bad-habits-page">
       <div className="break-bad-habits-container">
-        <PageNavigation />
+        
 
         {/* Breadcrumb Navigation */}
         <div className="breadcrumb">

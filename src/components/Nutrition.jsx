@@ -1,13 +1,12 @@
 import React, { useState, useRef } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import '../styles/Nutrition.css';
-import PageNavigation from '../components/PageNavigation';
+//import PageNavigation from '../components/PageNavigation';
 import NutritionImage from '../assets/nutrition-main.jpeg';
 import GutHealthImage from '../assets/gut-health.webp';
 
 const Nutrition = () => {
-  const { category } = useParams();
-  console.log(category);
+  
 
   const [openFaq, setOpenFaq] = useState(null);
   const faqRef = useRef(null);
@@ -46,7 +45,7 @@ const Nutrition = () => {
   return (
     <div className="nutrition-page">
       <div className="nutrition-container">
-        <PageNavigation />
+        
 
         {/* Breadcrumb Navigation */}
         <div className="breadcrumb">

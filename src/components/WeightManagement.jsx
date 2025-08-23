@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/WeightManagement.css';
-import PageNavigation from '../components/PageNavigation';
+//import PageNavigation from '../components/PageNavigation';
 import WeightManagementImage from '../assets/weight-management-main.jpg';
 
 
@@ -43,7 +43,7 @@ const WeightManagement = () => {
   return (
     <div className="weight-management-page">
       <div className="weight-management-container">
-        <PageNavigation />
+       
 
         {/* Breadcrumb Navigation */}
         <div className="breadcrumb">

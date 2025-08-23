@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/IllnessDisability.css';
-import PageNavigation from '../components/PageNavigation';
+//import PageNavigation from '../components/PageNavigation';
 import IllnessDisabilityImage from '../assets/illness-disability-main.jpeg';
 
 
@@ -43,7 +43,7 @@ const IllnessDisability = () => {
   return (
     <div className="illness-disability-page">
       <div className="illness-disability-container">
-        <PageNavigation />
+        
 
         {/* Breadcrumb Navigation */}
         <div className="breadcrumb">

@@ -1,14 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/SleepADHD.css';
-import PageNavigation from '../components/PageNavigation';
+//import PageNavigation from '../components/PageNavigation';
 import SleepADHDImage from '../assets/sleep-adhd-main.webp'; 
 
 const SleepADHD = () => {
   return (
     <div className="sleep-adhd-page">
       <div className="sleep-adhd-container">
-        <PageNavigation />
+        
 
         {/* Breadcrumb Navigation */}
         <div className="breadcrumb">

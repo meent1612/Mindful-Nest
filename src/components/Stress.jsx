@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/Stress.css';
-import PageNavigation from '../components/PageNavigation';
+//import PageNavigation from '../components/PageNavigation';
 import StressMainImage from '../assets/stress-main.webp';
 import BurnoutMainImage from '../assets/burnout-main.webp'; 
 
@@ -43,7 +43,7 @@ const Stress = () => {
   return (
     <div className="stress-page">
       <div className="stress-container">
-        <PageNavigation />
+        
 
         {/* Breadcrumb Navigation */}
         <div className="breadcrumb">

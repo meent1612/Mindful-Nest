@@ -16,12 +16,21 @@
   margin-bottom: 40px;
 }
 
+/* Header Styles */
 .logo {
-  font-size: 2.8rem;
+  font-family: 'Playfair Display', serif; /* new elegant font */
+  font-size: 11rem;       /* bigger */
   font-weight: 700;
   margin-bottom: 20px;
   color: #3E4D34; 
-  letter-spacing: -0.5px;
+  letter-spacing: -1px;  /* tighter spacing for balance */
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.logo:hover {
+  color: #2b3826;       /* slightly darker shade on hover */
+  transform: scale(1.05);
 }
 
 .navigation {

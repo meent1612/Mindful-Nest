@@ -1,14 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/HowToStartExercising.css';
-import PageNavigation from '../components/PageNavigation';
+//import PageNavigation from '../components/PageNavigation';
 import ExerciseStickImage from '../assets/exercise-stick-with-it.jpeg'; 
 
 const HowToStartExercising = () => {
   return (
     <div className="how-to-start-page">
       <div className="how-to-start-container">
-        <PageNavigation />
+        
 
         {/* Breadcrumb Navigation */}
         <div className="breadcrumb">

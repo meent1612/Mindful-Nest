@@ -1,14 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/Probiotics.css';
-import PageNavigation from '../components/PageNavigation';
+//import PageNavigation from '../components/PageNavigation';
 import GutHealthImage from '../assets/gut-health.webp'; 
 
 const Probiotics = () => {
   return (
     <div className="probiotics-page">
       <div className="probiotics-container">
-        <PageNavigation />
+        
 
         {/* Breadcrumb Navigation */}
         <div className="breadcrumb">

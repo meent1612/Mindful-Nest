@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/Wellbeing.css';
-import PageNavigation from '../components/PageNavigation';
+//import PageNavigation from '../components/PageNavigation';
 import WellbeingMainImage from '../assets/wellbeing-main.jpeg';
 import BreakHabitsImage from '../assets/break-bad-habits-main.webp'; 
 
@@ -43,7 +43,7 @@ const Wellbeing = () => {
   return (
     <div className="wellbeing-page">
       <div className="wellbeing-container">
-        <PageNavigation />
+        
 
         {/* Breadcrumb Navigation */}
         <div className="breadcrumb">

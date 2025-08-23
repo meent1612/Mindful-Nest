@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/WorkCareer.css';
-import PageNavigation from '../components/PageNavigation';
+//import PageNavigation from '../components/PageNavigation';
 import WorkCareerImage from '../assets/work-career-main.jpeg';
 
 
@@ -43,7 +43,7 @@ const WorkCareer = () => {
   return (
     <div className="work-career-page">
       <div className="work-career-container">
-        <PageNavigation />
+        
 
         {/* Breadcrumb Navigation */}
         <div className="breadcrumb">

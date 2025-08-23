@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/Sleep.css';
-import PageNavigation from '../components/PageNavigation';
+//import PageNavigation from '../components/PageNavigation';
 import SleepMainImage from '../assets/sleep-main.webp';
 import SleepADHDImage from '../assets/sleep-adhd-main.webp';
 import StagesOfSleepImage1 from '../assets/StagesOfSleep.jpg';
@@ -44,7 +44,7 @@ const Sleep = () => {
   return (
     <div className="sleep-page">
       <div className="sleep-container">
-        <PageNavigation />
+      
 
         {/* Breadcrumb Navigation */}
         <div className="breadcrumb">
