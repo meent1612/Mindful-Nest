@@ -29,6 +29,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import ADHD from './components/ADHD';
 import Addiction from './components/Addiction';
 import Anxiety from './components/Anxiety';
+import Depression from './components/Depression';
 
 
 function App() {
@@ -44,11 +45,10 @@ function App() {
          <Route path="/mental-health/adhd" element={<ADHD />} />
          <Route path="/mental-health/addiction" element={<Addiction />} />
          <Route path="/mental-health/anxiety" element={<Anxiety />} />
+         <Route path="/mental-health/depression" element={<Depression />} />
+
         <Route path="/health-wellness" element={<HealthWellness />} />
-
-          
-
-         {/* Specific child routes */}
+         
          <Route path="/health-wellness/exercise-fitness" element={<ExerciseFitness />} />
         <Route path="/health-wellness/nutrition" element={<Nutrition />} />
         <Route path="/health-wellness/sleep" element={<Sleep />} />
