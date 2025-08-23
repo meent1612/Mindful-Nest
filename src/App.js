@@ -26,6 +26,7 @@ import IllnessDisability from './components/IllnessDisability';
 import MentalHealth from './components/MentalHealth';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import ADHD from './components/ADHD';
 
 
 function App() {
@@ -38,7 +39,10 @@ function App() {
         <Route path="/contact" element={<ContactUs />} /> 
         <Route path="/about" element={<AboutUs />} /> 
         <Route path="/mental-health" element={<MentalHealth />} />
+         <Route path="/mental-health/adhd" element={<ADHD />} />
         <Route path="/health-wellness" element={<HealthWellness />} />
+
+          
 
          {/* Specific child routes */}
          <Route path="/health-wellness/exercise-fitness" element={<ExerciseFitness />} />

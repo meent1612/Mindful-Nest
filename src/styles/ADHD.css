@@ -1,0 +1,333 @@
+.adhd-page {
+  min-height: 100vh;
+  background: #ffffff;
+  font-family: 'Arial', sans-serif;
+}
+
+.adhd-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Hero Section with Image */
+.adhd-hero {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  padding: 4rem 0;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.hero-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.hero-text {
+  padding-right: 2rem;
+}
+
+.adhd-main-title {
+  font-size: 4rem;
+  color: #3E4D34;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  font-family: 'Georgia', serif;
+}
+
+.adhd-hero-text {
+  font-size: 1.2rem;
+  color: #666;
+  line-height: 1.8;
+  margin-bottom: 2rem;
+}
+
+.hero-image img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.view-faqs-btn {
+  background: #3E4D34;
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.view-faqs-btn:hover {
+  background: #2D3A27;
+  transform: translateY(-2px);
+}
+
+/* Sleep Connection Section with Image */
+.sleep-connection {
+  padding: 4rem 0;
+  background: white;
+}
+
+.sleep-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.sleep-image img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.sleep-header {
+  margin-bottom: 2rem;
+}
+
+.sleep-title {
+  font-size: 1.1rem;
+  color: #3E4D34;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 0.5rem;
+}
+
+.sleep-subtitle {
+  font-size: 1.8rem;
+  color: #2c3e50;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.sleep-card {
+  background: #f8f9fa;
+  padding: 2rem;
+  border-radius: 12px;
+  border-left: 4px solid #3E4D34;
+}
+
+.sleep-card h4 {
+  color: #2c3e50;
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+}
+
+.sleep-card p {
+  color: #666;
+  line-height: 1.6;
+}
+
+/* ADHD Topics Grid with Images */
+.adhd-topics {
+  padding: 4rem 0;
+  background: #f8f9fa;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  color: #2c3e50;
+  text-align: center;
+  margin-bottom: 3rem;
+  font-weight: 700;
+}
+
+.topics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+}
+
+.topic-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.topic-card:hover {
+  transform: translateY(-4px);
+}
+
+.topic-image img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.topic-content {
+  padding: 1.5rem;
+}
+
+.topic-category {
+  font-size: 0.9rem;
+  color: #3E4D34;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.topic-title {
+  font-size: 1.3rem;
+  color: #2c3e50;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.topic-desc {
+  color: #666;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+/* FAQs Section */
+.adhd-faqs {
+  padding: 4rem 0;
+  background: white;
+}
+
+.faqs-title {
+  font-size: 2.5rem;
+  color: #2c3e50;
+  text-align: center;
+  margin-bottom: 2rem;
+  font-weight: 700;
+}
+
+.faqs-list {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.faq-item {
+  border-bottom: 1px solid #e9ecef;
+  padding: 1.5rem 0;
+}
+
+.faq-question {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  font-size: 1.1rem;
+  color: #2c3e50;
+  font-weight: 600;
+}
+
+.faq-toggle {
+  font-size: 1.5rem;
+  color: #3E4D34;
+  font-weight: 300;
+}
+
+.faq-answer {
+  padding-top: 1rem;
+  color: #666;
+  line-height: 1.6;
+}
+
+/* Responsive Design */
+@media (max-width: 968px) {
+  .hero-content,
+  .sleep-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    text-align: center;
+  }
+  
+  .hero-text {
+    padding-right: 0;
+    order: 2;
+  }
+  
+  .hero-image {
+    order: 1;
+  }
+  
+  .topics-grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .adhd-container {
+    padding: 0 1rem;
+  }
+  
+  .adhd-main-title {
+    font-size: 2.5rem;
+  }
+  
+  .adhd-hero-text {
+    font-size: 1.1rem;
+  }
+  
+  .hero-image img {
+    height: 300px;
+  }
+  
+  .sleep-image img {
+    height: 250px;
+  }
+  
+  .sleep-subtitle {
+    font-size: 1.5rem;
+  }
+  
+  .section-title,
+  .faqs-title {
+    font-size: 2rem;
+  }
+  
+  .topics-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .faq-question {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .adhd-hero {
+    padding: 2rem 0;
+  }
+  
+  .adhd-main-title {
+    font-size: 2rem;
+  }
+  
+  .view-faqs-btn {
+    padding: 0.8rem 1.5rem;
+  }
+  
+  .hero-image img {
+    height: 250px;
+  }
+  
+  .sleep-image img {
+    height: 200px;
+  }
+  
+  .sleep-card {
+    padding: 1.5rem;
+  }
+  
+  .topic-content {
+    padding: 1.2rem;
+  }
+  
+  .topic-image img {
+    height: 180px;
+  }
+}
