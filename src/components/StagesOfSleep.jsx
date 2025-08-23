@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/StagesOfSleep.css';
-import PageNavigation from '../components/PageNavigation';
+//import PageNavigation from '../components/PageNavigation';
 import StagesOfSleepImage from '../assets/stages-of-sleep-main.webp';
 import SleepArchitectureImage from '../assets/rem-sleep.webp'; 
 import REMSleepImage from '../assets/sleep-architecture.webp';
@@ -11,7 +11,7 @@ const StagesOfSleep = () => {
   return (
     <div className="stages-of-sleep-page">
       <div className="stages-of-sleep-container">
-        <PageNavigation />
+        
 
         {/* Breadcrumb Navigation */}
         <div className="breadcrumb">

@@ -1,14 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/BurnoutSymptoms.css';
-import PageNavigation from '../components/PageNavigation';
+//import PageNavigation from '../components/PageNavigation';
 import BurnoutMainImage from '../assets/burnout-main.webp'; 
 
 const BurnoutSymptoms = () => {
   return (
     <div className="burnout-symptoms-page">
       <div className="burnout-symptoms-container">
-        <PageNavigation />
+        
 
         {/* Breadcrumb Navigation */}
         <div className="breadcrumb">

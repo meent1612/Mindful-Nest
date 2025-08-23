@@ -52,7 +52,7 @@ const Footer = () => {
             <h4>Contact Info</h4>
             <div className="contact-info">
               <p>📧 info@mindfulnest.com</p>
-              <p>📞 1-800-MINDFUL</p>
+              <p>📞 01-800-MINDFUL</p>
               <p>📍 141 & 142, Love Road, Tejgaon Industrial Area, Dhaka-1208.</p>
             </div>
           </div>
@@ -62,7 +62,7 @@ const Footer = () => {
         {/* Footer Bottom */}
         <div className="footer-bottom">
           <div className="footer-bottom-content">
-            <p>&copy; 2024 Mindful Nest. All rights reserved.</p>
+            <p>&copy; 2025 Mindful Nest. All rights reserved.</p>
             <div className="legal-links">
               <Link to="/privacy">Privacy Policy</Link>
               <Link to="/terms">Terms of Service</Link>

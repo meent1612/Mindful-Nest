@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import PageNavigation from '../components/PageNavigation';
+//import PageNavigation from '../components/PageNavigation';
 import '../styles/HealthWellness.css';
 
 const HealthWellness = () => {
@@ -18,7 +18,7 @@ const HealthWellness = () => {
   return (
     <div className="health-wellness-page">
       <div className="health-wellness-container">
-         <PageNavigation />
+        
         <h1 className="health-wellness-title">Health & Wellness</h1>
         <p className="health-wellness-subtitle">How can we help you?</p>
         

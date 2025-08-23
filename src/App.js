@@ -25,6 +25,8 @@ import WorkCareer from './components/WorkCareer';
 import IllnessDisability from './components/IllnessDisability';
 import MentalHealth from './components/MentalHealth';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 function App() {
   return (

@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import '../styles/ExerciseFitness.css';
-import PageNavigation from '../components/PageNavigation';
+//import PageNavigation from '../components/PageNavigation';
 import ExerciseAndFitness from '../assets/ExerciseandFitness.jpeg';
 import ExerciseStickImage from '../assets/exercise-stick-with-it.jpeg'; 
 import MentalHealthExerciseImage from '../assets/mental-health-exercise.webp'; // Add your image
@@ -46,7 +46,7 @@ const ExerciseFitness = () => {
   return (
     <div className="exercise-fitness-page">
       <div className="exercise-fitness-container">
-        <PageNavigation />
+      
 
         {/* Breadcrumb Navigation */}
         <div className="breadcrumb">
