@@ -348,3 +348,82 @@
     padding: 1.5rem;
   }
 }
+
+/* Career Guidance Card Styles */
+.career-guidance-section {
+  margin: 40px 0;
+}
+
+.career-guidance-card {
+  display: flex;
+  background-color: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+}
+
+.career-guidance-content {
+  flex: 1;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.career-guidance-card-title {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  color: #3E4D34;
+}
+
+.career-guidance-card-description {
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  color: #555;
+}
+
+.career-guidance-btn {
+  display: inline-block;
+  background-color: #3E4D34;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background-color 0.3s;
+  align-self: flex-start;
+}
+
+.career-guidance-btn:hover {
+  background-color: #2D3A27;
+}
+
+.career-guidance-card-image {
+  flex: 1;
+  max-width: 40%;
+}
+
+.career-guidance-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .career-guidance-card {
+    flex-direction: column;
+  }
+  
+  .career-guidance-card-image {
+    max-width: 100%;
+    order: -1;
+  }
+  
+  .career-guidance-content {
+    padding: 20px;
+  }
+}

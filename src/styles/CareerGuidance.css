@@ -1,0 +1,350 @@
+/* CareerGuidance.css */
+.career-guidance-page {
+  min-height: 100vh;
+  background: #ffffff;
+  padding: 2rem 0;
+}
+
+.career-guidance-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Breadcrumb */
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+  font-size: 0.9rem;
+  color: #4a5568;
+}
+
+.breadcrumb-link {
+  color: #3E4D34;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.breadcrumb-link:hover {
+  color: #2b6cb0;
+  text-decoration: underline;
+}
+
+.breadcrumb-separator {
+  margin: 0 0.5rem;
+  color: #a0aec0;
+}
+
+.breadcrumb-current {
+  color: #3E4D34;
+  font-weight: 600;
+}
+
+/* Section Label */
+.section-label {
+  color: #3E4D34;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 0.5rem;
+}
+
+/* Main Content */
+.career-guidance-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e8ebe6;
+}
+
+.career-guidance-title {
+  font-size: 2.5rem;
+  color: #3E4D34;
+  margin-bottom: 2rem;
+  font-weight: 700;
+  text-align: left;
+}
+
+/* Career Guidance Intro Layout */
+.career-guidance-intro {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 3rem;
+  margin-bottom: 2.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 2px solid #e8ebe6;
+  align-items: center;
+}
+
+.career-guidance-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.career-guidance-description {
+  font-size: 1.2rem;
+  color: #4a5568;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  font-style: italic;
+}
+
+/* Career Guidance Image */
+.career-guidance-image-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.career-guidance-image {
+  width: 100%;
+  max-width: 350px;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Section Titles */
+.section-title {
+  font-size: 1.8rem;
+  color: #3E4D34;
+  margin: 2.5rem 0 1rem 0;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #e8ebe6;
+}
+
+/* Content Sections */
+.content-section {
+  margin-bottom: 2.5rem;
+  line-height: 1.7;
+}
+
+.content-section p {
+  color: #4a5568;
+  margin-bottom: 1.2rem;
+  font-size: 1.05rem;
+}
+
+/* Key Takeaways */
+.key-takeaways-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 1.5rem 0;
+}
+
+.key-takeaways-list li {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+  position: relative;
+  color: #4a5568;
+  line-height: 1.6;
+}
+
+.key-takeaways-list li:before {
+  content: "•";
+  color: #3E4D34;
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+}
+
+/* Tips Grid */
+.tips-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.tip-card {
+  background: #f8f9f7;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid #e8ebe6;
+}
+
+.tip-card h3 {
+  color: #3E4D34;
+  margin-top: 0;
+  margin-bottom: 0.8rem;
+  font-size: 1.2rem;
+}
+
+.tip-card p {
+  margin-bottom: 0;
+  font-size: 1rem;
+}
+
+/* Exploration Section */
+.exploration-section {
+  background: #f8f9f7;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin: 1.5rem 0;
+}
+
+.exploration-section h3 {
+  color: #3E4D34;
+  margin-top: 0;
+  font-size: 1.3rem;
+}
+
+.exploration-tips {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.exploration-tip {
+  background: white;
+  padding: 1rem;
+  border-radius: 6px;
+  border-left: 3px solid #3E4D34;
+}
+
+.exploration-tip h4 {
+  color: #3E4D34;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.exploration-tip p {
+  margin-bottom: 0;
+  font-size: 0.95rem;
+}
+
+/* Obstacles List */
+.obstacles-list {
+  margin: 1.5rem 0;
+}
+
+.obstacle-item {
+  background: #f8f9f7;
+  padding: 1.2rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  border-left: 3px solid #3E4D34;
+}
+
+.obstacle-item h4 {
+  color: #3E4D34;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+  font-style: italic;
+}
+
+.obstacle-item p {
+  margin-bottom: 0;
+  font-size: 1rem;
+}
+
+/* Career Tips */
+.career-tips {
+  margin: 1.5rem 0;
+}
+
+.career-tip {
+  background: #f8f9f7;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  border-left: 4px solid #3E4D34;
+}
+
+.career-tip h3 {
+  color: #3E4D34;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+}
+
+.career-tip p {
+  margin-bottom: 1rem;
+  font-size: 1.05rem;
+}
+
+.career-tip ul {
+  margin: 1rem 0;
+  padding-left: 1.5rem;
+}
+
+.career-tip li {
+  margin-bottom: 0.5rem;
+  color: #4a5568;
+  line-height: 1.5;
+}
+
+/* Final Thoughts */
+.final-thoughts {
+  background: #f8f9f7;
+  padding: 2rem;
+  border-radius: 8px;
+  border-left: 4px solid #3E4D34;
+  font-size: 1.1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 968px) {
+  .career-guidance-intro {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    text-align: center;
+  }
+  
+  .tips-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .exploration-tips {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .career-guidance-content {
+    padding: 1.5rem;
+  }
+  
+  .career-guidance-title {
+    font-size: 2rem;
+  }
+  
+  .section-title {
+    font-size: 1.6rem;
+  }
+  
+  .career-guidance-image {
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .career-guidance-container {
+    padding: 0 0.5rem;
+  }
+  
+  .career-guidance-content {
+    padding: 1rem;
+  }
+  
+  .career-guidance-title {
+    font-size: 1.8rem;
+  }
+  
+  .breadcrumb {
+    font-size: 0.8rem;
+  }
+  
+  .tips-grid,
+  .exploration-tips {
+    grid-template-columns: 1fr;
+  }
+}

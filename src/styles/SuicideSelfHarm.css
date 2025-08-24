@@ -9,8 +9,6 @@
   margin: 0 auto;
   padding: 0 20px;
 }
-
-/* Hero Section Styles */
 .suicide-selfharm-hero {
   background: linear-gradient(135deg, #fff0f0 0%, #ffe6e6 100%);
   padding: 60px 0;
@@ -70,50 +68,11 @@
   box-shadow: 0 5px 15px rgba(194, 59, 59, 0.3);
 }
 
-/* Crisis Alert Banner */
-.crisis-alert {
-  background: linear-gradient(to right, #c23b3b, #e05b5b);
-  color: white;
-  padding: 20px 0;
-}
 
-.alert-content {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
 
-.alert-icon {
-  font-size: 2rem;
-  margin-right: 15px;
-}
-
-.alert-text {
-  flex: 1;
-}
-
-.alert-text h3 {
-  margin-bottom: 5px;
-  font-size: 1.3rem;
-}
-
-.alert-number {
-  margin-left: 20px;
-}
-
-.crisis-number {
-  font-size: 2.5rem;
-  font-weight: 700;
-  background: white;
-  color: #c23b3b;
-  padding: 10px 20px;
-  border-radius: 10px;
-}
-
-/* Suicide Topics Grid - Only 3 points */
 .suicide-selfharm-topics {
   padding: 80px 0;
-  background: linear-gradient(135deg, #fff0f0 0%, #ffe6e6 100%);
+  background: linear-gradient(135deg, #ffff 0%, #ffff 100%);
 }
 
 .section-title {
@@ -183,7 +142,7 @@
   line-height: 1.6;
 }
 
-/* FAQs Section */
+
 .suicide-selfharm-faqs {
   padding: 80px 0;
   background-color: #fff;
@@ -234,110 +193,8 @@
   line-height: 1.7;
 }
 
-/* Emergency Resources Section */
-.emergency-resources {
-  padding: 80px 0;
-  background: linear-gradient(135deg, #c23b3b 0%, #e05b5b 100%);
-  color: white;
-}
 
-.emergency-title {
-  text-align: center;
-  font-size: 2.5rem;
-  margin-bottom: 50px;
-  font-weight: 700;
-}
 
-.emergency-content {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
-}
-
-.emergency-card {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  padding: 30px;
-  border-radius: 10px;
-  text-align: center;
-}
-
-.emergency-icon {
-  font-size: 2.5rem;
-  margin-bottom: 15px;
-  color: #ffd700;
-}
-
-.emergency-card h3 {
-  font-size: 1.5rem;
-  margin-bottom: 15px;
-}
-
-.emergency-card p {
-  margin-bottom: 20px;
-  opacity: 0.9;
-}
-
-.emergency-btn {
-  display: inline-block;
-  background: white;
-  color: #c23b3b;
-  padding: 10px 20px;
-  border-radius: 50px;
-  font-weight: 600;
-  text-decoration: none;
-  border: none;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.emergency-btn:hover {
-  background: #f8f9fa;
-  transform: translateY(-2px);
-}
-
-/* Support Section */
-.support-section {
-  padding: 80px 0;
-  background: #fff0f0;
-}
-
-.support-content {
-  display: flex;
-  align-items: center;
-  gap: 40px;
-}
-
-.support-text {
-  flex: 1;
-}
-
-.support-text h2 {
-  font-size: 2.5rem;
-  color: #5c3a3a;
-  margin-bottom: 20px;
-  font-weight: 700;
-}
-
-.support-text p {
-  font-size: 1.1rem;
-  color: #5c3a3a;
-  line-height: 1.8;
-}
-
-.support-image {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-}
-
-.support-image img {
-  max-width: 100%;
-  border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-}
-
-/* Responsive Styles */
 @media (max-width: 768px) {
   .hero-content {
     flex-direction: column;
