@@ -9,7 +9,6 @@ const MentalHealth = () => {
     'Anxiety',
     'Depression',
     'PTSD & Trauma',
-    'Stress',
     'Suicide & Self-Harm'
   ];
 

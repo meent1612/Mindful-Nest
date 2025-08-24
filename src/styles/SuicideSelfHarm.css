@@ -1,0 +1,393 @@
+.suicide-selfharm-page {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  line-height: 1.6;
+}
+
+.suicide-selfharm-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Hero Section Styles */
+.suicide-selfharm-hero {
+  background: linear-gradient(135deg, #fff0f0 0%, #ffe6e6 100%);
+  padding: 60px 0;
+}
+
+.hero-content {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.hero-text {
+  flex: 1;
+}
+
+.hero-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.hero-image img {
+  max-width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.suicide-selfharm-main-title {
+  font-size: 3.5rem;
+  color: #c23b3b;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.suicide-selfharm-hero-text {
+  font-size: 1.2rem;
+  color: #5c3a3a;
+  margin-bottom: 30px;
+  line-height: 1.8;
+}
+
+.view-faqs-btn {
+  background: linear-gradient(to right, #c23b3b, #e05b5b);
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.view-faqs-btn:hover {
+  background: linear-gradient(to right, #b22b2b, #d04b4b);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(194, 59, 59, 0.3);
+}
+
+/* Crisis Alert Banner */
+.crisis-alert {
+  background: linear-gradient(to right, #c23b3b, #e05b5b);
+  color: white;
+  padding: 20px 0;
+}
+
+.alert-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.alert-icon {
+  font-size: 2rem;
+  margin-right: 15px;
+}
+
+.alert-text {
+  flex: 1;
+}
+
+.alert-text h3 {
+  margin-bottom: 5px;
+  font-size: 1.3rem;
+}
+
+.alert-number {
+  margin-left: 20px;
+}
+
+.crisis-number {
+  font-size: 2.5rem;
+  font-weight: 700;
+  background: white;
+  color: #c23b3b;
+  padding: 10px 20px;
+  border-radius: 10px;
+}
+
+/* Suicide Topics Grid - Only 3 points */
+.suicide-selfharm-topics {
+  padding: 80px 0;
+  background: linear-gradient(135deg, #fff0f0 0%, #ffe6e6 100%);
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #5c3a3a;
+  margin-bottom: 50px;
+  font-weight: 700;
+}
+
+.topics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 30px;
+}
+
+.topic-card {
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.topic-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.topic-image {
+  height: 200px;
+  overflow: hidden;
+}
+
+.topic-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.topic-card:hover .topic-image img {
+  transform: scale(1.05);
+}
+
+.topic-content {
+  padding: 20px;
+}
+
+.topic-category {
+  color: #c23b3b;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+}
+
+.topic-title {
+  color: #5c3a3a;
+  font-size: 1.4rem;
+  margin: 10px 0;
+  font-weight: 600;
+}
+
+.topic-desc {
+  color: #5c3a3a;
+  line-height: 1.6;
+}
+
+/* FAQs Section */
+.suicide-selfharm-faqs {
+  padding: 80px 0;
+  background-color: #fff;
+}
+
+.faqs-title {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #5c3a3a;
+  margin-bottom: 50px;
+  font-weight: 700;
+}
+
+.faqs-list {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.faq-item {
+  border-bottom: 1px solid #eaeaea;
+  margin-bottom: 15px;
+}
+
+.faq-question {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #5c3a3a;
+}
+
+.faq-question:hover {
+  color: #c23b3b;
+}
+
+.faq-toggle {
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: #c23b3b;
+}
+
+.faq-answer {
+  padding: 0 0 20px 0;
+  color: #5c3a3a;
+  line-height: 1.7;
+}
+
+/* Emergency Resources Section */
+.emergency-resources {
+  padding: 80px 0;
+  background: linear-gradient(135deg, #c23b3b 0%, #e05b5b 100%);
+  color: white;
+}
+
+.emergency-title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 50px;
+  font-weight: 700;
+}
+
+.emergency-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.emergency-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 30px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.emergency-icon {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  color: #ffd700;
+}
+
+.emergency-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+}
+
+.emergency-card p {
+  margin-bottom: 20px;
+  opacity: 0.9;
+}
+
+.emergency-btn {
+  display: inline-block;
+  background: white;
+  color: #c23b3b;
+  padding: 10px 20px;
+  border-radius: 50px;
+  font-weight: 600;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.emergency-btn:hover {
+  background: #f8f9fa;
+  transform: translateY(-2px);
+}
+
+/* Support Section */
+.support-section {
+  padding: 80px 0;
+  background: #fff0f0;
+}
+
+.support-content {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.support-text {
+  flex: 1;
+}
+
+.support-text h2 {
+  font-size: 2.5rem;
+  color: #5c3a3a;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.support-text p {
+  font-size: 1.1rem;
+  color: #5c3a3a;
+  line-height: 1.8;
+}
+
+.support-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.support-image img {
+  max-width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .hero-content {
+    flex-direction: column;
+  }
+  
+  .alert-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 15px;
+  }
+  
+  .alert-number {
+    margin-left: 0;
+  }
+  
+  .suicide-selfharm-main-title {
+    font-size: 2.5rem;
+  }
+  
+  .support-content {
+    flex-direction: column;
+  }
+  
+  .topics-grid,
+  .emergency-content {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .suicide-selfharm-container {
+    padding: 0 15px;
+  }
+  
+  .suicide-selfharm-main-title {
+    font-size: 2rem;
+  }
+  
+  .section-title,
+  .faqs-title,
+  .emergency-title {
+    font-size: 2rem;
+  }
+  
+  .crisis-number {
+    font-size: 2rem;
+    padding: 8px 15px;
+  }
+  
+  .topic-card {
+    margin-bottom: 20px;
+  }
+}

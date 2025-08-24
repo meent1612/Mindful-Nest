@@ -166,30 +166,7 @@ const ADHD = () => {
         </div>
       </section>
 
-      {/* Resources Section */}
-      <section className="adhd-resources">
-        <div className="adhd-container">
-          <h2 className="resources-title">Get Support Now</h2>
-          <p className="resources-subtitle">If you or someone you know is struggling with ADHD, help and resources are available.</p>
-          <div className="resources-content">
-            <div className="resource-card">
-              <h3>CHADD Helpline</h3>
-              <p className="helpline-number">1-866-200-8098</p>
-              <p>Free information and resources about ADHD for parents and adults</p>
-            </div>
-            <div className="resource-card">
-              <h3>ADDA Support</h3>
-              <p className="helpline-number">1-800-939-1019</p>
-              <p>Attention Deficit Disorder Association providing support and resources</p>
-            </div>
-            <div className="resource-card">
-              <h3>Find Specialists</h3>
-              <p>Connect with ADHD specialists and treatment providers in your area</p>
-              <button className="resource-btn">Find ADHD Specialists</button>
-            </div>
-          </div>
-        </div>
-      </section>
+      
     </div>
   );
 };

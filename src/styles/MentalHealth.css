@@ -88,7 +88,7 @@
 
 /* Specific styling for longer text items */
 .mental-health-card:nth-child(5) .mental-health-card-text,
-.mental-health-card:nth-child(7) .mental-health-card-text {
+.mental-health-card:nth-child(6) .mental-health-card-text {
   font-size: 0.88rem;
 }
 
@@ -127,7 +127,7 @@
   }
   
   .mental-health-card:nth-child(5) .mental-health-card-text,
-  .mental-health-card:nth-child(7) .mental-health-card-text {
+  .mental-health-card:nth-child(6) .mental-health-card-text {
     font-size: 0.8rem;
   }
 }
@@ -159,12 +159,12 @@
   }
   
   .mental-health-card:nth-child(5) .mental-health-card-text,
-.mental-health-card:nth-child(7) .mental-health-card-text {
+.mental-health-card:nth-child(6) .mental-health-card-text {
     font-size: 0.78rem;
   }
 }
 
-/* Animation for card appearance */
+
 @keyframes slideUp {
   from {
     opacity: 0;
@@ -182,4 +182,3 @@
 .mental-health-card:nth-child(4) { animation-delay: 0.4s; }
 .mental-health-card:nth-child(5) { animation-delay: 0.5s; }
 .mental-health-card:nth-child(6) { animation-delay: 0.6s; }
-.mental-health-card:nth-child(7) { animation-delay: 0.7s; }

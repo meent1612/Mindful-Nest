@@ -31,6 +31,7 @@ import Addiction from './components/Addiction';
 import Anxiety from './components/Anxiety';
 import Depression from './components/Depression';
 import PTSDTrauma from './components/PTSDTrauma';
+import SuicideSelfHarm from './components/SuicideSelfHarm';
 
 
 function App() {
@@ -41,16 +42,18 @@ function App() {
         <Routes>
         <Route path="/" element={<Homepage />} /> 
         <Route path="/contact" element={<ContactUs />} /> 
-        <Route path="/about" element={<AboutUs />} /> 
+        <Route path="/about" element={<AboutUs />} />
+
         <Route path="/mental-health" element={<MentalHealth />} />
          <Route path="/mental-health/adhd" element={<ADHD />} />
          <Route path="/mental-health/addiction" element={<Addiction />} />
          <Route path="/mental-health/anxiety" element={<Anxiety />} />
          <Route path="/mental-health/depression" element={<Depression />} />
          <Route path="/mental-health/ptsd-trauma" element={<PTSDTrauma />} />
-
-        <Route path="/health-wellness" element={<HealthWellness />} />
+         <Route path="/mental-health/suicide-self-harm" element={<SuicideSelfHarm />} />
          
+               
+        <Route path="/health-wellness" element={<HealthWellness />} />         
          <Route path="/health-wellness/exercise-fitness" element={<ExerciseFitness />} />
         <Route path="/health-wellness/nutrition" element={<Nutrition />} />
         <Route path="/health-wellness/sleep" element={<Sleep />} />
