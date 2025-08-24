@@ -1,7 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/Stress.css';
-//import PageNavigation from '../components/PageNavigation';
 import StressMainImage from '../assets/stress-main.webp';
 import BurnoutMainImage from '../assets/burnout-main.webp'; 
 
@@ -43,8 +42,6 @@ const Stress = () => {
   return (
     <div className="stress-page">
       <div className="stress-container">
-        
-
         {/* Breadcrumb Navigation */}
         <div className="breadcrumb">
           <Link to="/health-wellness" className="breadcrumb-link">Health & Wellness</Link>
@@ -78,8 +75,8 @@ const Stress = () => {
               />
             </div>
           </div>
-            
-              {/* Burnout Card - Added before FAQs */}
+          
+          {/* Burnout Card */}
           <div className="burnout-section">
             <div className="burnout-card">
               <div className="burnout-content">
@@ -107,20 +104,21 @@ const Stress = () => {
             
             <div className="faqs-list">
               {faqs.map((faq, index) => (
-                <div key={index} className="faq-item">
+                <div key={index} className={`faq-item ${openFaq === index ? 'active' : ''}`}>
                   <button 
                     className="faq-question"
                     onClick={() => toggleFaq(index)}
+                    aria-expanded={openFaq === index}
                   >
                     {faq.question}
                     <span className="faq-toggle">{openFaq === index ? '−' : '+'}</span>
                   </button>
                   
-                  {openFaq === index && (
+                  <div className="faq-answer-container">
                     <div className="faq-answer">
                       <p>{faq.answer}</p>
                     </div>
-                  )}
+                  </div>
                 </div>
               ))}
             </div>

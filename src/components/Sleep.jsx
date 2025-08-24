@@ -53,7 +53,7 @@ const Sleep = () => {
         {/* Main Content */}
         <div className="sleep-content">
           <p className="section-label">HEALTH & WELLNESS</p>
-          <h1 className="sleep-title">SLEEP</h1>
+          <h1 className="sleep-title">Sleep</h1>
           
           <div className="sleep-intro">
             <div className="sleep-text">
@@ -132,20 +132,21 @@ const Sleep = () => {
             
             <div className="faqs-list">
               {faqs.map((faq, index) => (
-                <div key={index} className="faq-item">
+                <div key={index} className={`faq-item ${openFaq === index ? 'active' : ''}`}>
                   <button 
                     className="faq-question"
                     onClick={() => toggleFaq(index)}
+                    aria-expanded={openFaq === index}
                   >
                     {faq.question}
                     <span className="faq-toggle">{openFaq === index ? '−' : '+'}</span>
                   </button>
                   
-                  {openFaq === index && (
+                  <div className="faq-answer-container">
                     <div className="faq-answer">
                       <p>{faq.answer}</p>
                     </div>
-                  )}
+                  </div>
                 </div>
               ))}
             </div>

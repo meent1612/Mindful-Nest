@@ -1,13 +1,10 @@
 import React, { useState, useRef } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import '../styles/Nutrition.css';
-//import PageNavigation from '../components/PageNavigation';
 import NutritionImage from '../assets/nutrition-main.jpeg';
 import GutHealthImage from '../assets/gut-health.webp';
 
 const Nutrition = () => {
-  
-
   const [openFaq, setOpenFaq] = useState(null);
   const faqRef = useRef(null);
 
@@ -45,8 +42,6 @@ const Nutrition = () => {
   return (
     <div className="nutrition-page">
       <div className="nutrition-container">
-        
-
         {/* Breadcrumb Navigation */}
         <div className="breadcrumb">
           <Link to="/health-wellness" className="breadcrumb-link">Health & Wellness</Link>
@@ -81,7 +76,7 @@ const Nutrition = () => {
             </div>
           </div>
           
-            {/* Probiotics Card - Added before FAQs */}
+          {/* Probiotics Card */}
           <div className="probiotics-section">
             <div className="probiotics-card">
               <div className="probiotics-content">
@@ -111,20 +106,21 @@ const Nutrition = () => {
             
             <div className="faqs-list">
               {faqs.map((faq, index) => (
-                <div key={index} className="faq-item">
+                <div key={index} className={`faq-item ${openFaq === index ? 'active' : ''}`}>
                   <button 
                     className="faq-question"
                     onClick={() => toggleFaq(index)}
+                    aria-expanded={openFaq === index}
                   >
                     {faq.question}
                     <span className="faq-toggle">{openFaq === index ? '−' : '+'}</span>
                   </button>
                   
-                  {openFaq === index && (
+                  <div className="faq-answer-container">
                     <div className="faq-answer">
                       <p>{faq.answer}</p>
                     </div>
-                  )}
+                  </div>
                 </div>
               ))}
             </div>
