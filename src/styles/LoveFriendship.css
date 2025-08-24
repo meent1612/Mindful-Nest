@@ -1,0 +1,123 @@
+.love-page {
+  font-family: "Inter", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #2d3748;
+  line-height: 1.6;
+}
+
+.text-pink {
+  color: #9c4974 !important;
+}
+
+.btn-pink {
+  background-color: #9c4974;
+  color: white;
+  border: none;
+  transition: background 0.3s ease;
+}
+
+.btn-pink:hover {
+  background-color: #b83280;
+}
+
+.btn-outline-pink {
+  border: 2px solid #9c4974;
+  color: #9c4974;
+  background: transparent;
+  transition: all 0.3s ease;
+}
+
+.btn-outline-pink:hover {
+  background: #9c4974;
+  color: white;
+}
+
+.love-hero {
+  background: linear-gradient(135deg, #fff5f7 0%, #fed7e2 100%);
+}
+
+.love-card {
+  transition: all 0.3s ease;
+  border-radius: 12px;
+}
+
+.love-card:hover {
+  box-shadow: 0 8px 25px rgba(213, 63, 140, 0.25);
+  transform: translateY(-5px);
+}
+
+.love-card img {
+  height: 200px;
+  width: 100%;
+  object-fit: cover;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+
+.love-inspiration .quote-card {
+  border-left: 5px solid #9c4974;
+  background: #fff;
+}
+
+/* Tips section with pink shade */
+.faq-tips {
+  background-color: #fce8f1; /* Light pink background */
+  border-left: 4px solid #d14a88; /* Darker pink border */
+  padding: 16px 20px;
+  margin: 20px 0;
+  border-radius: 0 8px 8px 0;
+}
+
+.faq-tips h6 {
+  color: #9c2974; /* Dark pink text */
+  margin-top: 0;
+  margin-bottom: 12px;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.faq-tips ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.faq-tips li {
+  margin-bottom: 8px;
+  line-height: 1.6;
+  color: #702459; /* Dark purple-pink text */
+}
+
+/* Accordion Active State */
+.accordion-button:not(.collapsed) {
+  color: #9c4974;
+  background-color: #fff5f7;
+}
+
+.accordion-button:focus {
+  box-shadow: none;
+  border-color: rgba(0, 0, 0, 0.125);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .display-4 {
+    font-size: 2.5rem;
+  }
+
+  .display-5 {
+    font-size: 2rem;
+  }
+
+  .love-hero .row > div:first-child {
+    text-align: center;
+  }
+
+  .love-hero .btn {
+    width: 100%;
+    max-width: 280px;
+  }
+  
+  .faq-tips {
+    margin: 15px 0;
+    padding: 12px 15px;
+  }
+}

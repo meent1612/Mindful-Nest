@@ -35,6 +35,9 @@ import SuicideSelfHarm from './components/SuicideSelfHarm';
 import ObesityStatistics from './components/ObesityStatistics';
 import EmotionalEating from './components/EmotionalEating';
 import Communication from './components/Communication';
+import EmotionalIntelligence from './components/EmotionalIntelligence';
+import LoveFriendship from "./components/LoveFriendship";
+import DomesticAbuse from './components/DomesticAbuse';
 
 function App() {
   return (
@@ -85,9 +88,9 @@ function App() {
 
         <Route path="/relationships" element={<Relationships />} />
          <Route path="/relationships/communication" element={<Communication />} />
-         {/*<Route path="/relationships/emotional-intelligence" element={<EmotionalIntelligence />} />
-         <Route path="/relationships/love&friendship" element={<LoveandFriendship />} />
-         <Route path="/relationships/domestic-abuse" element={<DomesticAbuse />} />*/}
+         <Route path="/relationships/emotional-intelligence" element={<EmotionalIntelligence />} />
+         <Route path="/relationships/love-and-friendship" element={<LoveFriendship />} />
+         <Route path="/relationships/domestic-abuse" element={<DomesticAbuse />} />
          
         <Route path="/treatment" element={<Treatment />} />
         </Routes>
