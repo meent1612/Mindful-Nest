@@ -1,7 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/Sleep.css';
-//import PageNavigation from '../components/PageNavigation';
 import SleepMainImage from '../assets/sleep-main.webp';
 import SleepADHDImage from '../assets/sleep-adhd-main.webp';
 import StagesOfSleepImage1 from '../assets/StagesOfSleep.jpg';
@@ -44,8 +43,6 @@ const Sleep = () => {
   return (
     <div className="sleep-page">
       <div className="sleep-container">
-      
-
         {/* Breadcrumb Navigation */}
         <div className="breadcrumb">
           <Link to="/health-wellness" className="breadcrumb-link">Health & Wellness</Link>
@@ -56,7 +53,7 @@ const Sleep = () => {
         {/* Main Content */}
         <div className="sleep-content">
           <p className="section-label">HEALTH & WELLNESS</p>
-          <h1 className="sleep-title">Sleep</h1>
+          <h1 className="sleep-title">SLEEP</h1>
           
           <div className="sleep-intro">
             <div className="sleep-text">
@@ -64,7 +61,7 @@ const Sleep = () => {
                 Getting quality sleep is vital to your productivity, energy, and mental and physical health.
               </p>
               <p className="sleep-description">
-                Explore the different types and treatments of sleep problems and disorders—and what you can do to get a better night's sleep.
+                Explore the different types and treatments of sleep problems and disorders – and what you can do to get a better night's sleep.
               </p>
               <button className="view-faqs-btn" onClick={scrollToFaqs}>
                 View FAQs
@@ -80,50 +77,55 @@ const Sleep = () => {
             </div>
           </div>
           
-             {/* Sleep and ADHD Card - Added before FAQs */}
-          <div className="sleep-adhd-section">
-            <div className="sleep-adhd-card">
-              <div className="sleep-adhd-content">
-                <h3 className="sleep-adhd-card-title">The Connection Between Sleep and ADHD</h3>
-                <p className="sleep-adhd-card-description">
-                  By understanding how sleep problems and ADHD impact each other, you can take steps to overcome ADHD sleep issues, 
-                  improve your rest at night, and better manage your ADHD symptoms.
-                </p>
-                <Link to="/health-wellness/sleep/sleep-adhd" className="sleep-adhd-btn">
-                  Learn More
-                </Link>
+          {/* Articles Container */}
+          <div className="articles-container">
+            {/* Sleep and ADHD Card */}
+            <div className="sleep-adhd-section">
+              <div className="sleep-adhd-card">
+                <div className="sleep-adhd-content">
+                  <h3 className="sleep-adhd-card-title">The Connection Between Sleep and ADHD</h3>
+                  <p className="sleep-adhd-card-description">
+                    By understanding how sleep problems and ADHD impact each other, you can take steps to overcome ADHD sleep issues, 
+                    improve your rest at night, and better manage your ADHD symptoms.
+                  </p>
+                  <Link to="/health-wellness/sleep/sleep-adhd" className="sleep-adhd-btn">
+                    Learn More
+                  </Link>
+                </div>
+                <div className="sleep-adhd-card-image">
+                  <img 
+                    src={SleepADHDImage} 
+                    alt="Sleep and ADHD connection" 
+                    className="sleep-adhd-card-img"
+                  />
+                </div>
               </div>
-              <div className="sleep-adhd-card-image">
-                <img 
-                  src={SleepADHDImage} 
-                  alt="Sleep and ADHD connection" 
-                  className="sleep-adhd-card-img"
-                />
+            </div>
+            
+            {/* Stages of Sleep Card */}
+            <div className="stages-of-sleep-section">
+              <div className="stages-of-sleep-card">
+                <div className="stages-of-sleep-content">
+                  <h3 className="stages-of-sleep-card-title">The Stages of Sleep</h3>
+                  <p className="stages-of-sleep-card-description">
+                    What is a circadian rhythm? What is REM sleep and non-REM sleep? By understanding your sleep-wake cycle 
+                    and the different sleep stages, you can improve how well you rest at night.
+                  </p>
+                  <Link to="/health-wellness/sleep/stages-of-sleep" className="stages-of-sleep-btn">
+                    Learn More
+                  </Link>
+                </div>
+                <div className="stages-of-sleep-card-image">
+                  <img 
+                    src={StagesOfSleepImage1} 
+                    alt="Stages of sleep" 
+                    className="stages-of-sleep-card-img"
+                  />
+                </div>
               </div>
             </div>
           </div>
-           {/* Stages of Sleep Card - Added before FAQs */}
-          <div className="stages-of-sleep-section">
-            <div className="stages-of-sleep-card">
-              <div className="stages-of-sleep-content">
-                <h3 className="stages-of-sleep-card-title">The Stages of Sleep</h3>
-                <p className="stages-of-sleep-card-description">
-                  What is a circadian rhythm? What is REM sleep and non-REM sleep? By understanding your sleep-wake cycle 
-                  and the different sleep stages, you can improve how well you rest at night.
-                </p>
-                <Link to="/health-wellness/sleep/stages-of-sleep" className="stages-of-sleep-btn">
-                  Learn More
-                </Link>
-              </div>
-              <div className="stages-of-sleep-card-image">
-                <img 
-                  src={StagesOfSleepImage1} 
-                  alt="Stages of sleep" 
-                  className="stages-of-sleep-card-img"
-                />
-              </div>
-            </div>
-          </div>
+          
           {/* FAQs Section */}
           <div className="faqs-section" ref={faqRef}>
             <h2 className="faqs-title">Sleep FAQs</h2>

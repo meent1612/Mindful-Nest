@@ -1,15 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/MentalHealthBenefits.css';
-import PageNavigation from '../components/PageNavigation';
 import MentalHealthExerciseImage from '../assets/mental-health-exercise.webp'; // Add your image
 
 const MentalHealthBenefits = () => {
   return (
     <div className="mental-health-benefits-page">
       <div className="mental-health-benefits-container">
-        <PageNavigation />
-
         {/* Breadcrumb Navigation */}
         <div className="breadcrumb">
           <Link to="/health-wellness" className="breadcrumb-link">Health & Wellness</Link>

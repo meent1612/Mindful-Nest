@@ -32,7 +32,8 @@ import Anxiety from './components/Anxiety';
 import Depression from './components/Depression';
 import PTSDTrauma from './components/PTSDTrauma';
 import SuicideSelfHarm from './components/SuicideSelfHarm';
-
+import ObesityStatistics from './components/ObesityStatistics';
+import EmotionalEating from './components/EmotionalEating';
 
 function App() {
   return (
@@ -75,6 +76,9 @@ function App() {
         <Route path ="/health-wellness/stress/burnout-symptoms" element={<BurnoutSymptoms />} />
 
         <Route path ="/health-wellness/wellbeing/break-bad-habits" element={<BreakBadHabits />} />
+
+        <Route path="/health-wellness/weight-management/obesity-statistics" element={<ObesityStatistics />} />
+        <Route path="/health-wellness/weight-management/emotional-eating" element={<EmotionalEating />} />
 
          {/* Other main sections */}
 
