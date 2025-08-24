@@ -34,7 +34,7 @@ import PTSDTrauma from './components/PTSDTrauma';
 import SuicideSelfHarm from './components/SuicideSelfHarm';
 import ObesityStatistics from './components/ObesityStatistics';
 import EmotionalEating from './components/EmotionalEating';
-import CareerGuidance from './components/CareerGuidance';
+import Communication from './components/Communication';
 
 function App() {
   return (
@@ -81,11 +81,14 @@ function App() {
         <Route path="/health-wellness/weight-management/obesity-statistics" element={<ObesityStatistics />} />
         <Route path="/health-wellness/weight-management/emotional-eating" element={<EmotionalEating />} />
 
-        <Route path="health-wellness/work-career/finding-right-career" element={<CareerGuidance />} />
-
          {/* Other main sections */}
 
         <Route path="/relationships" element={<Relationships />} />
+         <Route path="/relationships/communication" element={<Communication />} />
+         {/*<Route path="/relationships/emotional-intelligence" element={<EmotionalIntelligence />} />
+         <Route path="/relationships/love&friendship" element={<LoveandFriendship />} />
+         <Route path="/relationships/domestic-abuse" element={<DomesticAbuse />} />*/}
+         
         <Route path="/treatment" element={<Treatment />} />
         </Routes>
         <Footer />
