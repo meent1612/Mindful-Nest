@@ -1,9 +1,9 @@
 import React, { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/IllnessDisability.css';
-//import PageNavigation from '../components/PageNavigation';
 import IllnessDisabilityImage from '../assets/illness-disability-main.jpeg';
-
+import DisabilityAdjustmentImage from '../assets/disability-adjustment.jpeg';
+import LifeThreateningIllnessImage from '../assets/life-threatening-illness.webp'; 
 
 const IllnessDisability = () => {
   const [openFaq, setOpenFaq] = useState(null);
@@ -44,7 +44,6 @@ const IllnessDisability = () => {
     <div className="illness-disability-page">
       <div className="illness-disability-container">
         
-
         {/* Breadcrumb Navigation */}
         <div className="breadcrumb">
           <Link to="/health-wellness" className="breadcrumb-link">Health & Wellness</Link>
@@ -79,7 +78,51 @@ const IllnessDisability = () => {
             </div>
           </div>
           
-         
+          {/* Life-Threatening Illness Card */}
+          <div className="life-threatening-illness-section">
+            <div className="life-threatening-illness-card">
+              <div className="life-threatening-illness-content">
+                <h3 className="life-threatening-illness-card-title">Coping with a Life-Threatening Illness</h3>
+                <p className="life-threatening-illness-card-description">
+                  A diagnosis of cancer, heart disease, or other serious illness can be devastating. 
+                  But there are ways to cope with the emotional distress and preserve your quality of life.
+                </p>
+                <Link to="/health-wellness/illness-disability/coping-with-life-threatening-illness" className="life-threatening-illness-btn">
+                  Learn More
+                </Link>
+              </div>
+              <div className="life-threatening-illness-card-image">
+                <img 
+                  src={LifeThreateningIllnessImage} 
+                  alt="Coping with life-threatening illness" 
+                  className="life-threatening-illness-card-img"
+                />
+              </div>
+            </div>
+          </div>
+          
+          {/* Disability Adjustment Card */}
+          <div className="disability-adjustment-section">
+            <div className="disability-adjustment-card">
+              <div className="disability-adjustment-content">
+                <h3 className="disability-adjustment-card-title">Adjusting to Life with a Disability</h3>
+                <p className="disability-adjustment-card-description">
+                  Adjusting to life with a disability can be a difficult transition. Learn how to accept your disability, 
+                  minimize its impact on your life, find meaning and purpose, and prioritize your health.
+                </p>
+                <Link to="/health-wellness/illness-disability/adjusting-to-disability" className="disability-adjustment-btn">
+                  Learn More
+                </Link>
+              </div>
+              <div className="disability-adjustment-card-image">
+                <img 
+                  src={DisabilityAdjustmentImage} 
+                  alt="Adjusting to life with disability" 
+                  className="disability-adjustment-card-img"
+                />
+              </div>
+            </div>
+          </div>
           
           {/* FAQs Section */}
           <div className="faqs-section" ref={faqRef}>
