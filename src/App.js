@@ -35,6 +35,8 @@ import SuicideSelfHarm from './components/SuicideSelfHarm';
 import ObesityStatistics from './components/ObesityStatistics';
 import EmotionalEating from './components/EmotionalEating';
 import CareerGuidance from './components/CareerGuidance';
+import DisabilityAdjustment from './components/DisabilityAdjustment';
+import LifeThreateningIllness from './components/LifeThreateningIllness';
 
 function App() {
   return (
@@ -82,6 +84,9 @@ function App() {
         <Route path="/health-wellness/weight-management/emotional-eating" element={<EmotionalEating />} />
 
         <Route path="health-wellness/work-career/finding-right-career" element={<CareerGuidance />} />
+
+        <Route path="/health-wellness/illness-disability/adjusting-to-disability" element={<DisabilityAdjustment />} />  
+        <Route path="/health-wellness/illness-disability/coping-with-life-threatening-illness" element={<LifeThreateningIllness />} />
 
          {/* Other main sections */}
 

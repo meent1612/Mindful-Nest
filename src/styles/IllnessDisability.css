@@ -359,3 +359,243 @@
     padding: 1.5rem;
   }
 }
+/* IllnessDisability.css - Add these styles */
+
+/* Disability Adjustment Card Styles */
+.disability-adjustment-section {
+  margin: 40px 0;
+}
+
+.disability-adjustment-card {
+  display: flex;
+  background-color: #f8f9fa;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+}
+
+.disability-adjustment-content {
+  flex: 1;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.disability-adjustment-card-title {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  color: #3E4D34;
+}
+
+.disability-adjustment-card-description {
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  color: #555;
+}
+
+.disability-adjustment-btn {
+  display: inline-block;
+  background-color: #3E4D34;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background-color 0.3s;
+  align-self: flex-start;
+}
+
+.disability-adjustment-btn:hover {
+  background-color: #2D3A27;
+}
+
+.disability-adjustment-card-image {
+  flex: 1;
+  max-width: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.disability-adjustment-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .disability-adjustment-card {
+    flex-direction: column;
+  }
+  
+  .disability-adjustment-card-image {
+    max-width: 100%;
+    order: -1;
+    height: 200px;
+  }
+  
+  .disability-adjustment-content {
+    padding: 20px;
+  }
+}
+/* IllnessDisability.css - Add these styles */
+
+/* Life-Threatening Illness Card Styles */
+.life-threatening-illness-section {
+  margin: 40px 0;
+}
+
+.life-threatening-illness-card {
+  display: flex;
+  background-color: #f8f9fa;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+}
+
+.life-threatening-illness-content {
+  flex: 1;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.life-threatening-illness-card-title {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  color: #2c3e50;
+}
+
+.life-threatening-illness-card-description {
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  color: #555;
+}
+
+.life-threatening-illness-btn {
+  display: inline-block;
+  background-color: #3E4D34;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background-color 0.3s;
+  align-self: flex-start;
+}
+
+.life-threatening-illness-btn:hover {
+  background-color: #2D3A27;
+}
+
+.life-threatening-illness-card-image {
+  flex: 1;
+  max-width: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.life-threatening-illness-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Disability Adjustment Card Styles */
+.disability-adjustment-section {
+  margin: 40px 0;
+}
+
+.disability-adjustment-card {
+  display: flex;
+  background-color: #f8f9fa;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+}
+
+.disability-adjustment-content {
+  flex: 1;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.disability-adjustment-card-title {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  color: #2c3e50;
+}
+
+.disability-adjustment-card-description {
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  color: #555;
+}
+
+.disability-adjustment-btn {
+  display: inline-block;
+  background-color: #3E4D34;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background-color 0.3s;
+  align-self: flex-start;
+}
+
+.disability-adjustment-btn:hover {
+  background-color: #2980b9;
+}
+
+.disability-adjustment-card-image {
+  flex: 1;
+  max-width: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.disability-adjustment-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .life-threatening-illness-card,
+  .disability-adjustment-card {
+    flex-direction: column;
+  }
+  
+  .life-threatening-illness-card-image,
+  .disability-adjustment-card-image {
+    max-width: 100%;
+    order: -1;
+    height: 200px;
+  }
+  
+  .life-threatening-illness-content,
+  .disability-adjustment-content {
+    padding: 20px;
+  }
+}
