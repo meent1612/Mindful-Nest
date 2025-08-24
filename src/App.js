@@ -30,6 +30,7 @@ import ADHD from './components/ADHD';
 import Addiction from './components/Addiction';
 import Anxiety from './components/Anxiety';
 import Depression from './components/Depression';
+import PTSDTrauma from './components/PTSDTrauma';
 
 
 function App() {
@@ -46,6 +47,7 @@ function App() {
          <Route path="/mental-health/addiction" element={<Addiction />} />
          <Route path="/mental-health/anxiety" element={<Anxiety />} />
          <Route path="/mental-health/depression" element={<Depression />} />
+         <Route path="/mental-health/ptsd-trauma" element={<PTSDTrauma />} />
 
         <Route path="/health-wellness" element={<HealthWellness />} />
          
