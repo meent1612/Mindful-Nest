@@ -1,7 +1,7 @@
-/* WeightManagement.css - Updated to match Exercise and Fitness style */
+/* WeightManagement.css */
 .weight-management-page {
   min-height: 100vh;
-  background: #ffffff;
+  background: #f8faf7;
   padding: 2rem 0;
 }
 
@@ -28,7 +28,7 @@
 }
 
 .breadcrumb-link:hover {
-  color: #2b6cb0;
+  color: #5a7050;
   text-decoration: underline;
 }
 
@@ -44,39 +44,40 @@
 
 /* Section Label */
 .section-label {
-  color: #3E4D34;
+  color: #5a7050;
   font-size: 0.9rem;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 1.2px;
   margin-bottom: 0.5rem;
 }
 
 /* Main Content */
 .weight-management-content {
   background: white;
-  padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  padding: 2.5rem;
+  border-radius: 16px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
   border: 1px solid #e8ebe6;
 }
 
 .weight-management-title {
-  font-size: 2.5rem;
-  color: #3E4D34;
+  font-size: 2.75rem;
+  color: #2D3A27;
   margin-bottom: 2rem;
-  font-weight: 700;
+  font-weight: 800;
   text-align: left;
+  line-height: 1.2;
 }
 
 /* Weight Management Intro Layout */
 .weight-management-intro {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1.2fr 0.8fr;
   gap: 3rem;
-  margin-bottom: 2.5rem;
-  padding-bottom: 1.5rem;
-  border-bottom: 2px solid #e8ebe6;
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 2px solid #eef2ea;
   align-items: center;
 }
 
@@ -87,38 +88,39 @@
 }
 
 .weight-management-subtitle {
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   color: #3E4D34;
   font-weight: 600;
   margin-bottom: 1.5rem;
-  line-height: 1.5;
+  line-height: 1.4;
 }
 
 .weight-management-description {
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   color: #4a5568;
-  line-height: 1.6;
-  margin-bottom: 2rem;
+  line-height: 1.7;
+  margin-bottom: 2.5rem;
 }
 
+/* View FAQs Button */
 .view-faqs-btn {
   background-color: #3E4D34;
   color: white;
   border: none;
-  padding: 12px 28px;
-  font-size: 1rem;
+  padding: 14px 32px;
+  font-size: 1.05rem;
   font-weight: 600;
-  border-radius: 6px;
+  border-radius: 8px;
   cursor: pointer;
   transition: all 0.3s ease;
   width: fit-content;
-  box-shadow: 0 2px 4px rgba(62, 77, 52, 0.2);
+  box-shadow: 0 4px 6px rgba(62, 77, 52, 0.2);
 }
 
 .view-faqs-btn:hover {
   background-color: #2D3A27;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(62, 77, 52, 0.3);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(62, 77, 52, 0.25);
 }
 
 /* Weight Management Image */
@@ -130,25 +132,42 @@
 
 .weight-management-image {
   width: 100%;
-  max-width: 400px;
+  max-width: 420px;
   height: auto;
-  border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  transition: transform 0.3s ease;
+}
+
+.weight-management-image:hover {
+  transform: scale(1.02);
+}
+
+/* Articles Container */
+.articles-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  margin-bottom: 3rem;
 }
 
 /* Emotional Eating Card */
 .emotional-eating-section {
-  margin: 2.5rem 0;
-  padding: 2rem;
-  background: #f8f9f7;
-  border-radius: 12px;
-  border-left: 4px solid #3E4D34;
+  padding: 2.5rem;
+  background: linear-gradient(to right, #f8f9f7, #f1f4ef);
+  border-radius: 16px;
+  border-left: 5px solid #3E4D34;
+  transition: transform 0.3s ease;
+}
+
+.emotional-eating-section:hover {
+  transform: translateY(-5px);
 }
 
 .emotional-eating-card {
   display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 2rem;
+  grid-template-columns: 1.8fr 1fr;
+  gap: 2.5rem;
   align-items: center;
 }
 
@@ -158,16 +177,17 @@
 }
 
 .emotional-eating-card-title {
-  font-size: 1.5rem;
-  color: #3E4D34;
-  margin-bottom: 1rem;
+  font-size: 1.65rem;
+  color: #2D3A27;
+  margin-bottom: 1.2rem;
   font-weight: 700;
+  line-height: 1.3;
 }
 
 .emotional-eating-card-description {
   color: #4a5568;
-  line-height: 1.6;
-  margin-bottom: 1.5rem;
+  line-height: 1.7;
+  margin-bottom: 2rem;
   font-size: 1.1rem;
 }
 
@@ -178,47 +198,57 @@
   padding: 12px 28px;
   font-size: 1rem;
   font-weight: 600;
-  border-radius: 6px;
+  border-radius: 8px;
   cursor: pointer;
   transition: all 0.3s ease;
   text-decoration: none;
   width: fit-content;
-  box-shadow: 0 2px 4px rgba(62, 77, 52, 0.2);
+  box-shadow: 0 4px 6px rgba(62, 77, 52, 0.2);
   text-align: center;
 }
 
 .emotional-eating-btn:hover {
   background-color: #2D3A27;
   transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(62, 77, 52, 0.3);
+  box-shadow: 0 6px 12px rgba(62, 77, 52, 0.25);
 }
 
 .emotional-eating-card-image {
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .emotional-eating-card-img {
   width: 100%;
-  max-width: 200px;
+  max-width: 240px;
   height: auto;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
 }
 
-/* Obesity Stats Card */
+.emotional-eating-card-img:hover {
+  transform: scale(1.05);
+}
+
+/* Obesity Statistics Card */
 .obesity-stats-section {
-  margin: 2.5rem 0;
-  padding: 2rem;
-  background: #f8f9f7;
-  border-radius: 12px;
-  border-left: 4px solid #3E4D34;
+  padding: 2.5rem;
+  background: linear-gradient(to right, #f1f4ef, #f8f9f7);
+  border-radius: 16px;
+  border-left: 5px solid #3E4D34;
+  transition: transform 0.3s ease;
+}
+
+.obesity-stats-section:hover {
+  transform: translateY(-5px);
 }
 
 .obesity-stats-card {
   display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 2rem;
+  grid-template-columns: 1.8fr 1fr;
+  gap: 2.5rem;
   align-items: center;
 }
 
@@ -228,16 +258,17 @@
 }
 
 .obesity-stats-card-title {
-  font-size: 1.5rem;
-  color: #3E4D34;
-  margin-bottom: 1rem;
+  font-size: 1.65rem;
+  color: #2D3A27;
+  margin-bottom: 1.2rem;
   font-weight: 700;
+  line-height: 1.3;
 }
 
 .obesity-stats-card-description {
   color: #4a5568;
-  line-height: 1.6;
-  margin-bottom: 1.5rem;
+  line-height: 1.7;
+  margin-bottom: 2rem;
   font-size: 1.1rem;
 }
 
@@ -248,99 +279,148 @@
   padding: 12px 28px;
   font-size: 1rem;
   font-weight: 600;
-  border-radius: 6px;
+  border-radius: 8px;
   cursor: pointer;
   transition: all 0.3s ease;
   text-decoration: none;
   width: fit-content;
-  box-shadow: 0 2px 4px rgba(62, 77, 52, 0.2);
+  box-shadow: 0 4px 6px rgba(62, 77, 52, 0.2);
   text-align: center;
 }
 
 .obesity-stats-btn:hover {
   background-color: #2D3A27;
   transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(62, 77, 52, 0.3);
+  box-shadow: 0 6px 12px rgba(62, 77, 52, 0.25);
 }
 
 .obesity-stats-card-image {
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .obesity-stats-card-img {
   width: 100%;
-  max-width: 200px;
+  max-width: 240px;
   height: auto;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.obesity-stats-card-img:hover {
+  transform: scale(1.05);
 }
 
 /* FAQs Section */
 .faqs-section {
-  margin-top: 2rem;
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 2px solid #eef2ea;
 }
 
 .faqs-title {
-  font-size: 2rem;
-  color: #3E4D34;
-  margin-bottom: 2rem;
-  font-weight: 600;
+  font-size: 2.25rem;
+  color: #2D3A27;
+  margin-bottom: 2.5rem;
+  font-weight: 700;
   text-align: center;
+  position: relative;
+  padding-bottom: 1rem;
+}
+
+.faqs-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: #3E4D34;
+  border-radius: 2px;
 }
 
 .faqs-list {
-  border-top: 1px solid #e8ebe6;
+  border-radius: 12px;
+  overflow: hidden;
 }
 
 .faq-item {
   border-bottom: 1px solid #e8ebe6;
+  transition: all 0.3s ease;
+}
+
+.faq-item:last-child {
+  border-bottom: none;
+}
+
+.faq-item.active {
+  background-color: #f8faf7;
 }
 
 .faq-question {
   width: 100%;
-  padding: 1.5rem 0;
+  padding: 1.5rem 1.5rem;
   background: none;
   border: none;
   text-align: left;
-  font-size: 1.1rem;
-  color: #3E4D34;
+  font-size: 1.15rem;
+  color: #2D3A27;
   font-weight: 600;
   cursor: pointer;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  transition: color 0.3s ease;
+  transition: all 0.3s ease;
+  position: relative;
 }
 
 .faq-question:hover {
-  color: #2b6cb0;
+  background-color: #f1f4ef;
+  color: #3E4D34;
 }
 
 .faq-toggle {
   font-size: 1.5rem;
   font-weight: 300;
   color: #3E4D34;
-  min-width: 20px;
+  min-width: 24px;
   text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.faq-item.active .faq-toggle {
+  transform: rotate(180deg);
+}
+
+.faq-answer-container {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease;
+}
+
+.faq-item.active .faq-answer-container {
+  max-height: 500px;
 }
 
 .faq-answer {
-  padding: 0 0 1.5rem 0;
+  padding: 0 1.5rem 1.5rem 1.5rem;
 }
 
 .faq-answer p {
   color: #4a5568;
-  line-height: 1.6;
+  line-height: 1.7;
   margin: 0;
-  font-size: 1rem;
+  font-size: 1.05rem;
 }
 
 /* Responsive Design */
 @media (max-width: 968px) {
   .weight-management-intro {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 2.5rem;
     text-align: center;
   }
   
@@ -349,16 +429,16 @@
   }
   
   .weight-management-image {
-    max-width: 350px;
+    max-width: 380px;
   }
-  
+
   .emotional-eating-card,
   .obesity-stats-card {
     grid-template-columns: 1fr;
+    gap: 2rem;
     text-align: center;
-    gap: 1.5rem;
   }
-  
+
   .emotional-eating-content,
   .obesity-stats-content {
     align-items: center;
@@ -371,46 +451,45 @@
   }
   
   .weight-management-title {
-    font-size: 2rem;
+    font-size: 2.25rem;
   }
   
   .weight-management-subtitle {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
   }
   
   .weight-management-description {
-    font-size: 1rem;
+    font-size: 1.05rem;
   }
   
+  .faqs-title {
+    font-size: 1.9rem;
+  }
+  
+  .faq-question {
+    font-size: 1.05rem;
+    padding: 1.25rem 1rem;
+  }
+  
+  .view-faqs-btn {
+    padding: 12px 26px;
+    font-size: 1rem;
+  }
+
   .emotional-eating-section,
   .obesity-stats-section {
     padding: 1.5rem;
+    margin: 2.5rem 0;
   }
-  
+
   .emotional-eating-card-title,
   .obesity-stats-card-title {
-    font-size: 1.3rem;
+    font-size: 1.5rem;
   }
   
   .emotional-eating-card-description,
   .obesity-stats-card-description {
-    font-size: 1rem;
-  }
-  
-  .faqs-title {
-    font-size: 1.7rem;
-  }
-  
-  .faq-question {
-    font-size: 1rem;
-    padding: 1.2rem 0;
-  }
-  
-  .view-faqs-btn,
-  .emotional-eating-btn,
-  .obesity-stats-btn {
-    padding: 10px 24px;
-    font-size: 0.95rem;
+    font-size: 1.05rem;
   }
 }
 
@@ -420,11 +499,12 @@
   }
   
   .weight-management-content {
-    padding: 1rem;
+    padding: 1.25rem;
+    border-radius: 12px;
   }
   
   .weight-management-title {
-    font-size: 1.8rem;
+    font-size: 2rem;
   }
   
   .breadcrumb {
@@ -432,11 +512,17 @@
   }
   
   .weight-management-image {
-    max-width: 280px;
+    max-width: 300px;
   }
-  
+
   .emotional-eating-section,
   .obesity-stats-section {
-    padding: 1rem;
+    padding: 1.25rem;
+    margin: 2rem 0;
+  }
+
+  .emotional-eating-card-img,
+  .obesity-stats-card-img {
+    max-width: 200px;
   }
 }

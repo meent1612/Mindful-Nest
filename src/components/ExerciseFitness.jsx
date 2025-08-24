@@ -1,14 +1,11 @@
 import React, { useState, useRef } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import '../styles/ExerciseFitness.css';
-//import PageNavigation from '../components/PageNavigation';
 import ExerciseAndFitness from '../assets/ExerciseandFitness.jpeg';
-import ExerciseStickImage from '../assets/exercise-stick-with-it.jpeg'; 
-import MentalHealthExerciseImage from '../assets/mental-health-exercise.webp'; // Add your image
+import ExerciseStickImage from '../assets/exercise-stick-with-it.jpeg';
+import MentalHealthExerciseImage from '../assets/mental-health-exercise.webp';
 
 const ExerciseFitness = () => {
-  
-
   const [openFaq, setOpenFaq] = useState(null);
   const faqRef = useRef(null);
 
@@ -46,8 +43,6 @@ const ExerciseFitness = () => {
   return (
     <div className="exercise-fitness-page">
       <div className="exercise-fitness-container">
-      
-
         {/* Breadcrumb Navigation */}
         <div className="breadcrumb">
           <Link to="/health-wellness" className="breadcrumb-link">Health & Wellness</Link>
@@ -83,71 +78,75 @@ const ExerciseFitness = () => {
               />
             </div>
           </div>
-            {/* How to Start Section */}
-        <div className="how-to-start-section">
-             <div className="how-to-start-card">
-            <div className="how-to-start-content">
-        <h3 className="how-to-start-card-title">How to Start Exercising and Stick to It</h3>
-        <p className="how-to-start-card-description">
-          Making exercise an enjoyable part of your everyday life may be easier than you think. 
-            These tips can show you how.
-        </p>
-        <Link to="/health-wellness/exercise-fitness/how-to-start" className="how-to-start-btn">
-         Learn More
-        </Link>
-             </div>
-             <div className="how-to-start-card-image">
-             <img 
-              src={ExerciseStickImage} 
-            alt="How to start exercising" 
-             className="how-to-start-card-img"
-            />
-         </div>
-        </div>
-        </div>
-        {/* Mental Health Benefits Card */}
-    <div className="mental-health-benefits-section">
-    <div className="mental-health-benefits-card">
-    <div className="mental-health-benefits-content">
-      <h3 className="mental-health-benefits-card-title">The Mental Health Benefits of Exercise</h3>
-      <p className="mental-health-benefits-card-description">
-        You already know that exercise is good for your body. But did you know it can also 
-        boost your mood, improve your sleep, and help you deal with depression, anxiety, 
-        stress, and more?
-      </p>
-      <Link to="/health-wellness/exercise-fitness/mental-health-benefits" className="mental-health-benefits-btn">
-        Learn More
-      </Link>
-    </div>
-    <div className="mental-health-benefits-card-image">
-      <img 
-        src={MentalHealthExerciseImage} 
-        alt="Mental health benefits of exercise" 
-        className="mental-health-benefits-card-img"
-      />
-     </div>
-    </div>
-    </div>
+          
+          {/* How to Start Section */}
+          <div className="how-to-start-section">
+            <div className="how-to-start-card">
+              <div className="how-to-start-content">
+                <h3 className="how-to-start-card-title">How to Start Exercising and Stick to It</h3>
+                <p className="how-to-start-card-description">
+                  Making exercise an enjoyable part of your everyday life may be easier than you think. 
+                  These tips can show you how.
+                </p>
+                <Link to="/health-wellness/exercise-fitness/how-to-start" className="how-to-start-btn">
+                  Learn More
+                </Link>
+              </div>
+              <div className="how-to-start-card-image">
+                <img 
+                  src={ExerciseStickImage} 
+                  alt="How to start exercising" 
+                  className="how-to-start-card-img"
+                />
+              </div>
+            </div>
+          </div>
+          
+          {/* Mental Health Benefits Card */}
+          <div className="mental-health-benefits-section">
+            <div className="mental-health-benefits-card">
+              <div className="mental-health-benefits-content">
+                <h3 className="mental-health-benefits-card-title">The Mental Health Benefits of Exercise</h3>
+                <p className="mental-health-benefits-card-description">
+                  You already know that exercise is good for your body. But did you know it can also 
+                  boost your mood, improve your sleep, and help you deal with depression, anxiety, 
+                  stress, and more?
+                </p>
+                <Link to="/health-wellness/exercise-fitness/mental-health-benefits" className="mental-health-benefits-btn">
+                  Learn More
+                </Link>
+              </div>
+              <div className="mental-health-benefits-card-image">
+                <img 
+                  src={MentalHealthExerciseImage} 
+                  alt="Mental health benefits of exercise" 
+                  className="mental-health-benefits-card-img"
+                />
+              </div>
+            </div>
+          </div>
+          
           {/* FAQs Section */}
           <div className="faqs-section" ref={faqRef}>
             <h2 className="faqs-title">Exercise & Fitness FAQs</h2>
             
             <div className="faqs-list">
               {faqs.map((faq, index) => (
-                <div key={index} className="faq-item">
+                <div key={index} className={`faq-item ${openFaq === index ? 'active' : ''}`}>
                   <button 
                     className="faq-question"
                     onClick={() => toggleFaq(index)}
+                    aria-expanded={openFaq === index}
                   >
                     {faq.question}
                     <span className="faq-toggle">{openFaq === index ? '−' : '+'}</span>
                   </button>
                   
-                  {openFaq === index && (
+                  <div className="faq-answer-container">
                     <div className="faq-answer">
                       <p>{faq.answer}</p>
                     </div>
-                  )}
+                  </div>
                 </div>
               ))}
             </div>

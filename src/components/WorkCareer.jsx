@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/WorkCareer.css';
 import WorkCareerImage from '../assets/work-career-main.jpeg';
-import CareerGuidanceImage from '../assets/career-guidance-main.webp'; // Make sure to import this image
+import CareerGuidanceImage from '../assets/career-guidance-main.webp';
 
 const WorkCareer = () => {
   const [openFaq, setOpenFaq] = useState(null);
@@ -42,7 +42,6 @@ const WorkCareer = () => {
   return (
     <div className="work-career-page">
       <div className="work-career-container">
-        
         {/* Breadcrumb Navigation */}
         <div className="breadcrumb">
           <Link to="/health-wellness" className="breadcrumb-link">Health & Wellness</Link>
@@ -103,20 +102,21 @@ const WorkCareer = () => {
             
             <div className="faqs-list">
               {faqs.map((faq, index) => (
-                <div key={index} className="faq-item">
+                <div key={index} className={`faq-item ${openFaq === index ? 'active' : ''}`}>
                   <button 
                     className="faq-question"
                     onClick={() => toggleFaq(index)}
+                    aria-expanded={openFaq === index}
                   >
                     {faq.question}
                     <span className="faq-toggle">{openFaq === index ? '−' : '+'}</span>
                   </button>
                   
-                  {openFaq === index && (
+                  <div className="faq-answer-container">
                     <div className="faq-answer">
                       <p>{faq.answer}</p>
                     </div>
-                  )}
+                  </div>
                 </div>
               ))}
             </div>

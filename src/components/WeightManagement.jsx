@@ -77,48 +77,51 @@ const WeightManagement = () => {
             </div>
           </div>
 
-          {/* Emotional Eating Card - Added before Obesity Statistics */}
-          <div className="emotional-eating-section">
-            <div className="emotional-eating-card">
-              <div className="emotional-eating-content">
-                <h3 className="emotional-eating-card-title">Emotional Eating and How to Stop It</h3>
-                <p className="emotional-eating-card-description">
-                  Do you eat to feel better or relieve stress? Learn how to stop emotional and stress eating, 
-                  fight cravings, and find more satisfying ways to feed your feelings.
-                </p>
-                <Link to="/health-wellness/weight-management/emotional-eating" className="emotional-eating-btn">
-                  Learn More
-                </Link>
-              </div>
-              <div className="emotional-eating-card-image">
-                <img 
-                  src={EmotionalEatingImage} 
-                  alt="Emotional Eating" 
-                  className="emotional-eating-card-img"
-                />
+          {/* Articles Container */}
+          <div className="articles-container">
+            {/* Emotional Eating Card */}
+            <div className="emotional-eating-section">
+              <div className="emotional-eating-card">
+                <div className="emotional-eating-content">
+                  <h3 className="emotional-eating-card-title">Emotional Eating and How to Stop It</h3>
+                  <p className="emotional-eating-card-description">
+                    Do you eat to feel better or relieve stress? Learn how to stop emotional and stress eating, 
+                    fight cravings, and find more satisfying ways to feed your feelings.
+                  </p>
+                  <Link to="/health-wellness/weight-management/emotional-eating" className="emotional-eating-btn">
+                    Learn More
+                  </Link>
+                </div>
+                <div className="emotional-eating-card-image">
+                  <img 
+                    src={EmotionalEatingImage} 
+                    alt="Emotional Eating" 
+                    className="emotional-eating-card-img"
+                  />
+                </div>
               </div>
             </div>
-          </div>
 
-          {/* Obesity Statistics Card */}
-          <div className="obesity-stats-section">
-            <div className="obesity-stats-card">
-              <div className="obesity-stats-content">
-                <h3 className="obesity-stats-card-title">Overweight and Obesity Statistics</h3>
-                <p className="obesity-stats-card-description">
-                  Obesity is considered a public health crisis in the United States and worldwide. 
-                  Explore facts, stats, and the impact of this disease on adults and children.
-                </p>
-                <Link to="/health-wellness/weight-management/obesity-statistics" className="obesity-stats-btn">
-                  Learn More
-                </Link>
-              </div>
-              <div className="obesity-stats-card-image">
-                <img 
-                  src={ObesityStatsImage} 
-                  alt="Obesity Statistics" 
-                  className="obesity-stats-card-img"
-                />
+            {/* Obesity Statistics Card */}
+            <div className="obesity-stats-section">
+              <div className="obesity-stats-card">
+                <div className="obesity-stats-content">
+                  <h3 className="obesity-stats-card-title">Overweight and Obesity Statistics</h3>
+                  <p className="obesity-stats-card-description">
+                    Obesity is considered a public health crisis in the United States and worldwide. 
+                    Explore facts, stats, and the impact of this disease on adults and children.
+                  </p>
+                  <Link to="/health-wellness/weight-management/obesity-statistics" className="obesity-stats-btn">
+                    Learn More
+                  </Link>
+                </div>
+                <div className="obesity-stats-card-image">
+                  <img 
+                    src={ObesityStatsImage} 
+                    alt="Obesity Statistics" 
+                    className="obesity-stats-card-img"
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -129,20 +132,21 @@ const WeightManagement = () => {
             
             <div className="faqs-list">
               {faqs.map((faq, index) => (
-                <div key={index} className="faq-item">
+                <div key={index} className={`faq-item ${openFaq === index ? 'active' : ''}`}>
                   <button 
                     className="faq-question"
                     onClick={() => toggleFaq(index)}
+                    aria-expanded={openFaq === index}
                   >
                     {faq.question}
                     <span className="faq-toggle">{openFaq === index ? '−' : '+'}</span>
                   </button>
                   
-                  {openFaq === index && (
+                  <div className="faq-answer-container">
                     <div className="faq-answer">
                       <p>{faq.answer}</p>
                     </div>
-                  )}
+                  </div>
                 </div>
               ))}
             </div>
