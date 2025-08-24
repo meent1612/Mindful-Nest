@@ -1,0 +1,382 @@
+/* ObesityStatistics.css */
+.obesity-statistics-page {
+  min-height: 100vh;
+  background: #ffffff;
+  padding: 2rem 0;
+}
+
+.obesity-statistics-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Breadcrumb */
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+  font-size: 0.9rem;
+  color: #4a5568;
+}
+
+.breadcrumb-link {
+  color: #3E4D34;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.breadcrumb-link:hover {
+  color: #2b6cb0;
+  text-decoration: underline;
+}
+
+.breadcrumb-separator {
+  margin: 0 0.5rem;
+  color: #a0aec0;
+}
+
+.breadcrumb-current {
+  color: #3E4D34;
+  font-weight: 600;
+}
+
+/* Section Label */
+.section-label {
+  color: #3E4D34;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 0.5rem;
+}
+
+/* Main Content */
+.obesity-statistics-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e8ebe6;
+}
+
+.obesity-statistics-title {
+  font-size: 2rem; /* Reduced from 2.5rem */
+  color: #3E4D34;
+  margin-bottom: 2rem;
+  font-weight: 700;
+  text-align: left;
+}
+
+/* Obesity Statistics Intro Layout */
+.obesity-statistics-intro {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2rem; /* Reduced from 3rem */
+  margin-bottom: 2rem; /* Reduced from 2.5rem */
+  padding-bottom: 1.5rem;
+  border-bottom: 2px solid #e8ebe6;
+  align-items: center;
+}
+
+.obesity-statistics-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.obesity-statistics-description {
+  font-size: 1.1rem; /* Reduced from 1.2rem */
+  color: #4a5568;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  font-style: italic;
+}
+
+/* Obesity Statistics Image */
+.obesity-statistics-image-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.obesity-statistics-image {
+  width: 100%;
+  max-width: 300px; /* Reduced from 350px */
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Section Titles */
+.section-title {
+  font-size: 1.5rem; /* Reduced from 1.8rem */
+  color: #3E4D34;
+  margin: 2rem 0 1rem 0; /* Reduced from 2.5rem */
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #e8ebe6;
+}
+
+/* Content Sections */
+.content-section {
+  margin-bottom: 2rem; /* Reduced from 2.5rem */
+  line-height: 1.6; /* Reduced from 1.7 */
+}
+
+.content-section p {
+  color: #4a5568;
+  margin-bottom: 1rem; /* Reduced from 1.2rem */
+  font-size: 1rem; /* Reduced from 1.05rem */
+}
+
+/* Key Takeaways */
+.key-takeaways-section {
+  background: #f8f9f7;
+  padding: 1.5rem; /* Reduced from 2rem */
+  border-radius: 8px;
+  border-left: 4px solid #3E4D34;
+  margin: 1.5rem 0; /* Reduced from 2rem */
+}
+
+.key-takeaways-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.key-takeaways-list li {
+  margin-bottom: 0.8rem; /* Reduced from 1rem */
+  padding-left: 1.5rem;
+  position: relative;
+  color: #4a5568;
+  line-height: 1.5; /* Reduced from 1.6 */
+}
+
+.key-takeaways-list li:before {
+  content: "•";
+  color: #3E4D34;
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+}
+
+/* Blockquotes */
+blockquote {
+  background: #f8f9f7;
+  border-left: 4px solid #3E4D34;
+  padding: 1.25rem; /* Reduced from 1.5rem */
+  margin: 1.25rem 0; /* Reduced from 1.5rem */
+  font-style: italic;
+  border-radius: 0 8px 8px 0;
+  font-size: 1rem; /* Added to ensure consistent size */
+}
+
+blockquote strong {
+  color: #3E4D34;
+}
+
+/* Fat Types Grid */
+.fat-types-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem; /* Reduced from 2rem */
+  margin: 1.25rem 0; /* Reduced from 1.5rem */
+}
+
+.fat-type-card {
+  background: #f8f9f7;
+  padding: 1.25rem; /* Reduced from 1.5rem */
+  border-radius: 8px;
+  border: 1px solid #e8ebe6;
+}
+
+.fat-type-card h3 {
+  color: #3E4D34;
+  margin-top: 0;
+  margin-bottom: 0.8rem; /* Reduced from 1rem */
+  font-size: 1.1rem; /* Added to ensure consistent size */
+}
+
+.fat-type-card p {
+  margin-bottom: 0;
+  font-size: 0.95rem; /* Added to ensure consistent size */
+}
+
+/* Stats Table */
+.stats-table-section {
+  margin: 1.5rem 0; /* Reduced from 2rem */
+}
+
+.stats-table-section h3 {
+  color: #3E4D34;
+  margin-bottom: 0.8rem; /* Reduced from 1rem */
+  font-size: 1.1rem; /* Added to ensure consistent size */
+}
+
+.stats-table {
+  display: table;
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0.8rem 0; /* Reduced from 1rem */
+}
+
+.stats-table-row {
+  display: table-row;
+}
+
+.stats-table-cell {
+  display: table-cell;
+  padding: 0.8rem; /* Reduced from 1rem */
+  border: 1px solid #e8ebe6;
+  text-align: center;
+  font-size: 0.95rem; /* Added to ensure consistent size */
+}
+
+.stats-table-row.header .stats-table-cell {
+  background: #f8f9f7;
+  font-weight: 600;
+  color: #3E4D34;
+}
+
+/* Stats Highlight */
+.stats-highlight {
+  background: #f8f9f7;
+  padding: 1.25rem; /* Reduced from 1.5rem */
+  border-radius: 8px;
+  margin: 1.25rem 0; /* Reduced from 1.5rem */
+}
+
+.stats-highlight h3 {
+  color: #3E4D34;
+  margin-top: 0;
+  font-size: 1.1rem; /* Added to ensure consistent size */
+}
+
+.stats-highlight ul {
+  margin: 0.8rem 0; /* Reduced from 1rem */
+  padding-left: 1.5rem;
+}
+
+.stats-highlight li {
+  margin-bottom: 0.4rem; /* Reduced from 0.5rem */
+  color: #4a5568;
+  font-size: 0.95rem; /* Added to ensure consistent size */
+}
+
+/* Factors List */
+.factors-list {
+  background: #f8f9f7;
+  padding: 1.25rem; /* Reduced from 1.5rem */
+  border-radius: 8px;
+  margin: 1.25rem 0; /* Reduced from 1.5rem */
+}
+
+.factors-list h3 {
+  color: #3E4D34;
+  margin-top: 0;
+  font-size: 1.1rem; /* Added to ensure consistent size */
+}
+
+.factors-list ul {
+  margin: 0.8rem 0; /* Reduced from 1rem */
+  padding-left: 1.5rem;
+  columns: 2;
+}
+
+.factors-list li {
+  margin-bottom: 0.4rem; /* Reduced from 0.5rem */
+  color: #4a5568;
+  break-inside: avoid;
+  font-size: 0.95rem; /* Added to ensure consistent size */
+}
+
+/* Final Verdict */
+.final-verdict {
+  background: #f8f9f7;
+  padding: 1.5rem; /* Reduced from 2rem */
+  border-radius: 8px;
+  border-left: 4px solid #3E4D34;
+  font-size: 1rem; /* Added to ensure consistent size */
+}
+
+/* Responsive Design */
+@media (max-width: 968px) {
+  .obesity-statistics-intro {
+    grid-template-columns: 1fr;
+    gap: 1.5rem; /* Reduced from 2rem */
+    text-align: center;
+  }
+  
+  .fat-types-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem; /* Added for consistency */
+  }
+  
+  .factors-list ul {
+    columns: 1;
+  }
+  
+  .stats-table {
+    display: block;
+  }
+  
+  .stats-table-row {
+    display: block;
+    margin-bottom: 0.8rem; /* Reduced from 1rem */
+  }
+  
+  .stats-table-cell {
+    display: block;
+    margin-bottom: 0.4rem; /* Reduced from 0.5rem */
+  }
+}
+
+@media (max-width: 768px) {
+  .obesity-statistics-content {
+    padding: 1.25rem; /* Reduced from 1.5rem */
+  }
+  
+  .obesity-statistics-title {
+    font-size: 1.7rem; /* Reduced from 2rem */
+  }
+  
+  .section-title {
+    font-size: 1.4rem; /* Reduced from 1.6rem */
+  }
+  
+  .obesity-statistics-image {
+    max-width: 250px; /* Reduced from 300px */
+  }
+  
+  .obesity-statistics-description {
+    font-size: 1rem; /* Added for consistency */
+  }
+}
+
+@media (max-width: 480px) {
+  .obesity-statistics-container {
+    padding: 0 0.5rem;
+  }
+  
+  .obesity-statistics-content {
+    padding: 1rem;
+  }
+  
+  .obesity-statistics-title {
+    font-size: 1.5rem; /* Reduced from 1.8rem */
+  }
+  
+  .breadcrumb {
+    font-size: 0.8rem;
+  }
+  
+  .key-takeaways-section,
+  .stats-highlight,
+  .factors-list {
+    padding: 1rem; /* Reduced from 1.2rem */
+  }
+  
+  .section-title {
+    font-size: 1.3rem; /* Added for consistency */
+  }
+}

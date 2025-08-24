@@ -1,0 +1,515 @@
+/* EmotionalEating.css */
+.emotional-eating-page {
+  min-height: 100vh;
+  background: #ffffff;
+  padding: 1rem 0;
+}
+
+.emotional-eating-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Breadcrumb */
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+  color: #4a5568;
+  flex-wrap: wrap;
+}
+
+.breadcrumb-link {
+  color: #3E4D34;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.breadcrumb-link:hover {
+  color: #2b6cb0;
+  text-decoration: underline;
+}
+
+.breadcrumb-separator {
+  margin: 0 0.5rem;
+  color: #a0aec0;
+}
+
+.breadcrumb-current {
+  color: #3E4D34;
+  font-weight: 600;
+}
+
+/* Section Label */
+.section-label {
+  color: #3E4D34;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 0.5rem;
+  text-align: left;
+}
+
+/* Main Content */
+.emotional-eating-content {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e8ebe6;
+}
+
+.emotional-eating-title {
+  font-size: 1.8rem;
+  color: #3E4D34;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+  text-align: left;
+  line-height: 1.3;
+}
+
+/* Emotional Eating Intro Layout - FIXED responsiveness */
+.emotional-eating-intro {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 2px solid #e8ebe6;
+}
+
+.emotional-eating-text {
+  order: 2;
+}
+
+.emotional-eating-description {
+  font-size: 1.1rem;
+  color: #4a5568;
+  line-height: 1.6;
+  margin-bottom: 0;
+  font-style: italic;
+  text-align: left;
+}
+
+/* Emotional Eating Image - FIXED responsiveness */
+.emotional-eating-image-container {
+  order: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.emotional-eating-image {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Section Titles */
+.section-title {
+  font-size: 1.5rem;
+  color: #3E4D34;
+  margin: 2rem 0 1rem 0;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #e8ebe6;
+  line-height: 1.3;
+}
+
+/* Content Sections */
+.content-section {
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.content-section p {
+  color: #4a5568;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+/* Emotional Eater List */
+.emotional-eater-list {
+  background: #f8f9f7;
+  padding: 1.25rem;
+  border-radius: 8px;
+  border-left: 4px solid #3E4D34;
+  margin: 1.25rem 0;
+}
+
+.emotional-eater-list li {
+  margin-bottom: 0.8rem;
+  color: #4a5568;
+  line-height: 1.5;
+}
+
+/* Highlight Box */
+.highlight-box {
+  background: #f8f9f7;
+  padding: 1.25rem;
+  border-radius: 8px;
+  border-left: 4px solid #3E4D34;
+  font-style: italic;
+  margin: 1.25rem 0;
+  font-size: 1rem;
+}
+
+/* Image Placeholder */
+.image-placeholder {
+  background: #e9ecef;
+  padding: 2rem;
+  text-align: center;
+  margin: 1.5rem 0;
+  border-radius: 8px;
+  color: #6c757d;
+  font-style: italic;
+}
+
+/* Content Image */
+.content-image {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin: 1.5rem 0;
+  display: block;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Comparison Section */
+.comparison-section {
+  margin: 2rem 0;
+  overflow-x: auto;
+}
+
+.comparison-title {
+  font-size: 1.4rem;
+  color: #3E4D34;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.comparison-subtitle {
+  font-size: 1.1rem;
+  color: #4a5568;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+}
+
+/* Comparison Table */
+.comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  font-size: 0.95rem;
+  min-width: 600px;
+}
+
+.comparison-row {
+  display: table-row;
+}
+
+.comparison-row.header .comparison-cell {
+  background: #f8f9f7;
+  color: #3E4D34;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.comparison-cell {
+  display: table-cell;
+  padding: 0.8rem;
+  border: 1px solid #e8ebe6;
+  text-align: left;
+  vertical-align: top;
+}
+
+/* Specific styling for the hunger comparison table */
+.comparison-table.hunger-comparison .comparison-row.header .comparison-cell {
+  background: #e8f5e8;
+  text-align: center;
+  font-size: 0.9rem;
+  padding: 0.6rem;
+}
+
+.comparison-table.hunger-comparison .comparison-cell {
+  padding: 0.7rem;
+  font-size: 0.9rem;
+}
+
+/* Additional Info */
+.additional-info {
+  background: #f8f9f7;
+  padding: 1.25rem;
+  border-radius: 8px;
+  margin: 1.25rem 0;
+}
+
+.additional-info p {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+.additional-info p:last-child {
+  margin-bottom: 0;
+}
+
+/* Cause Items */
+.cause-item {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.cause-item:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.cause-item h3 {
+  color: #3E4D34;
+  margin-bottom: 0.8rem;
+  font-size: 1.3rem;
+}
+
+.cause-item p {
+  font-size: 1rem;
+}
+
+/* Alternatives Grid */
+.alternatives-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin: 1.25rem 0;
+}
+
+.alternative-item {
+  background: #f8f9f7;
+  padding: 1.25rem;
+  border-radius: 8px;
+  border: 1px solid #e8ebe6;
+}
+
+.alternative-item h3 {
+  color: #3E4D34;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.alternative-item p {
+  margin-bottom: 0;
+  font-size: 0.95rem;
+}
+
+/* Lifestyle Tips */
+.lifestyle-tips {
+  margin: 1.5rem 0;
+}
+
+.lifestyle-tip {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.lifestyle-tip:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.lifestyle-tip h3 {
+  color: #3E4D34;
+  margin-bottom: 0.8rem;
+  font-size: 1.2rem;
+}
+
+.lifestyle-tip p {
+  font-size: 1rem;
+}
+
+/* Cycle Container */
+.cycle-container {
+  background: #f8f9f7;
+  padding: 1.25rem;
+  border-radius: 8px;
+  margin: 1.25rem 0;
+}
+
+.cycle-title {
+  color: #3E4D34;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 1.4rem;
+}
+
+.cycle-steps {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cycle-step {
+  background: white;
+  padding: 1rem;
+  border-radius: 8px;
+  margin: 0.5rem 0;
+  text-align: center;
+  width: 100%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-size: 1rem;
+}
+
+.cycle-arrow {
+  font-size: 1.5rem;
+  color: #3E4D34;
+  margin: 0.5rem 0;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+/* Tablet devices (768px and up) */
+@media (min-width: 768px) {
+  .emotional-eating-page {
+    padding: 2rem 0;
+  }
+  
+  .emotional-eating-content {
+    padding: 2rem;
+  }
+  
+  .emotional-eating-title {
+    font-size: 2rem;
+  }
+  
+  .emotional-eating-intro {
+    flex-direction: row;
+    align-items: center;
+    gap: 2rem;
+  }
+  
+  .emotional-eating-text {
+    order: 1;
+    flex: 2;
+  }
+  
+  .emotional-eating-image-container {
+    order: 2;
+    flex: 1;
+    margin-bottom: 0;
+  }
+  
+  .emotional-eating-image {
+    max-width: 250px;
+  }
+  
+  .alternatives-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .comparison-table {
+    min-width: auto;
+  }
+}
+
+/* Desktop devices (968px and up) */
+@media (min-width: 968px) {
+  .emotional-eating-container {
+    padding: 0 1.5rem;
+  }
+  
+  .emotional-eating-content {
+    padding: 2.5rem;
+  }
+  
+  .emotional-eating-title {
+    font-size: 2.2rem;
+  }
+  
+  .emotional-eating-image {
+    max-width: 300px;
+  }
+  
+  .section-title {
+    font-size: 1.8rem;
+  }
+}
+
+/* Small mobile devices (480px and below) */
+@media (max-width: 480px) {
+  .emotional-eating-container {
+    padding: 0 0.5rem;
+  }
+  
+  .emotional-eating-content {
+    padding: 1rem;
+  }
+  
+  .emotional-eating-title {
+    font-size: 1.6rem;
+    text-align: center;
+  }
+  
+  .section-title {
+    font-size: 1.3rem;
+  }
+  
+  .breadcrumb {
+    font-size: 0.8rem;
+  }
+  
+  .comparison-table.hunger-comparison .comparison-cell {
+    font-size: 0.85rem;
+    padding: 0.5rem;
+  }
+  
+  .emotional-eater-list {
+    padding: 1rem;
+  }
+  
+  .emotional-eater-list li {
+    font-size: 0.9rem;
+  }
+  
+  .section-label {
+    text-align: center;
+  }
+  
+  .emotional-eating-description {
+    text-align: center;
+  }
+}
+
+/* Very small mobile devices (320px and below) */
+@media (max-width: 320px) {
+  .emotional-eating-title {
+    font-size: 1.4rem;
+  }
+  
+  .section-title {
+    font-size: 1.2rem;
+  }
+  
+  .emotional-eating-description {
+    font-size: 1rem;
+  }
+  
+  .comparison-table.hunger-comparison {
+    font-size: 0.8rem;
+  }
+  
+  .comparison-table.hunger-comparison .comparison-cell {
+    padding: 0.4rem;
+  }
+}

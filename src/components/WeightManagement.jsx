@@ -1,9 +1,9 @@
 import React, { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/WeightManagement.css';
-//import PageNavigation from '../components/PageNavigation';
 import WeightManagementImage from '../assets/weight-management-main.jpg';
-
+import ObesityStatsImage from '../assets/obesity-stats-main.webp';
+import EmotionalEatingImage from '../assets/Emotional-Eating.webp'; 
 
 const WeightManagement = () => {
   const [openFaq, setOpenFaq] = useState(null);
@@ -43,8 +43,6 @@ const WeightManagement = () => {
   return (
     <div className="weight-management-page">
       <div className="weight-management-container">
-       
-
         {/* Breadcrumb Navigation */}
         <div className="breadcrumb">
           <Link to="/health-wellness" className="breadcrumb-link">Health & Wellness</Link>
@@ -78,8 +76,52 @@ const WeightManagement = () => {
               />
             </div>
           </div>
-          
-         
+
+          {/* Emotional Eating Card - Added before Obesity Statistics */}
+          <div className="emotional-eating-section">
+            <div className="emotional-eating-card">
+              <div className="emotional-eating-content">
+                <h3 className="emotional-eating-card-title">Emotional Eating and How to Stop It</h3>
+                <p className="emotional-eating-card-description">
+                  Do you eat to feel better or relieve stress? Learn how to stop emotional and stress eating, 
+                  fight cravings, and find more satisfying ways to feed your feelings.
+                </p>
+                <Link to="/health-wellness/weight-management/emotional-eating" className="emotional-eating-btn">
+                  Learn More
+                </Link>
+              </div>
+              <div className="emotional-eating-card-image">
+                <img 
+                  src={EmotionalEatingImage} 
+                  alt="Emotional Eating" 
+                  className="emotional-eating-card-img"
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* Obesity Statistics Card */}
+          <div className="obesity-stats-section">
+            <div className="obesity-stats-card">
+              <div className="obesity-stats-content">
+                <h3 className="obesity-stats-card-title">Overweight and Obesity Statistics</h3>
+                <p className="obesity-stats-card-description">
+                  Obesity is considered a public health crisis in the United States and worldwide. 
+                  Explore facts, stats, and the impact of this disease on adults and children.
+                </p>
+                <Link to="/health-wellness/weight-management/obesity-statistics" className="obesity-stats-btn">
+                  Learn More
+                </Link>
+              </div>
+              <div className="obesity-stats-card-image">
+                <img 
+                  src={ObesityStatsImage} 
+                  alt="Obesity Statistics" 
+                  className="obesity-stats-card-img"
+                />
+              </div>
+            </div>
+          </div>
           
           {/* FAQs Section */}
           <div className="faqs-section" ref={faqRef}>
