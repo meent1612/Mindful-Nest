@@ -160,31 +160,6 @@ const Depression = () => {
                 </div>
             </section>
 
-            <section className="depression-crisis">
-                <div className="depression-container">
-                    <h2 className="crisis-title">Immediate Help</h2>
-                    <p className="crisis-subtitle">If you're having thoughts of self-harm or suicide, help is available now.</p>
-                    <div className="crisis-content">
-                        <div className="crisis-card emergency">
-                            <h3>Emergency Contact</h3>
-                            <p className="crisis-number">988</p>
-                            <p>Suicide & Crisis Lifeline</p>
-                            <p className="crisis-desc">Call or text 988 for free, confidential support 24/7</p>
-                        </div>
-                        <div className="crisis-card">
-                            <h3>Crisis Text Line</h3>
-                            <p className="crisis-number">Text HOME to 741741</p>
-                            <p>Free, 24/7 crisis support via text message</p>
-                        </div>
-                        <div className="crisis-card">
-                            <h3>Find Treatment</h3>
-                            <p>Connect with mental health professionals who can help</p>
-                            <button className="crisis-btn">Get Help Now</button>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
 
         </div>
     );
