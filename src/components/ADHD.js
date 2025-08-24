@@ -1,15 +1,15 @@
 import React, { useState, useRef } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import '../styles/ADHD.css';
 
-// Import images (adjust paths based on your actual image locations)
+// Import images (you'll need to add these to your assets)
 import adhdHeroImage from '../assets/hero-adhd.webp';
-import sleepAdhdImage from '../assets/sleep-adhd.webp';
-import womenAdhdImage from '../assets/womwn-adhd.webp';
-import adultsAdhdImage from '../assets/adults-adhd.jpg';
-import relationshipsAdhdImage from '../assets/relationships-adhd.jpeg';
-import schoolAdhdImage from '../assets/school-adhd.webp';
-import childrenAdhdImage from '../assets/children-adhd.jpeg';
+import treatmentImage from '../assets/treatment-adhd.webp';
+import adultsImage from '../assets/adults-adhd.jpg';
+import childrenImage from '../assets/children-adhd.jpeg';
+import schoolImage from '../assets/school-adhd.webp';
+import womenImage from '../assets/womwn-adhd.webp';
+import relationshipsImage from '../assets/relationships-adhd.jpeg'
 
 const ADHD = () => {
   const [activeFAQ, setActiveFAQ] = useState(null);
@@ -18,7 +18,7 @@ const ADHD = () => {
   const faqItems = [
     {
       question: "What are the symptoms of ADHD in women?",
-      answer: "ADHD symptoms in women often include inattentiveness, disorganization, emotional sensitivity, and internal restlessness rather than hyperactivity. Many women develop coping mechanisms that mask their symptoms."
+      answer: "ADHD symptoms in women often include inattentiveness, disorganization, emotional sensitivity, and internal restlessness rather than hyperactivity. Many women develop coping mechanisms that mask their symptoms, leading to underdiagnosis."
     },
     {
       question: "What is the difference between ADD vs ADHD?",
@@ -26,21 +26,50 @@ const ADHD = () => {
     },
     {
       question: "Is ADHD a disability?",
-      answer: "Yes, ADHD is recognized as a disability under the Americans with Disabilities Act (ADA) and similar legislation in many countries. It can qualify individuals for accommodations in education and workplace settings."
+      answer: "Yes, ADHD is recognized as a disability under the Americans with Disabilities Act (ADA) and similar legislation in many countries. It can qualify individuals for accommodations in education and workplace settings to help manage symptoms."
     },
     {
       question: "What are the main symptoms of ADHD?",
-      answer: "The main symptoms include inattention (difficulty focusing, forgetfulness), hyperactivity (fidgeting, restlessness), and impulsivity (acting without thinking, interrupting others)."
+      answer: "The main symptoms include inattention (difficulty focusing, forgetfulness, disorganization), hyperactivity (fidgeting, restlessness, excessive talking), and impulsivity (acting without thinking, interrupting others, difficulty waiting turns)."
     },
     {
       question: "What exactly causes ADHD?",
-      answer: "ADHD is primarily caused by genetic factors that affect brain development and neurotransmitter function. Environmental factors, brain injuries, and prenatal exposures may also contribute to its development."
+      answer: "ADHD is primarily caused by genetic factors that affect brain development and neurotransmitter function. Environmental factors, brain injuries, prenatal exposures, and early childhood trauma may also contribute to its development."
+    }
+  ];
+
+  const adhdTopics = [
+    {
+      title: "ADHD in Adults",
+      description: "Recognizing the signs and symptoms, and what you can do about it",
+      image: adultsImage
+    },
+    {
+      title: "ADHD in Children",
+      description: "What Attention Deficit Hyperactivity Disorder looks like in kids",
+      image: childrenImage
+    },
+    {
+      title: "ADHD and School",
+      description: "Helping children with ADD or ADHD succeed in school",
+      image: schoolImage
+    },
+    {
+      title: "ADHD in Women",
+      description: "Symptoms, treatment, and how to overcome the unique challenges",
+      image: womenImage
+    },
+    {
+      title: "Adult ADHD and Relationships",
+      description: "Dealing with symptoms together and developing a solid partnership",
+      image: relationshipsImage
     }
   ];
 
   const toggleFAQ = (index) => {
     setActiveFAQ(activeFAQ === index ? null : index);
   };
+
   const scrollToFaqs = () => {
     faqRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -57,34 +86,34 @@ const ADHD = () => {
                 ADHD can make it difficult to stay on top of things, especially complex
                 tasks that require organization, planning, and sustained focus. But there
                 are many things you can do to help yourself manage symptoms and stay
-                focused.
+                focused. With the right strategies and support, you can thrive with ADHD.
               </p>
-              <Link to="/adhd/faqs" className="view-faqs-btn">
+              <button onClick={scrollToFaqs} className="view-faqs-btn">
                 View FAQs
-              </Link>
+              </button>
             </div>
             <div className="hero-image">
-              <img src={adhdHeroImage} alt="ADHD focus and concentration" />
+              <img src={adhdHeroImage} alt="Living with ADHD" />
             </div>
           </div>
         </div>
       </section>
 
-      {/* Sleep Connection Section with Image */}
-      <section className="sleep-connection">
+      {/* Treatment Connection Section with Image */}
+      <section className="treatment-connection">
         <div className="adhd-container">
-          <div className="sleep-content">
-            <div className="sleep-image">
-              <img src={sleepAdhdImage} alt="Sleep and ADHD connection" />
+          <div className="treatment-content">
+            <div className="treatment-image">
+              <img src={treatmentImage} alt="ADHD treatment and management" />
             </div>
-            <div className="sleep-text">
-              <div className="sleep-header">
-                <h2 className="sleep-title">SLEEP</h2>
-                <h3 className="sleep-subtitle">The Connection Between Sleep and ADHD</h3>
+            <div className="treatment-text">
+              <div className="treatment-header">
+                <h2 className="treatment-title">TREATMENT</h2>
+                <h3 className="treatment-subtitle">Effective Approaches for Managing ADHD</h3>
               </div>
-              <div className="sleep-card">
-                <h4>How sleep impacts ADHD</h4>
-                <p>Sleep problems are common with ADHD and can significantly worsen symptoms. Poor sleep affects focus, impulse control, and emotional regulation.</p>
+              <div className="treatment-card">
+                <h4>How treatment helps ADHD</h4>
+                <p>Effective ADHD treatment typically involves a combination of medication, therapy, lifestyle changes, and educational support. Treatment can significantly improve focus, reduce impulsivity, and help develop better organizational skills and coping mechanisms.</p>
               </div>
             </div>
           </div>
@@ -94,73 +123,26 @@ const ADHD = () => {
       {/* ADHD Topics Grid with Images */}
       <section className="adhd-topics">
         <div className="adhd-container">
-          <h2 className="section-title">Related Topics</h2>
+          <h2 className="section-title">Understanding ADHD</h2>
           <div className="topics-grid">
-            {/* Women */}
-            <div className="topic-card">
-              <div className="topic-image">
-                <img src={womenAdhdImage} alt="ADHD in Women" />
+            {adhdTopics.map((topic, index) => (
+              <div key={index} className="topic-card">
+                <div className="topic-image">
+                  <img src={topic.image} alt={topic.title} />
+                </div>
+                <div className="topic-content">
+                  <span className="topic-category">ADHD</span>
+                  <h3 className="topic-title">{topic.title}</h3>
+                  <p className="topic-desc">{topic.description}</p>
+                </div>
               </div>
-              <div className="topic-content">
-                <span className="topic-category">ADHD</span>
-                <h3 className="topic-title">ADHD in Women</h3>
-                <p className="topic-desc">Symptoms, treatment, and how to overcome the unique challenges</p>
-              </div>
-            </div>
-
-            {/* Adults */}
-            <div className="topic-card">
-              <div className="topic-image">
-                <img src={adultsAdhdImage} alt="ADHD in Adults" />
-              </div>
-              <div className="topic-content">
-                <span className="topic-category">ADHD</span>
-                <h3 className="topic-title">ADHD in Adults</h3>
-                <p className="topic-desc">Recognizing the signs and symptoms, and what you can do about it</p>
-              </div>
-            </div>
-
-            {/* Relationships */}
-            <div className="topic-card">
-              <div className="topic-image">
-                <img src={relationshipsAdhdImage} alt="ADHD and Relationships" />
-              </div>
-              <div className="topic-content">
-                <span className="topic-category">ADHD</span>
-                <h3 className="topic-title">Adult ADHD and Relationships</h3>
-                <p className="topic-desc">Dealing with symptoms together and developing a solid partnership</p>
-              </div>
-            </div>
-
-            {/* School */}
-            <div className="topic-card">
-              <div className="topic-image">
-                <img src={schoolAdhdImage} alt="ADHD and School" />
-              </div>
-              <div className="topic-content">
-                <span className="topic-category">ADHD</span>
-                <h3 className="topic-title">ADHD and School</h3>
-                <p className="topic-desc">Helping children with ADD or ADHD succeed in school</p>
-              </div>
-            </div>
-
-            {/* Children */}
-            <div className="topic-card">
-              <div className="topic-image">
-                <img src={childrenAdhdImage} alt="ADHD in Children" />
-              </div>
-              <div className="topic-content">
-                <span className="topic-category">ADHD</span>
-                <h3 className="topic-title">ADHD in Children</h3>
-                <p className="topic-desc">What Attention Deficit Hyperactivity Disorder looks like in kids</p>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* FAQs Section */}
-      <section className="adhd-faqs">
+      <section ref={faqRef} className="adhd-faqs">
         <div className="adhd-container">
           <h2 className="faqs-title">ADHD FAQs</h2>
           <div className="faqs-list">
@@ -180,6 +162,31 @@ const ADHD = () => {
                 )}
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Resources Section */}
+      <section className="adhd-resources">
+        <div className="adhd-container">
+          <h2 className="resources-title">Get Support Now</h2>
+          <p className="resources-subtitle">If you or someone you know is struggling with ADHD, help and resources are available.</p>
+          <div className="resources-content">
+            <div className="resource-card">
+              <h3>CHADD Helpline</h3>
+              <p className="helpline-number">1-866-200-8098</p>
+              <p>Free information and resources about ADHD for parents and adults</p>
+            </div>
+            <div className="resource-card">
+              <h3>ADDA Support</h3>
+              <p className="helpline-number">1-800-939-1019</p>
+              <p>Attention Deficit Disorder Association providing support and resources</p>
+            </div>
+            <div className="resource-card">
+              <h3>Find Specialists</h3>
+              <p>Connect with ADHD specialists and treatment providers in your area</p>
+              <button className="resource-btn">Find ADHD Specialists</button>
+            </div>
           </div>
         </div>
       </section>

@@ -54,12 +54,13 @@
 .view-faqs-btn {
   background: #3E4D34;
   color: white;
+  border: none;
   padding: 1rem 2rem;
   border-radius: 25px;
-  text-decoration: none;
   font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
   transition: all 0.3s ease;
-  display: inline-block;
 }
 
 .view-faqs-btn:hover {
@@ -67,31 +68,31 @@
   transform: translateY(-2px);
 }
 
-/* Sleep Connection Section with Image */
-.sleep-connection {
+/* Treatment Connection Section with Image */
+.treatment-connection {
   padding: 4rem 0;
   background: white;
 }
 
-.sleep-content {
+.treatment-content {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 3rem;
   align-items: center;
 }
 
-.sleep-image img {
+.treatment-image img {
   width: 100%;
   height: 300px;
   object-fit: cover;
   border-radius: 12px;
 }
 
-.sleep-header {
+.treatment-header {
   margin-bottom: 2rem;
 }
 
-.sleep-title {
+.treatment-title {
   font-size: 1.1rem;
   color: #3E4D34;
   font-weight: 600;
@@ -100,27 +101,27 @@
   margin-bottom: 0.5rem;
 }
 
-.sleep-subtitle {
+.treatment-subtitle {
   font-size: 1.8rem;
   color: #2c3e50;
   font-weight: 600;
   margin-bottom: 1rem;
 }
 
-.sleep-card {
+.treatment-card {
   background: #f8f9fa;
   padding: 2rem;
   border-radius: 12px;
   border-left: 4px solid #3E4D34;
 }
 
-.sleep-card h4 {
+.treatment-card h4 {
   color: #2c3e50;
   margin-bottom: 1rem;
   font-size: 1.3rem;
 }
 
-.sleep-card p {
+.treatment-card p {
   color: #666;
   line-height: 1.6;
 }
@@ -236,10 +237,78 @@
   line-height: 1.6;
 }
 
+/* Resources Section */
+.adhd-resources {
+  padding: 4rem 0;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+.resources-title {
+  font-size: 2.5rem;
+  color: #2c3e50;
+  text-align: center;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.resources-subtitle {
+  font-size: 1.1rem;
+  color: #666;
+  text-align: center;
+  margin-bottom: 3rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.resources-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.resource-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.resource-card h3 {
+  color: #2c3e50;
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+}
+
+.helpline-number {
+  font-size: 1.4rem;
+  color: #3E4D34;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.resource-btn {
+  background: #3E4D34;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+}
+
+.resource-btn:hover {
+  background: #2D3A27;
+  transform: translateY(-2px);
+}
+
 /* Responsive Design */
 @media (max-width: 968px) {
   .hero-content,
-  .sleep-content {
+  .treatment-content {
     grid-template-columns: 1fr;
     gap: 2rem;
     text-align: center;
@@ -247,15 +316,14 @@
   
   .hero-text {
     padding-right: 0;
-    order: 2;
-  }
-  
-  .hero-image {
-    order: 1;
   }
   
   .topics-grid {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+  
+  .resources-content {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -276,16 +344,17 @@
     height: 300px;
   }
   
-  .sleep-image img {
+  .treatment-image img {
     height: 250px;
   }
   
-  .sleep-subtitle {
+  .treatment-subtitle {
     font-size: 1.5rem;
   }
   
   .section-title,
-  .faqs-title {
+  .faqs-title,
+  .resources-title {
     font-size: 2rem;
   }
   
@@ -315,11 +384,11 @@
     height: 250px;
   }
   
-  .sleep-image img {
+  .treatment-image img {
     height: 200px;
   }
   
-  .sleep-card {
+  .treatment-card {
     padding: 1.5rem;
   }
   
@@ -330,4 +399,14 @@
   .topic-image img {
     height: 180px;
   }
+  
+  .resource-card {
+    padding: 1.5rem;
+  }
+  
+  .helpline-number {
+    font-size: 1.2rem;
+  }
 }
+
+
