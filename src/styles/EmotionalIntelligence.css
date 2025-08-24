@@ -1,63 +1,60 @@
-.communication-page {
+.emotional-intelligence-page {
   font-family: "Inter", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   color: #2d3748;
   line-height: 1.6;
 }
 
-.communication-hero {
+.ei-hero {
   background: linear-gradient(135deg, #f0fff4 0%, #c6f6d5 100%);
 }
 
-/* Cards */
-.communication-card {
+/* Card Hover */
+.topic-card {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  overflow: hidden; /* keeps image inside rounded corners */
 }
-
-.communication-card:hover {
-  transform: scale(1.05); /* grow the whole card */
+.topic-card:hover {
+  transform: translateY(-8px);
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
     0 10px 10px -5px rgba(0, 0, 0, 0.04) !important;
 }
 
-.communication-card img {
-  height: 200px;
-  width: 100%;
-  object-fit: cover;
+.card-img-top {
   transition: transform 0.5s ease;
 }
-
-.communication-card:hover img {
-  transform: scale(1.1); /* zoom image slightly inside card */
+.topic-card:hover .card-img-top {
+  transform: scale(1.05);
 }
 
-/* Accordion */
+.card-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.6) 100%);
+  opacity: 0.3;
+  transition: opacity 0.3s ease;
+}
+.topic-card:hover .card-overlay {
+  opacity: 0.5;
+}
+
+/* Accordion Active State */
 .accordion-button:not(.collapsed) {
   color: #22543d;
   background-color: #f0fff4;
 }
-
 .accordion-button:focus {
   box-shadow: none;
   border-color: rgba(0, 0, 0, 0.125);
 }
 
-/* Responsive */
+/* Responsive tweaks */
 @media (max-width: 768px) {
   .display-4 {
-    font-size: 2.5rem;
+    font-size: 2.4rem;
   }
-
   .display-5 {
     font-size: 2rem;
-  }
-
-  .communication-hero .row > div:first-child {
-    text-align: center;
-  }
-
-  .communication-hero .btn {
-    width: 100%;
-    max-width: 280px;
   }
 }

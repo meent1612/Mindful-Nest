@@ -6,7 +6,7 @@ const Relationships = () => {
   const relationshipCategories = [
     'Communication',
     'Emotional Intelligence',
-    'Love & Friendship',
+    'Love and Friendship',
     'Domestic Abuse'
   ];
 
@@ -26,8 +26,8 @@ const Relationships = () => {
               to={`/relationships/${category
                 .toLowerCase()
                 .replace(/\s+/g, '-')
-                .replace(/&/g, '')
                 .replace(/-+/g, '-')}`}
+
               className="relationships-card"
             >
               <span className="relationships-card-text">{category}</span>
