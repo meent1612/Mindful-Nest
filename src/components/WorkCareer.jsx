@@ -1,9 +1,8 @@
 import React, { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/WorkCareer.css';
-//import PageNavigation from '../components/PageNavigation';
 import WorkCareerImage from '../assets/work-career-main.jpeg';
-
+import CareerGuidanceImage from '../assets/career-guidance-main.webp'; // Make sure to import this image
 
 const WorkCareer = () => {
   const [openFaq, setOpenFaq] = useState(null);
@@ -27,7 +26,7 @@ const WorkCareer = () => {
       answer: "Intrinsic motivation comes from within—it's the drive to do something because it's interesting, enjoyable, or personally satisfying. Examples include working on a project because you find it challenging and engaging, or learning a new skill for personal growth. Extrinsic motivation comes from external factors—doing something to earn a reward or avoid punishment. Examples include working for a salary, seeking praise or recognition, or trying to avoid criticism. Research shows that while extrinsic motivation can be effective for simple tasks, intrinsic motivation leads to better performance, creativity, and persistence in complex tasks. The most sustainable motivation often combines both types."
     },
     {
-          question: "What are the best jobs for people with ADHD?",
+      question: "What are the best jobs for people with ADHD?",
       answer: "People with ADHD often thrive in careers that offer variety, immediate feedback, creativity, and physical activity. Some of the best jobs include: 1) Entrepreneurship - allows for flexibility and creative problem-solving; 2) Emergency services (paramedic, firefighter, ER staff) - provides adrenaline rush and varied situations; 3) Creative fields (design, writing, art) - leverages hyperfocus and innovative thinking; 4) Technology careers (coding, IT support) - offers problem-solving and often flexible schedules; 5) Trades (electrician, carpenter, mechanic) - provides hands-on work and visible results; 6) Sales - offers social interaction and performance-based rewards; 7) Teaching - provides structure with variety and engagement with students. The key is finding work that aligns with individual strengths and interests while providing appropriate accommodations when needed."
     }
   ];
@@ -44,7 +43,6 @@ const WorkCareer = () => {
     <div className="work-career-page">
       <div className="work-career-container">
         
-
         {/* Breadcrumb Navigation */}
         <div className="breadcrumb">
           <Link to="/health-wellness" className="breadcrumb-link">Health & Wellness</Link>
@@ -76,7 +74,28 @@ const WorkCareer = () => {
             </div>
           </div>
           
-         
+          {/* Career Guidance Card */}
+          <div className="career-guidance-section">
+            <div className="career-guidance-card">
+              <div className="career-guidance-content">
+                <h3 className="career-guidance-card-title">Finding the Right Career</h3>
+                <p className="career-guidance-card-description">
+                  Reconsidering your career or trapped in a job you hate? Here's how to choose 
+                  or change career paths and find more satisfaction and meaning in your work.
+                </p>
+                <Link to="/health-wellness/work-career/finding-right-career" className="career-guidance-btn">
+                  Learn More    
+                </Link>
+              </div>
+              <div className="career-guidance-card-image">
+                <img 
+                  src={CareerGuidanceImage} 
+                  alt="Finding the right career" 
+                  className="career-guidance-card-img"
+                />
+              </div>
+            </div>
+          </div>
           
           {/* FAQs Section */}
           <div className="faqs-section" ref={faqRef}>
