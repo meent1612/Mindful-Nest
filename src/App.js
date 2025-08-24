@@ -34,6 +34,7 @@ import PTSDTrauma from './components/PTSDTrauma';
 import SuicideSelfHarm from './components/SuicideSelfHarm';
 import ObesityStatistics from './components/ObesityStatistics';
 import EmotionalEating from './components/EmotionalEating';
+import Communication from './components/Communication';
 
 function App() {
   return (
@@ -83,6 +84,11 @@ function App() {
          {/* Other main sections */}
 
         <Route path="/relationships" element={<Relationships />} />
+         <Route path="/relationships/communication" element={<Communication />} />
+         {/*<Route path="/relationships/emotional-intelligence" element={<EmotionalIntelligence />} />
+         <Route path="/relationships/love&friendship" element={<LoveandFriendship />} />
+         <Route path="/relationships/domestic-abuse" element={<DomesticAbuse />} />*/}
+         
         <Route path="/treatment" element={<Treatment />} />
         </Routes>
         <Footer />
