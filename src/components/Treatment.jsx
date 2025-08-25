@@ -1,11 +1,19 @@
-import React from 'react';
-//import '../styles/Page.css';
+import React, { useState } from "react";
+import AddStudent from "./AddStudent";
+import StudentList from "./StudentList"; 
 
 const Treatment = () => {
+  const [students, setStudents] = useState([]);
+
+  const handleStudentAdded = (newStudent) => {
+    setStudents((prevStudents) => [...prevStudents, newStudent]);
+  };
+
   return (
-    <div className="page-container">
-      <h1>This is the Treatment page</h1>
-      <p>Content about treatment options will go here.</p>
+    <div className="App">
+      <h1>Student Management System</h1>
+      <AddStudent onStudentAdded={handleStudentAdded} />
+      <StudentList students={students} setStudents={setStudents} />
     </div>
   );
 };
