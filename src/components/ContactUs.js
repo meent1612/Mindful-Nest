@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import '../styles/ContactUs.css';
+import axios from 'axios';
 
 const ContactUs = () => {
   const [formData, setFormData] = useState({
@@ -9,6 +10,8 @@ const ContactUs = () => {
     location: '',
     comments: ''
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitMessage, setSubmitMessage] = useState('');
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -18,17 +21,32 @@ const ContactUs = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    alert('Thank you for your feedback!');
-    setFormData({
-      firstName: '',
-      lastName: '',
-      email: '',
-      location: '',
-      comments: ''
-    });
+    setIsSubmitting(true);
+    setSubmitMessage('');
+
+    try {
+      const response = await axios.post('http://localhost:5000/api/contact', formData);
+      
+      setSubmitMessage(response.data.message);
+      setFormData({
+        firstName: '',
+        lastName: '',
+        email: '',
+        location: '',
+        comments: ''
+      });
+      
+    } catch (error) {
+      console.error('Submission error:', error);
+      setSubmitMessage(
+        error.response?.data?.message || 
+        'There was an error submitting your form. Please try again.'
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -57,17 +75,21 @@ const ContactUs = () => {
               type="text"
               id="firstName"
               name="firstName"
-              placeholder="First Name"
+              placeholder="First Name *"
               value={formData.firstName}
               onChange={handleChange}
+              required
+              disabled={isSubmitting}
             />
             <input
               type="text"
               id="lastName"
               name="lastName"
-              placeholder="Last Name"
+              placeholder="Last Name *"
               value={formData.lastName}
               onChange={handleChange}
+              required
+              disabled={isSubmitting}
             />
           </div>
 
@@ -80,6 +102,7 @@ const ContactUs = () => {
               value={formData.email}
               onChange={handleChange}
               required
+              disabled={isSubmitting}
             />
           </div>
 
@@ -91,6 +114,7 @@ const ContactUs = () => {
               placeholder="Where are you located?"
               value={formData.location}
               onChange={handleChange}
+              disabled={isSubmitting}
             />
           </div>
 
@@ -102,10 +126,23 @@ const ContactUs = () => {
               value={formData.comments}
               onChange={handleChange}
               required
+              disabled={isSubmitting}
             />
           </div>
 
-          <button type="submit" className="submit-btn">Submit</button>
+          {submitMessage && (
+            <div className={`submit-message ${submitMessage.includes('Thank you') ? 'success' : 'error'}`}>
+              {submitMessage}
+            </div>
+          )}
+
+          <button 
+            type="submit" 
+            className="submit-btn"
+            disabled={isSubmitting}
+          >
+            {isSubmitting ? 'Submitting...' : 'Submit'}
+          </button>
         </form>
       </div>
 
