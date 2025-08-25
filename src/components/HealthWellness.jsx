@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-//import PageNavigation from '../components/PageNavigation';
 import '../styles/HealthWellness.css';
 
 const HealthWellness = () => {
@@ -12,8 +11,16 @@ const HealthWellness = () => {
     'Well-being & Happiness',
     'Weight Management',
     'Work & Career',
-    'Illness & Disability'
+    'Illness & Disability',
+    'Mental Health Journal' // Add the journal as a separate category
   ];
+
+  const getCategoryPath = (category) => {
+    if (category === 'Mental Health Journal') {
+      return '/health-wellness/mental-health-journal';
+    }
+    return `/health-wellness/${category.toLowerCase().replace(/\s+/g, '-').replace(/&/g, '').replace(/-+/g, '-')}`;
+  };
 
   return (
     <div className="health-wellness-page">
@@ -26,10 +33,13 @@ const HealthWellness = () => {
           {wellnessCategories.map((category, index) => (
             <Link 
               key={index} 
-             to={`/health-wellness/${category.toLowerCase().replace(/\s+/g, '-').replace(/&/g, '').replace(/-+/g, '-')}`}
+              to={getCategoryPath(category)}
               className="wellness-card"
             >
               <span className="wellness-card-text">{category}</span>
+              {category === 'Mental Health Journal' && (
+                <p className="journal-card-desc">Track your thoughts and feelings</p>
+              )}
             </Link>
           ))}
         </div>

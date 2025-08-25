@@ -34,7 +34,7 @@ import PTSDTrauma from './components/PTSDTrauma';
 import SuicideSelfHarm from './components/SuicideSelfHarm';
 import ObesityStatistics from './components/ObesityStatistics';
 import EmotionalEating from './components/EmotionalEating';
-
+import MentalHealthJournal from './components/MentalHealthJournal';
 import CareerGuidance from './components/CareerGuidance';
 import DisabilityAdjustment from './components/DisabilityAdjustment';
 import LifeThreateningIllness from './components/LifeThreateningIllness';
@@ -73,6 +73,7 @@ function App() {
         <Route path ="/health-wellness/weight-management" element={<WeightManagement />} />
         <Route path = "/health-wellness/work-career" element={<WorkCareer />} />
         <Route path ="/health-wellness/illness-disability" element={<IllnessDisability />} />
+        <Route path = "/health-wellness/mental-health-journal" element={<MentalHealthJournal/>}/>
 
          {/* Sub-pages under Exercise & Fitness */}
         <Route path="/health-wellness/exercise-fitness/how-to-start" element={<HowToStartExercising />} />
