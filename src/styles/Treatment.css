@@ -1,0 +1,43 @@
+.treatment-page {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.treatment-page h2 {
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.card {
+  border-radius: 12px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+}
+
+/* Different border colors for plan/coping */
+.border-plan {
+  border-left: 5px solid #0d6efd; /* bootstrap primary */
+}
+
+.border-coping {
+  border-left: 5px solid #198754; /* bootstrap success */
+}
+
+.text-plan {
+  color: #0d6efd;
+}
+
+.text-coping {
+  color: #198754;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .treatment-page h2 {
+    font-size: 1.8rem;
+  }
+}
