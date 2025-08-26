@@ -2,25 +2,13 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../styles/ResourcesPage.css';
 
-const Resources = () => {
+const ResourcesPage = () => {
   const [resources, setResources] = useState([]);
   const [filteredResources, setFilteredResources] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
-  // Icon mapping for resource types
-  const typeIcons = {
-    Article: 'fas fa-newspaper',
-    Video: 'fas fa-video',
-    Hotline: 'fas fa-phone-alt',
-    App: 'fas fa-mobile-alt',
-    Book: 'fas fa-book',
-    Website: 'fas fa-globe',
-    Podcast: 'fas fa-podcast'
-  };
-
-  // Categories for filtering
   const categories = [
     'all', 'ADHD', 'Addiction', 'Anxiety', 'Depression',
     'PTSD & Trauma', 'Suicide & Self-Harm', 'Stress',
@@ -39,37 +27,54 @@ const Resources = () => {
   const fetchResources = async () => {
     try {
       setLoading(true);
+      setError('');
       const response = await axios.get('http://localhost:5000/api/resources');
-      setResources(response.data.data || []);
+      
+      if (response.data.success) {
+        setResources(response.data.data || []);
+      } else {
+        throw new Error(response.data.message || 'Failed to fetch resources');
+      }
     } catch (err) {
       console.error('Error fetching resources:', err);
       setError('Failed to load resources. Please try again later.');
-
+      
       // Fallback demo data
-      setResources([
-        {
-          _id: '1',
-          title: 'National Suicide Prevention Lifeline',
-          url: 'https://suicidepreventionlifeline.org',
-          category: 'Crisis Support',
-          description: 'Free, confidential support 24/7 for people in distress',
-          type: 'Hotline',
-          featured: true
-        },
-        {
-          _id: '2',
-          title: 'ADHD Management Guide',
-          url: 'https://example.com/adhd-guide',
-          category: 'ADHD',
-          description: 'Comprehensive guide for managing ADHD symptoms daily',
-          type: 'Article',
-          featured: false
-        }
-      ]);
+      setResources(getDemoResources());
     } finally {
       setLoading(false);
     }
   };
+
+  const getDemoResources = () => [
+    {
+      _id: '1',
+      title: 'National Suicide Prevention Lifeline',
+      url: 'https://suicidepreventionlifeline.org',
+      category: 'Crisis Support',
+      description: 'Free, confidential support 24/7 for people in distress',
+      type: 'Hotline',
+      featured: true
+    },
+    {
+      _id: '2',
+      title: 'ADHD Management Guide',
+      url: 'https://chadd.org',
+      category: 'ADHD',
+      description: 'Comprehensive guide for managing ADHD symptoms daily',
+      type: 'Article',
+      featured: false
+    },
+    {
+      _id: '3',
+      title: 'Anxiety and Depression Association',
+      url: 'https://adaa.org',
+      category: 'Anxiety',
+      description: 'Resources for anxiety and depression treatment',
+      type: 'Website',
+      featured: true
+    }
+  ];
 
   const filterResources = () => {
     if (selectedCategory === 'all') {
@@ -90,7 +95,10 @@ const Resources = () => {
       'PTSD & Trauma': '#9b59b6',
       'Suicide & Self-Harm': '#e67e22',
       'Therapy': '#27ae60',
-      'default': '#6a11cb'
+      'Self-Care': '#2ecc71',
+      'Mindfulness': '#8e44ad',
+      'Support Groups': '#16a085',
+      'default': '#3E4D34'
     };
     return colors[category] || colors.default;
   };
@@ -102,7 +110,6 @@ const Resources = () => {
           <div className="loading-state">
             <div className="loading-spinner"></div>
             <h2>Loading Resources...</h2>
-            <p>Please wait while we gather the best mental health resources for you</p>
           </div>
         </div>
       </div>
@@ -117,22 +124,22 @@ const Resources = () => {
         <div className="resources-header">
           <h1 className="resources-title">Mental Health Resources</h1>
           <p className="resources-subtitle">
-            Curated collection of helpful resources, support services, and information 
-            to support your mental health journey
+            Curated collection of helpful resources and support services
           </p>
         </div>
 
         {/* Filters */}
         <div className="resources-filters">
           <h2 className="filter-title">Filter by Category</h2>
-          <div className="filter-grid">
+          <div className="filter-buttons">
             {categories.map(category => (
               <button
                 key={category}
                 className={`filter-btn ${selectedCategory === category ? 'active' : ''}`}
                 onClick={() => setSelectedCategory(category)}
                 style={{
-                  backgroundColor: selectedCategory === category ? getCategoryColor(category) : '',
+                  backgroundColor: selectedCategory === category ? getCategoryColor(category) : 'white',
+                  color: selectedCategory === category ? 'white' : getCategoryColor(category),
                   borderColor: getCategoryColor(category)
                 }}
               >
@@ -143,54 +150,54 @@ const Resources = () => {
         </div>
 
         {/* Resources Grid */}
-        <div className="resources-grid">
+        <div className="resources-content">
           {filteredResources.length === 0 ? (
             <div className="empty-state">
               <div className="empty-icon">📚</div>
-              <h2>No resources found</h2>
-              <p>We couldn't find any resources in this category. Try selecting a different filter.</p>
+              <h3>No resources found</h3>
+              <p>Try selecting a different category or check back later for new resources.</p>
             </div>
           ) : (
-            filteredResources.map(resource => (
-              <div key={resource._id} className="resource-card">
-                <div className="resource-category">{resource.category}</div>
-                <div className="resource-type">{resource.type}</div>
-
-                <div className="resource-image">
-                  <i className={typeIcons[resource.type] || 'fas fa-link'}></i>
-                </div>
-
-                <div className="resource-content">
-                  <h3 className="resource-title">{resource.title}</h3>
-                  <p className="resource-description">
-                    {resource.description || 'No description available.'}
-                  </p>
-                  <a
-                    href={resource.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="resource-url"
+            <div className="resources-grid">
+              {filteredResources.map(resource => (
+                <div key={resource._id} className="resource-card">
+                  <div 
+                    className="resource-category-badge"
+                    style={{ backgroundColor: getCategoryColor(resource.category) }}
                   >
-                    Visit Resource <i className="fas fa-arrow-right"></i>
-                  </a>
+                    {resource.category}
+                  </div>
+                  
+                  <div className="resource-content">
+                    <h3 className="resource-title">{resource.title}</h3>
+                    <p className="resource-description">
+                      {resource.description}
+                    </p>
+                    
+                    <div className="resource-type">
+                      <span className="type-badge">{resource.type}</span>
+                    </div>
+                    
+                    <a
+                      href={resource.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="resource-link"
+                    >
+                      Visit Resource →
+                    </a>
+                  </div>
                 </div>
-              </div>
-            ))
+              ))}
+            </div>
           )}
         </div>
 
         {/* Error Message */}
         {error && (
-          <div style={{
-            background: '#ffe6e6',
-            color: '#c23b3b',
-            padding: '20px',
-            borderRadius: '10px',
-            textAlign: 'center',
-            margin: '20px 0'
-          }}>
-            <i className="fas fa-exclamation-triangle" style={{marginRight: '10px'}}></i>
-            {error}
+          <div className="error-message">
+            <span>⚠</span>
+            <p>{error}</p>
           </div>
         )}
 
@@ -199,4 +206,4 @@ const Resources = () => {
   );
 };
 
-export default Resources;
+export default ResourcesPage;
