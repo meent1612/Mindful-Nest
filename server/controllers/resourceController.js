@@ -1,17 +1,19 @@
 import Resource from '../models/Resources.js';
 
-
 export const getResources = async (req, res) => {
   try {
     const { category } = req.query;
     let query = {};
-    
+
     if (category) {
       query.category = category;
     }
 
+    console.log('Query used:', query);
     const resources = await Resource.find(query).sort({ createdAt: -1 });
-    
+    console.log('Resources found:', resources);
+
+
     res.status(200).json({
       success: true,
       data: resources
@@ -28,9 +30,9 @@ export const getResources = async (req, res) => {
 export const getResourcesByCategory = async (req, res) => {
   try {
     const { category } = req.params;
-    
+
     const resources = await Resource.find({ category }).sort({ createdAt: -1 });
-    
+
     res.status(200).json({
       success: true,
       data: resources
@@ -69,7 +71,7 @@ export const createResource = async (req, res) => {
 
   } catch (error) {
     console.error('Create resource error:', error);
-    
+
     if (error.name === 'ValidationError') {
       return res.status(400).json({
         success: false,
