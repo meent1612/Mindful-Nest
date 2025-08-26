@@ -51,6 +51,9 @@ const MindfulNavbar = () => {
               <Link to="/treatment" className="nav-link-main">
                 Treatment
               </Link>
+            <Link to="/mental-health-journal" className="nav-link-main">
+                Mental Health Journal
+              </Link>
             </nav>
           </div>
         </Container>
