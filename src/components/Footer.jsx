@@ -18,10 +18,8 @@ const Footer = () => {
               Providing resources and support for better mental well-being.
             </p>
             <div className="social-links">
-              <a href="#" aria-label="Facebook">📘</a>
-              <a href="#" aria-label="Twitter">🐦</a>
-              <a href="#" aria-label="Instagram">📷</a>
-              <a href="#" aria-label="LinkedIn">💼</a>
+              <a href="https://www.facebook.com/AUST.BD/" aria-label="Facebook" target="_blank" rel="noopener noreferrer">📘</a>
+              <a href="https://github.com/meent1612/Mindful-Nest" aria-label="GitHub" target="_blank" rel="noopener noreferrer">💻</a>
             </div>
           </div>
 
