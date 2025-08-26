@@ -75,7 +75,7 @@ function App() {
         <Route path ="/health-wellness/weight-management" element={<WeightManagement />} />
         <Route path = "/health-wellness/work-career" element={<WorkCareer />} />
         <Route path ="/health-wellness/illness-disability" element={<IllnessDisability />} />
-        <Route path = "/health-wellness/mental-health-journal" element={<MentalHealthJournal/>}/>
+        <Route path = "/mental-health-journal" element={<MentalHealthJournal/>}/>
 
          {/* Sub-pages under Exercise & Fitness */}
         <Route path="/health-wellness/exercise-fitness/how-to-start" element={<HowToStartExercising />} />

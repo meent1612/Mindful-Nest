@@ -189,7 +189,7 @@
 
 .modal-content h2 {
   margin-top: 0;
-  color: white;
+  color: #3E4D34;
   font-family: 'Playfair Display', serif;
   font-size: 2.2rem;
   margin-bottom: 1.5rem;
@@ -204,7 +204,7 @@
   display: block;
   margin-bottom: 0.5rem;
   font-weight: 600;
-  color: white;
+  color: #3E4D34;
 }
 
 .form-group input,

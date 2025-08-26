@@ -12,13 +12,11 @@ const HealthWellness = () => {
     'Weight Management',
     'Work & Career',
     'Illness & Disability',
-    'Mental Health Journal' // Add the journal as a separate category
+   
   ];
 
   const getCategoryPath = (category) => {
-    if (category === 'Mental Health Journal') {
-      return '/health-wellness/mental-health-journal';
-    }
+    
     return `/health-wellness/${category.toLowerCase().replace(/\s+/g, '-').replace(/&/g, '').replace(/-+/g, '-')}`;
   };
 
