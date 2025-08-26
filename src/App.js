@@ -43,6 +43,7 @@ import Communication from './components/Communication';
 import EmotionalIntelligence from './components/EmotionalIntelligence';
 import LoveFriendship from "./components/LoveFriendship";
 import DomesticAbuse from './components/DomesticAbuse';
+import ResourcesPage from './components/ResourcesPage';
 
 
 function App() {
@@ -54,6 +55,7 @@ function App() {
         <Route path="/" element={<Homepage />} /> 
         <Route path="/contact" element={<ContactUs />} /> 
         <Route path="/about" element={<AboutUs />} />
+        <Route path="/resources" element={<ResourcesPage />} />
 
         <Route path="/mental-health" element={<MentalHealth />} />
          <Route path="/mental-health/adhd" element={<ADHD />} />
