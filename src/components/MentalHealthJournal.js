@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import '../styles/HealthWellness.css';
+import '../styles/MentalHealthJournal.css';
 
 // API base URL
 const API_BASE = 'http://localhost:5000/api';
@@ -16,6 +16,40 @@ const MentalHealthJournal = () => {
   const [showJournalForm, setShowJournalForm] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
+
+  // Popular journaling websites
+  const journalingPlatforms = [
+    {
+      name: 'Penzu',
+      url: 'https://penzu.com/',
+      description: 'Private online journal with military-grade encryption'
+    },
+    {
+      name: 'Day One',
+      url: 'https://dayoneapp.com/',
+      description: 'Award-winning journaling app for iOS and Mac'
+    },
+    {
+      name: 'Journey',
+      url: 'https://journey.cloud/',
+      description: 'Cross-platform journal with cloud sync'
+    },
+    {
+      name: '750 Words',
+      url: 'https://750words.com/',
+      description: 'Daily writing practice with analytics'
+    },
+    {
+      name: 'Therapy Notebooks',
+      url: 'https://therapynotes.com/',
+      description: 'Journaling tools designed with mental health in mind'
+    },
+    {
+      name: 'Reflectly',
+      url: 'https://reflectly.app/',
+      description: 'AI-powered journal for mental wellbeing'
+    }
+  ];
 
   // Fetch journal entries from API
   useEffect(() => {
@@ -156,6 +190,40 @@ const MentalHealthJournal = () => {
               ))}
             </div>
           )}
+        </div>
+
+        {/* Journaling Platforms Section (Renamed from Resources) */}
+        <div className="journal-platforms-section">
+          <h2>Journaling Platforms</h2>
+          <p className="journal-platforms-subtitle">
+            Explore these popular journaling platforms to enhance your writing practice:
+          </p>
+          
+          <div className="journal-platforms-grid">
+            {journalingPlatforms.map((platform, index) => (
+              <div key={index} className="journal-platform-card">
+                <h3>
+                  <a 
+                    href={platform.url} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="journal-platform-link"
+                  >
+                    {platform.name}
+                  </a>
+                </h3>
+                <p className="journal-platform-description">{platform.description}</p>
+                <a 
+                  href={platform.url} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="journal-platform-visit-btn"
+                >
+                  Visit Website
+                </a>
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* Journal Form Modal */}
