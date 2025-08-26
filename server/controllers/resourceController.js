@@ -60,7 +60,7 @@ export const createResource = async (req, res) => {
 
     const { title, url, category, description, type, featured } = req.body;
 
-    // Validation
+    
     if (!title || !url || !category) {
       return res.status(400).json({
         success: false,
