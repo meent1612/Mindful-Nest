@@ -29,7 +29,7 @@ const ResourcesPage = () => {
       setLoading(true);
       setError('');
       const response = await axios.get('http://localhost:5000/api/resources');
-      
+
       if (response.data.success) {
         setResources(response.data.data || []);
       } else {
@@ -38,8 +38,7 @@ const ResourcesPage = () => {
     } catch (err) {
       console.error('Error fetching resources:', err);
       setError('Failed to load resources. Please try again later.');
-      
-      // Fallback demo data
+
       setResources(getDemoResources());
     } finally {
       setLoading(false);
@@ -119,8 +118,8 @@ const ResourcesPage = () => {
   return (
     <div className="resources-page">
       <div className="resources-container">
+
         
-        {/* Header */}
         <div className="resources-header">
           <h1 className="resources-title">Mental Health Resources</h1>
           <p className="resources-subtitle">
@@ -128,7 +127,6 @@ const ResourcesPage = () => {
           </p>
         </div>
 
-        {/* Filters */}
         <div className="resources-filters">
           <h2 className="filter-title">Filter by Category</h2>
           <div className="filter-buttons">
@@ -149,7 +147,7 @@ const ResourcesPage = () => {
           </div>
         </div>
 
-        {/* Resources Grid */}
+
         <div className="resources-content">
           {filteredResources.length === 0 ? (
             <div className="empty-state">
@@ -161,23 +159,23 @@ const ResourcesPage = () => {
             <div className="resources-grid">
               {filteredResources.map(resource => (
                 <div key={resource._id} className="resource-card">
-                  <div 
+                  <div
                     className="resource-category-badge"
                     style={{ backgroundColor: getCategoryColor(resource.category) }}
                   >
                     {resource.category}
                   </div>
-                  
+
                   <div className="resource-content">
                     <h3 className="resource-title">{resource.title}</h3>
                     <p className="resource-description">
                       {resource.description}
                     </p>
-                    
+
                     <div className="resource-type">
                       <span className="type-badge">{resource.type}</span>
                     </div>
-                    
+
                     <a
                       href={resource.url}
                       target="_blank"
@@ -193,7 +191,7 @@ const ResourcesPage = () => {
           )}
         </div>
 
-        {/* Error Message */}
+
         {error && (
           <div className="error-message">
             <span>⚠</span>

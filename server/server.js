@@ -10,19 +10,19 @@ connectDb();
 
 const app = express();
 
-// Fix CORS configuration
+
 app.use(cors({
-  origin: 'http://localhost:3000', // Your React app URL
+  origin: 'http://localhost:3000', 
   credentials: true
 }));
 
 app.use(express.json());
 
-// Routes
+
 app.use('/api/resources', resourceRoutes);
 app.use('/api/journal-entries', journalRoutes);
 
-// Health check endpoint
+
 app.get('/api/health', (req, res) => {
   res.status(200).json({
     success: true,
