@@ -8,7 +8,6 @@
   background: linear-gradient(135deg, #f0fff4 0%, #c6f6d5 100%);
 }
 
-/* Cards */
 .communication-card {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   overflow: hidden; /* keeps image inside rounded corners */
@@ -31,7 +30,6 @@
   transform: scale(1.1); /* zoom image slightly inside card */
 }
 
-/* Accordion */
 .accordion-button:not(.collapsed) {
   color: #22543d;
   background-color: #f0fff4;

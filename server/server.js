@@ -4,15 +4,15 @@ import dotenv from 'dotenv';
 import connectDb from './db/connect.js';
 import journalRoutes from './routes/journalRoutes.js';
 import resourceRoutes from './routes/resourceRoutes.js';
+import treatmentRoutes from './routes/treatmentRoutes.js'; 
 
 dotenv.config();
 connectDb();
 
 const app = express();
 
-// Fix CORS configuration
 app.use(cors({
-  origin: 'http://localhost:3000', // Your React app URL
+  origin: 'http://localhost:3000', 
   credentials: true
 }));
 
@@ -21,6 +21,7 @@ app.use(express.json());
 // Routes
 app.use('/api/resources', resourceRoutes);
 app.use('/api/journal-entries', journalRoutes);
+app.use('/api/treatments', treatmentRoutes); 
 
 // Health check endpoint
 app.get('/api/health', (req, res) => {
