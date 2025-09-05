@@ -44,6 +44,7 @@ import EmotionalIntelligence from './components/EmotionalIntelligence';
 import LoveFriendship from "./components/LoveFriendship";
 import DomesticAbuse from './components/DomesticAbuse';
 import ResourcesPage from './components/ResourcesPage';
+import ProblemChecker from './components/ProblemChecker';
 
 
 function App() {
@@ -64,7 +65,7 @@ function App() {
          <Route path="/mental-health/depression" element={<Depression />} />
          <Route path="/mental-health/ptsd-trauma" element={<PTSDTrauma />} />
          <Route path="/mental-health/suicide-self-harm" element={<SuicideSelfHarm />} />
-         
+         <Route path="/problem-checker" element={<ProblemChecker />} />
                
         <Route path="/health-wellness" element={<HealthWellness />} />         
          <Route path="/health-wellness/exercise-fitness" element={<ExerciseFitness />} />

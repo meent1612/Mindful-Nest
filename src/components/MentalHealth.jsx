@@ -30,6 +30,15 @@ const MentalHealth = () => {
             </Link>
           ))}
         </div>
+<section className="checker-section">
+        <div className="divider"></div>
+        <div className="problem-checker-link">
+          <p className="problem-checker-text">Not sure what you’re feeling?</p>
+          <Link to="/problem-checker" className="problem-checker-button">
+            Check Your Problem
+          </Link>
+        </div>
+      </section>
       </div>
     </div>
   );
