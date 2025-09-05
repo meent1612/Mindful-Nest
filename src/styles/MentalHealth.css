@@ -86,40 +86,35 @@
   position: relative;
 }
 
-.divider {
-  height: 1px;
-  background-color: #e2e8f0; /* Light gray */
-  width: 100%;
-  margin: 25px 0;
-}
-
-
-
-.problem-checker-link {
+.problem-checker-section {
   text-align: center;
-  margin-top: 2rem;
+  margin: 40px auto;
+  padding: 20px;
+  background: #ebe6d9; 
+  border-radius: 12px;
+  box-shadow: 0px 2px 6px rgba(0,0,0,0.08);
+  max-width: 600px;
 }
 
 .problem-checker-text {
-  font-size: 1.1rem;
-  margin-bottom: 0.5rem;
-  color: #444;
+  font-size: 1.2rem;
+  margin-bottom: 12px;
+  font-weight: 500;
 }
 
 .problem-checker-button {
   display: inline-block;
-  padding: 0.75rem 1.5rem;
-  background-color: #154126;
-  color: rgb(27, 78, 57);
-  border-radius: 1rem;
-  font-size: 1rem;
-  text-decoration: none;
+  background: #2e471f; 
+  color: white;
   font-weight: 600;
-  box-shadow: 0 2px 6px rgba(21, 65, 38, 0.2);
+  text-decoration: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
 }
 
 .problem-checker-button:hover {
-  background-color: #1a5a37;
+  background: #1e4414; 
 }
 
 

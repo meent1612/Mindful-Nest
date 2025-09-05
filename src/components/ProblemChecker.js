@@ -1,62 +1,37 @@
 import React, { useState } from "react";
-import "../styles/ProblemChecker.css";
-import axios from "axios";
+import api from "../api";
 
 const ProblemChecker = () => {
-  const [problem, setProblem] = useState("");
+  const [text, setText] = useState("");
   const [result, setResult] = useState(null);
+  const [error, setError] = useState("");
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleCheck = async () => {
     try {
-      const res = await axios.post("http://localhost:5000/api/problems/check", {
-        text: problem,
-      });
-      setResult(res.data);
+      const response = await api.post("/api/problems/check", { text });
+      setResult(response.data);
+      setError("");
     } catch (err) {
-      console.error(err);
+      setError(err.response?.data?.message || "Authentication required.");
     }
   };
 
   return (
-    <div className="problem-checker-container">
-      <h2 className="problem-checker-title">Describe Your Problem</h2>
-      <form onSubmit={handleSubmit}>
-        <textarea
-          value={problem}
-          onChange={(e) => setProblem(e.target.value)}
-          placeholder="Tell us what you're feeling..."
-          className="problem-checker-textarea"
-          required
-        />
-        <button type="submit" className="problem-checker-button">
-          Analyze
-        </button>
-      </form>
-
+    <div className="problem-checker-page">
+      <h1>Problem Checker</h1>
+      <textarea
+        value={text}
+        onChange={(e) => setText(e.target.value)}
+        placeholder="Describe your feelings..."
+      />
+      <button onClick={handleCheck}>Check</button>
+      {error && <p style={{ color: "red" }}>{error}</p>}
       {result && (
-        <div className="problem-checker-result">
-          <h3>Possible Related Issues:</h3>
+        <div>
+          <h3>Categories:</h3>
           <ul>
-            {result.categories.map((cat) => (
-              <li key={cat}>{cat}</li>
-            ))}
+            {result.categories.map((c, i) => <li key={i}>{c}</li>)}
           </ul>
-
-          {result.suggestions.length > 0 && (
-            <>
-              <h4>Suggested Resources:</h4>
-              <ul>
-                {result.suggestions.map((res) => (
-                  <li key={res._id}>
-                    <a href={res.url} target="_blank" rel="noreferrer">
-                      {res.title}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </>
-          )}
         </div>
       )}
     </div>

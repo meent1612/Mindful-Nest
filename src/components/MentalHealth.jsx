@@ -29,17 +29,16 @@ const MentalHealth = () => {
               <span className="mental-health-card-text">{category}</span>
             </Link>
           ))}
-        </div>
- 
-        <div className="divider"></div>
-        <div className="problem-checker-link">
-          <p className="problem-checker-text">Not sure what you’re feeling?</p>
-          <Link to="/problem-checker" className="problem-checker-button">
-            Check Your Problem
-          </Link>
-        </div>
-      
+        </div>     
       </div>
+      <section className="problem-checker-section">
+        <p className="problem-checker-text">
+          Not sure what you’re feeling?
+        </p>
+        <Link to="/problem-checker" className="problem-checker-button">
+          Check Your Problem
+        </Link>
+      </section>
     </div>
   );
 };

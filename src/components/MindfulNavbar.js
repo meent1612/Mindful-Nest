@@ -26,6 +26,12 @@ const MindfulNavbar = () => {
               <Nav.Link as={Link} to="/resources" className="nav-link-utility">
                 Resources
               </Nav.Link>
+              <Nav.Link as={Link} to="/login" className="nav-link-utility">
+                Login
+              </Nav.Link>
+              <Nav.Link as={Link} to="/register" className="nav-link-utility">
+                Register
+              </Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>
