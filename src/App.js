@@ -47,6 +47,8 @@ import ProblemChecker from './components/ProblemChecker';
 import Login from './components/Login';
 import Register from './components/Register';
 import ProtectedRoute from './components/ProtectedRoute';
+import SafeLetterBox from './components/SafeLetterBox';
+import CrisisCompanion from './components/CrisisCompanion';
 
 
 function App() {
@@ -61,6 +63,8 @@ function App() {
         <Route path="/resources" element={<ResourcesPage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path ="/safe-letter-box" element={<SafeLetterBox />} />
+        <Route path="/crisis-companion" element={<CrisisCompanion />} />
 
         <Route path="/mental-health" element={<MentalHealth />} />
          <Route path="/mental-health/adhd" element={<ADHD />} />

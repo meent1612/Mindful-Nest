@@ -6,7 +6,8 @@ import journalRoutes from './routes/journalRoutes.js';
 import resourceRoutes from './routes/resourceRoutes.js';
 import problemRoutes from './routes/problemRoutes.js';
 import user from './routes/user.js';
-
+import crisisDataRoutes from './routes/crisisDataRoutes.js';
+import letterRoutes from './routes/letterRoutes.js';
 dotenv.config();
 connectDb();
 
@@ -24,7 +25,9 @@ app.use(express.json());
 app.use('/api/resources', resourceRoutes);
 app.use("/api/problems", problemRoutes);
 app.use('/api/journal-entries', journalRoutes);
-app.use('/api/user', user);
+app.use('/api/crisis-data', crisisDataRoutes);
+app.use('/api/letters', letterRoutes);
+app.use('/api/auth', user);
 
 
 app.get('/api/health', (req, res) => {
