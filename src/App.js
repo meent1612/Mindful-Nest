@@ -38,13 +38,15 @@ import MentalHealthJournal from './components/MentalHealthJournal';
 import CareerGuidance from './components/CareerGuidance';
 import DisabilityAdjustment from './components/DisabilityAdjustment';
 import LifeThreateningIllness from './components/LifeThreateningIllness';
-
 import Communication from './components/Communication';
 import EmotionalIntelligence from './components/EmotionalIntelligence';
 import LoveFriendship from "./components/LoveFriendship";
 import DomesticAbuse from './components/DomesticAbuse';
 import ResourcesPage from './components/ResourcesPage';
 import ProblemChecker from './components/ProblemChecker';
+import Login from './components/Login';
+import Register from './components/Register';
+import ProtectedRoute from './components/ProtectedRoute';
 
 
 function App() {
@@ -57,6 +59,8 @@ function App() {
         <Route path="/contact" element={<ContactUs />} /> 
         <Route path="/about" element={<AboutUs />} />
         <Route path="/resources" element={<ResourcesPage />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
 
         <Route path="/mental-health" element={<MentalHealth />} />
          <Route path="/mental-health/adhd" element={<ADHD />} />
@@ -65,7 +69,14 @@ function App() {
          <Route path="/mental-health/depression" element={<Depression />} />
          <Route path="/mental-health/ptsd-trauma" element={<PTSDTrauma />} />
          <Route path="/mental-health/suicide-self-harm" element={<SuicideSelfHarm />} />
-         <Route path="/problem-checker" element={<ProblemChecker />} />
+         <Route
+            path="/problem-checker"
+            element={
+              <ProtectedRoute>
+                <ProblemChecker />
+              </ProtectedRoute>
+            }
+          />
                
         <Route path="/health-wellness" element={<HealthWellness />} />         
          <Route path="/health-wellness/exercise-fitness" element={<ExerciseFitness />} />
