@@ -1,15 +1,24 @@
-import express from 'express';
+import express from "express";
+import { authMiddleware } from "../middleware/authMiddleware.js";
 import {
   getJournalEntries,
-  addJournalEntry,
-} from '../controllers/journalController.js';
+  createJournalEntry,
+  updateJournalEntry,
+  deleteJournalEntry
+} from "../controllers/journalController.js";
 
 const router = express.Router();
 
 // GET all entries
-router.get('/', getJournalEntries);
+router.get("/", authMiddleware, getJournalEntries);
 
 // POST new entry
-router.post('/', addJournalEntry);
+router.post("/", authMiddleware, createJournalEntry);
+
+// PUT update entry
+router.put("/:id", authMiddleware, updateJournalEntry);
+
+// DELETE entry
+router.delete("/:id", authMiddleware, deleteJournalEntry);
 
 export default router;
