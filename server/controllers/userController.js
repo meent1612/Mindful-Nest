@@ -1,46 +1,45 @@
-import User from '../models/User.js';
+import User from "../models/User.js";
+import jwt from "jsonwebtoken";
+
+const createToken = (user) => {
+  return jwt.sign({ id: user._id, email: user.email }, process.env.JWT_SECRET, { expiresIn: "1h" });
+};
 
 export const registerUser = async (req, res) => {
   const { email, password } = req.body;
 
-  // Validate presence of email and password
   if (!email || !password) {
-    return res.status(400).json({ error: 'Email and password are required' });
+    return res.status(400).json({ error: "Email and password are required" });
   }
 
   try {
-    // Create and save the new user
     const newUser = new User({ email, password });
     await newUser.save();
-    res.status(201).json({ message: 'User registered successfully' });
+
+    const token = createToken(newUser);
+    res.status(201).json({ user: { email: newUser.email }, token });
   } catch (error) {
-    res.status(500).json({ error: 'Registration failed', details: error.message });
+    res.status(500).json({ error: "Registration failed", details: error.message });
   }
 };
 
 export const loginUser = async (req, res) => {
   const { email, password } = req.body;
 
-  // Validate presence of email and password
   if (!email || !password) {
-    return res.status(400).json({ error: 'Email and password are required' });
+    return res.status(400).json({ error: "Email and password are required" });
   }
 
   try {
-    // Find user by email
     const user = await User.findOne({ email });
-    if (!user) {
-      return res.status(404).json({ error: 'User not found' });
-    }
+    if (!user) return res.status(404).json({ error: "User not found" });
 
-    // Compare passwords (assuming password hashing is implemented)
     const isMatch = await user.comparePassword(password);
-    if (!isMatch) {
-      return res.status(401).json({ error: 'Invalid credentials' });
-    }
+    if (!isMatch) return res.status(401).json({ error: "Invalid credentials" });
 
-    res.status(200).json({ message: 'User logged in successfully' });
+    const token = createToken(user);
+    res.status(200).json({ user: { email: user.email }, token });
   } catch (error) {
-    res.status(500).json({ error: 'Login failed', details: error.message });
+    res.status(500).json({ error: "Login failed", details: error.message });
   }
 };
