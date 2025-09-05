@@ -22,7 +22,7 @@
 
 .mental-health-subtitle {
   font-size: 1.5rem;
-  color: #3E4D34;
+  color: #3e4d34;
   text-align: left;
   margin-bottom: 2rem;
   font-weight: 500;
@@ -86,13 +86,43 @@
   position: relative;
 }
 
-/* Specific styling for longer text items */
+.divider {
+  height: 1px;
+  background-color: #e2e8f0; /* Light gray */
+  width: 100%;
+  margin: 25px 0;
+}
+
+.checker-section {
+  padding: 50px 20px;
+  background-color: white; 
+  border-radius: 8px;
+  margin-top: 30px;
+}
+
+.checker-title {
+  font-size: 1.8rem;
+  color: #3E4D34;
+  margin-bottom: 20px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.mission-statement {
+  font-size: 1.25rem;
+  max-width: 800px;
+  margin: 0 auto 50px;
+  text-align: center;
+  color: #3E4D34;
+}
+
+
 .mental-health-card:nth-child(5) .mental-health-card-text,
 .mental-health-card:nth-child(6) .mental-health-card-text {
   font-size: 0.88rem;
 }
 
-/* Responsive Design */
+
 @media (max-width: 1024px) {
   .mental-health-grid {
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
