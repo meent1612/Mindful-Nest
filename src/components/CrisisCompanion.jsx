@@ -1,17 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 //import '../styles/CrisisCompanion.css';
 const API_BASE = 'http://localhost:5000/api';
 
 const CrisisCompanion = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [user, setUser] = useState(null);
-  const [authForm, setAuthForm] = useState({
-    email: '',
-    password: '',
-    name: ''
-  });
-  const [isLogin, setIsLogin] = useState(true);
   const [crisisData, setCrisisData] = useState({
     emergencyContacts: [],
     personalReminders: [],
@@ -21,6 +15,7 @@ const CrisisCompanion = () => {
   const [isActive, setIsActive] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
+  const navigate = useNavigate();
 
   const crisisSteps = [
     { title: "Breathe", description: "Take deep breaths. Inhale for 4 seconds, hold for 4, exhale for 6." },
@@ -43,41 +38,6 @@ const CrisisCompanion = () => {
   }, []);
 
   const getAuthToken = () => localStorage.getItem('token');
-
-  // Authentication handlers (same as above)
-  const handleAuthInputChange = (e) => {
-    const { name, value } = e.target;
-    setAuthForm({ ...authForm, [name]: value });
-  };
-
-  const handleAuthSubmit = async (e) => {
-    e.preventDefault();
-    setIsLoading(true);
-    setError('');
-
-    try {
-      const endpoint = isLogin ? 'login' : 'register';
-      const response = await fetch(`${API_BASE}/auth/${endpoint}`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(authForm)
-      });
-
-      const data = await response.json();
-      if (!response.ok) throw new Error(data.message || 'Authentication failed');
-
-      localStorage.setItem('token', data.token);
-      localStorage.setItem('user', JSON.stringify(data));
-      setIsAuthenticated(true);
-      setUser(data);
-      fetchCrisisData(data.token);
-      
-    } catch (error) {
-      setError(error.message);
-    } finally {
-      setIsLoading(false);
-    }
-  };
 
   const handleLogout = () => {
     localStorage.removeItem('token');
@@ -128,74 +88,37 @@ const CrisisCompanion = () => {
     }
   };
 
-  // If not authenticated
+  // If not authenticated, show buttons to redirect to login/register
   if (!isAuthenticated) {
     return (
       <div className="health-wellness-page">
         <div className="auth-container">
           <h1 className="health-wellness-title">Crisis Companion 🚨</h1>
           <p className="health-wellness-subtitle">
-            {isLogin ? 'Login to access crisis support' : 'Create an account for personalized help'}
+            Please log in or register to access crisis support
           </p>
           
-          <div className="auth-form-container">
-            <form onSubmit={handleAuthSubmit} className="auth-form">
-              {!isLogin && (
-                <div className="form-group">
-                  <label htmlFor="name">Name</label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={authForm.name}
-                    onChange={handleAuthInputChange}
-                    required
-                    disabled={isLoading}
-                  />
-                </div>
-              )}
-              
-              <div className="form-group">
-                <label htmlFor="email">Email</label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={authForm.email}
-                  onChange={handleAuthInputChange}
-                  required
-                  disabled={isLoading}
-                />
-              </div>
-              
-              <div className="form-group">
-                <label htmlFor="password">Password</label>
-                <input
-                  type="password"
-                  id="password"
-                  name="password"
-                  value={authForm.password}
-                  onChange={handleAuthInputChange}
-                  required
-                  disabled={isLoading}
-                  minLength="6"
-                />
-              </div>
-              
-              {error && <div className="error-message">{error}</div>}
-              
-              <button type="submit" className="auth-submit-btn" disabled={isLoading}>
-                {isLoading ? 'Processing...' : (isLogin ? 'Login' : 'Register')}
+          <div className="auth-buttons-container">
+            <div className="auth-button-card">
+              <h3>Already have an account?</h3>
+              <p>Sign in to access crisis support</p>
+              <button 
+                onClick={() => navigate('/login')}
+                className="auth-btn login-btn"
+              >
+                Login
               </button>
-            </form>
+            </div>
             
-            <div className="auth-switch">
-              <p>
-                {isLogin ? "Don't have an account? " : "Already have an account? "}
-                <button type="button" className="auth-switch-btn" onClick={() => setIsLogin(!isLogin)}>
-                  {isLogin ? 'Register' : 'Login'}
-                </button>
-              </p>
+            <div className="auth-button-card">
+              <h3>New to Crisis Companion?</h3>
+              <p>Create an account for personalized help</p>
+              <button 
+                onClick={() => navigate('/register')}
+                className="auth-btn register-btn"
+              >
+                Register
+              </button>
             </div>
           </div>
         </div>
