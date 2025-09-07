@@ -1,18 +1,46 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import '../styles/MentalHealthJournal.css';
 
 const API_BASE = 'http://localhost:5000/api';
 
+// Popular journaling websites
+const journalingPlatforms = [
+  {
+    name: 'Penzu',
+    url: 'https://penzu.com/',
+    description: 'Private online journal with military-grade encryption'
+  },
+  {
+    name: 'Day One',
+    url: 'https://dayoneapp.com/',
+    description: 'Award-winning journaling app for iOS and Mac'
+  },
+  {
+    name: 'Journey',
+    url: 'https://journey.cloud/',
+    description: 'Cross-platform journal with cloud sync'
+  },
+  {
+    name: '750 Words',
+    url: 'https://750words.com/',
+    description: 'Daily writing practice with analytics'
+  },
+  {
+    name: 'Therapy Notebooks',
+    url: 'https://therapynotes.com/',
+    description: 'Journaling tools designed with mental health in mind'
+  },
+  {
+    name: 'Reflectly',
+    url: 'https://reflectly.app/',
+    description: 'AI-powered journal for mental wellbeing'
+  }
+];
+
 const MentalHealthJournal = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [user, setUser] = useState(null);
-  const [authForm, setAuthForm] = useState({
-    email: '',
-    password: '',
-    name: ''
-  });
-  const [isLogin, setIsLogin] = useState(true);
   const [journalEntries, setJournalEntries] = useState([]);
   const [newEntry, setNewEntry] = useState({
     title: '',
@@ -23,6 +51,7 @@ const MentalHealthJournal = () => {
   const [showJournalForm, setShowJournalForm] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
+  const navigate = useNavigate();
 
   // Check authentication on component mount
   useEffect(() => {
@@ -48,55 +77,6 @@ const MentalHealthJournal = () => {
       entry.content.toLowerCase() === content.toLowerCase() &&
       entry.mood === mood
     );
-  };
-
-  // Authentication handlers
-  const handleAuthInputChange = (e) => {
-    const { name, value } = e.target;
-    setAuthForm({
-      ...authForm,
-      [name]: value
-    });
-  };
-
-  const handleAuthSubmit = async (e) => {
-    e.preventDefault();
-    setIsLoading(true);
-    setError('');
-
-    try {
-      const endpoint = isLogin ? 'login' : 'register';
-      const response = await fetch(`${API_BASE}/auth/${endpoint}`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(authForm)
-      });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.message || 'Authentication failed');
-      }
-
-      // Save token and user data
-      localStorage.setItem('token', data.token);
-      localStorage.setItem('user', JSON.stringify(data));
-      
-      setIsAuthenticated(true);
-      setUser(data);
-      setError('');
-      
-      // Fetch journal entries after successful auth
-      fetchJournalEntries(data.token);
-      
-    } catch (error) {
-      console.error('Authentication error:', error);
-      setError(error.message);
-    } finally {
-      setIsLoading(false);
-    }
   };
 
   const handleLogout = () => {
@@ -267,85 +247,37 @@ const MentalHealthJournal = () => {
     setNewEntry({ title: '', content: '', mood: 'neutral' });
   };
 
-  // If not authenticated, show login/register form
+  // If not authenticated, show buttons to redirect to login/register
   if (!isAuthenticated) {
     return (
       <div className="health-wellness-page">
         <div className="auth-container">
           <h1 className="health-wellness-title">Mental Health Journal</h1>
           <p className="health-wellness-subtitle">
-            {isLogin ? 'Login to access your journal' : 'Create an account to start journaling'}
+            Please log in or register to access your journal
           </p>
           
-          <div className="auth-form-container">
-            <form onSubmit={handleAuthSubmit} className="auth-form">
-              {!isLogin && (
-                <div className="form-group">
-                  <label htmlFor="name">Name</label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={authForm.name}
-                    onChange={handleAuthInputChange}
-                    required
-                    disabled={isLoading}
-                  />
-                </div>
-              )}
-              
-              <div className="form-group">
-                <label htmlFor="email">Email</label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={authForm.email}
-                  onChange={handleAuthInputChange}
-                  required
-                  disabled={isLoading}
-                />
-              </div>
-              
-              <div className="form-group">
-                <label htmlFor="password">Password</label>
-                <input
-                  type="password"
-                  id="password"
-                  name="password"
-                  value={authForm.password}
-                  onChange={handleAuthInputChange}
-                  required
-                  disabled={isLoading}
-                  minLength="6"
-                />
-              </div>
-              
-              {error && <div className="error-message">{error}</div>}
-              
+          <div className="auth-buttons-container">
+            <div className="auth-button-card">
+              <h3>Already have an account?</h3>
+              <p>Sign in to access your journal entries</p>
               <button 
-                type="submit" 
-                className="auth-submit-btn"
-                disabled={isLoading}
+                onClick={() => navigate('/login')}
+                className="auth-btn login-btn"
               >
-                {isLoading ? 'Processing...' : (isLogin ? 'Login' : 'Register')}
+                Login
               </button>
-            </form>
+            </div>
             
-            <div className="auth-switch">
-              <p>
-                {isLogin ? "Don't have an account? " : "Already have an account? "}
-                <button 
-                  type="button" 
-                  className="auth-switch-btn"
-                  onClick={() => {
-                    setIsLogin(!isLogin);
-                    setError('');
-                  }}
-                >
-                  {isLogin ? 'Register' : 'Login'}
-                </button>
-              </p>
+            <div className="auth-button-card">
+              <h3>New to our journal?</h3>
+              <p>Create an account to start your journaling journey</p>
+              <button 
+                onClick={() => navigate('/register')}
+                className="auth-btn register-btn"
+              >
+                Register
+              </button>
             </div>
           </div>
         </div>
@@ -430,6 +362,29 @@ const MentalHealthJournal = () => {
               ))}
             </div>
           )}
+        </div>
+
+        <div className="journaling-platforms-section">
+          <h2>Popular Journaling Platforms</h2>
+          <p className="platforms-intro">
+            Explore these popular journaling platforms to enhance your journaling experience:
+          </p>
+          <div className="platforms-grid">
+            {journalingPlatforms.map((platform, index) => (
+              <div key={index} className="platform-card">
+                <h3>{platform.name}</h3>
+                <p>{platform.description}</p>
+                <a 
+                  href={platform.url} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="platform-link"
+                >
+                  Visit Website
+                </a>
+              </div>
+            ))}
+          </div>
         </div>
 
         {showJournalForm && (
