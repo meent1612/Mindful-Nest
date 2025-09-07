@@ -49,7 +49,7 @@ import Register from './components/Register';
 import ProtectedRoute from './components/ProtectedRoute';
 import SafeLetterBox from './components/SafeLetterBox';
 import CrisisCompanion from './components/CrisisCompanion';
-
+import HealthWellnessHub from './components/HealthWellnessHub';
 
 function App() {
   return (
@@ -65,7 +65,8 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path ="/safe-letter-box" element={<SafeLetterBox />} />
         <Route path="/crisis-companion" element={<CrisisCompanion />} />
-
+        <Route path="/health-wellness-hub" element={<HealthWellnessHub />} />
+          {/* Main sections */}
         <Route path="/mental-health" element={<MentalHealth />} />
          <Route path="/mental-health/adhd" element={<ADHD />} />
          <Route path="/mental-health/addiction" element={<Addiction />} />
