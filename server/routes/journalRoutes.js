@@ -1,5 +1,5 @@
 import express from "express";
-import { authMiddleware } from "../middleware/authMiddleware.js";
+import { authenticateToken } from "../middleware/authMiddleware.js";
 import {
   getJournalEntries,
   createJournalEntry,
@@ -10,15 +10,15 @@ import {
 const router = express.Router();
 
 // GET all entries
-router.get("/", authMiddleware, getJournalEntries);
+router.get("/", authenticateToken, getJournalEntries);
 
 // POST new entry
-router.post("/", authMiddleware, createJournalEntry);
+router.post("/", authenticateToken, createJournalEntry);
 
 // PUT update entry
-router.put("/:id", authMiddleware, updateJournalEntry);
+router.put("/:id", authenticateToken, updateJournalEntry);
 
 // DELETE entry
-router.delete("/:id", authMiddleware, deleteJournalEntry);
+router.delete("/:id", authenticateToken, deleteJournalEntry);
 
 export default router;

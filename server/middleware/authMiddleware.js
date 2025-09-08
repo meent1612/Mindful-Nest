@@ -1,25 +1,38 @@
-import jwt from "jsonwebtoken";
+// middleware/authMiddleware.js
+import jwt from 'jsonwebtoken';
+import User from '../models/User.js';
 
-
-export const authMiddleware = async (req, res, next) => {
+export const authenticateToken = async (req, res, next) => {
   try {
-    const authHeader = req.headers["authorization"];
-    const token = authHeader && authHeader.split(" ")[1];
+    const authHeader = req.headers['authorization'];
+    const token = authHeader && authHeader.split(' ')[1]; // Bearer TOKEN
 
     if (!token) {
-      return res.status(401).json({ message: "Access denied. No token provided." });
+      return res.status(401).json({ error: 'Access token required' });
+    }
+
+    if (!process.env.JWT_SECRET) {
+      return res.status(500).json({ error: 'Server configuration error' });
     }
 
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-
-    const user = await User.findById(decoded.id).select("-password");
+    const user = await User.findById(decoded.userId);
+    
     if (!user) {
-      return res.status(401).json({ message: "Invalid token. User not found." });
+      return res.status(401).json({ error: 'Invalid token - user not found' });
     }
 
-    req.user = user; // Attach user to request
+    req.userId = decoded.userId;
     next();
   } catch (error) {
-    res.status(401).json({ message: "Invalid token." });
+    if (error.name === 'TokenExpiredError') {
+      return res.status(401).json({ error: 'Token expired' });
+    }
+    if (error.name === 'JsonWebTokenError') {
+      return res.status(401).json({ error: 'Invalid token' });
+    }
+    
+    console.error('Auth middleware error:', error);
+    res.status(500).json({ error: 'Authentication failed' });
   }
 };

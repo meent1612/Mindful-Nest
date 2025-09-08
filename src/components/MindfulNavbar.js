@@ -1,11 +1,19 @@
+// components/layout/MindfulNavbar.js (Updated)
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import Container from 'react-bootstrap/Container';
 import React from 'react';
 import '../styles/MindfulNavbar.css';
 import { Link } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 
 const MindfulNavbar = () => {
+  const { user, logout } = useAuth();
+
+  const handleLogout = () => {
+    logout();
+  };
+
   return (
     <>
       {/* Top Container - Utility Links (Collapsible Navbar) */}
@@ -26,12 +34,31 @@ const MindfulNavbar = () => {
               <Nav.Link as={Link} to="/resources" className="nav-link-utility">
                 Resources
               </Nav.Link>
-              <Nav.Link as={Link} to="/login" className="nav-link-utility">
-                Login
-              </Nav.Link>
-              <Nav.Link as={Link} to="/register" className="nav-link-utility">
-                Register
-              </Nav.Link>
+              
+              {/* Conditionally render login/register or user menu */}
+              {user ? (
+                <>
+                  <Nav.Link as={Link} to="/dashboard" className="nav-link-utility">
+                    Dashboard
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/problem-checker" className="nav-link-utility">
+                    Problem Checker
+                  </Nav.Link>
+                  <Nav.Link className="nav-link-utility" onClick={handleLogout}>
+                    Logout
+                  </Nav.Link>
+                  <span className="nav-user-info">Hello, {user.name}</span>
+                </>
+              ) : (
+                <>
+                  <Nav.Link as={Link} to="/login" className="nav-link-utility">
+                    Login
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/register" className="nav-link-utility">
+                    Register
+                  </Nav.Link>
+                </>
+              )}
             </Nav>
           </Navbar.Collapse>
         </Container>
@@ -57,10 +84,14 @@ const MindfulNavbar = () => {
               <Link to="/treatment" className="nav-link-main">
                 Treatment
               </Link>
-            <Link to="/health-wellness-hub" className="nav-link-main">
+              <Link to="/health-wellness-hub" className="nav-link-main">
                 Wellness Hub
               </Link>
-              
+              {user && (
+                <Link to="/problem-checker" className="nav-link-main">
+                  Problem Checker
+                </Link>
+              )}
             </nav>
           </div>
         </Container>
