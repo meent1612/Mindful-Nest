@@ -50,9 +50,12 @@ import ProtectedRoute from './components/ProtectedRoute';
 import SafeLetterBox from './components/SafeLetterBox';
 import CrisisCompanion from './components/CrisisCompanion';
 import HealthWellnessHub from './components/HealthWellnessHub';
+import { AuthProvider } from './context/AuthContext';
+import PrivateRoute from './components/PrivateRoute';
 
 function App() {
   return (
+  <AuthProvider>
     <Router>
       <div className="App">
         <MindfulNavbar />        
@@ -77,9 +80,9 @@ function App() {
          <Route
             path="/problem-checker"
             element={
-              <ProtectedRoute>
+              <PrivateRoute>
                 <ProblemChecker />
-              </ProtectedRoute>
+              </PrivateRoute>
             }
           />
                
@@ -130,6 +133,7 @@ function App() {
         <Footer />
       </div>
     </Router>
+    </AuthProvider>
   );
 }
 

@@ -1,9 +1,9 @@
+// components/Login.js (Fixed)
 import React, { useState } from "react";
 import api from "../api";
-import { useAuth } from "./AuthContext";
-
-import { useNavigate } from "react-router-dom";
-
+import { useAuth } from "../context/AuthContext";
+import { useNavigate, Link } from "react-router-dom";
+import "../styles/Auth.css";
 
 const Login = () => {
   const { login } = useAuth();
@@ -14,6 +14,7 @@ const Login = () => {
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+    setError(""); // Clear error when user starts typing
   };
 
   const handleSubmit = async (e) => {
@@ -22,10 +23,13 @@ const Login = () => {
     setError("");
 
     try {
-      const response = await api.post("/api/auth/login", formData);
-      login({ user: response.data.user, token: response.data.token });
-
-      navigate("/problem-checker");
+      const result = await login(formData);
+      
+      if (result.success) {
+        navigate("/problem-checker");
+      } else {
+        setError(result.error);
+      }
     } catch (err) {
       setError(err.response?.data?.message || "Login failed");
     } finally {
@@ -35,31 +39,51 @@ const Login = () => {
 
   return (
     <div className="auth-container">
-      <h2>Login</h2>
-      {error && <p className="error-message">{error}</p>}
+      <div className="auth-card">
+        <h2>Login</h2>
+        {error && <div className="error-message">{error}</div>}
 
-      <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label>Email</label>
-          <input type="email" name="email" value={formData.email} onChange={handleChange} required />
+        <form onSubmit={handleSubmit} className="auth-form">
+          <div className="form-group">
+            <label htmlFor="email">Email</label>
+            <input 
+              type="email" 
+              id="email"
+              name="email" 
+              value={formData.email} 
+              onChange={handleChange} 
+              required 
+              disabled={loading}
+            />
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="password">Password</label>
+            <input 
+              type="password" 
+              id="password"
+              name="password" 
+              value={formData.password} 
+              onChange={handleChange} 
+              required 
+              disabled={loading}
+            />
+          </div>
+
+          <button type="submit" disabled={loading} className="auth-button">
+            {loading ? "Logging in..." : "Login"}
+          </button>
+        </form>
+
+        <div className="auth-footer">
+          <p>
+            Don't have an account?{" "}
+            <Link to="/register" className="auth-link">
+              Sign up
+            </Link>
+          </p>
         </div>
-
-        <div className="form-group">
-          <label>Password</label>
-          <input type="password" name="password" value={formData.password} onChange={handleChange} required />
-        </div>
-
-        <button type="submit" disabled={loading}>
-          {loading ? "Logging in..." : "Login"}
-        </button>
-      </form>
-
-      <p>
-        Don’t have an account?{" "}
-        <span className="auth-link" onClick={() => navigate("/register")}>
-          Sign up
-        </span>
-      </p>
+      </div>
     </div>
   );
 };

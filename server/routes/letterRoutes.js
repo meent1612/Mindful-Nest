@@ -1,5 +1,5 @@
 import express from "express";
-import { authMiddleware } from "../middleware/authMiddleware.js";
+import { authenticateToken } from "../middleware/authMiddleware.js";
 import {
   getLetters,
   createLetter,
@@ -13,18 +13,18 @@ const router = express.Router();
 
 
 // GET all letters
-router.get("/", authMiddleware, getLetters);
+router.get("/", authenticateToken, getLetters);
 
 // POST new letter
-router.post("/", authMiddleware, createLetter);
+router.post("/", authenticateToken, createLetter);
 
 // PUT update letter
-router.put("/:id", authMiddleware, updateLetter);
+router.put("/:id", authenticateToken, updateLetter);
 
 // DELETE letter
-router.delete("/:id",authMiddleware, deleteLetter);
+router.delete("/:id",authenticateToken, deleteLetter);
 
 // GET letter status
-router.get("/:id/status",authMiddleware, checkLetterStatus);
+router.get("/:id/status",authenticateToken, checkLetterStatus);
 
 export default router;
