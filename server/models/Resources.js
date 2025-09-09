@@ -25,16 +25,10 @@ const resourceSchema = new mongoose.Schema({
     type: String,
     required: [true, 'Category is required'],
     enum: [
-      'Mental Health',
-      'Health & Wellness', 
-      'Relationships',
-      'Treatment',
-      'Wellness Hub',
-      'Crisis Support',
-      'Self-Care',
-      'Therapy',
-      'Meditation',
-      'Fitness'
+      'ADHD', 'Addiction', 'Anxiety', 'Depression', // ADDED Depression
+      'PTSD & Trauma', 'Suicide & Self-Harm', 'Stress', // ADDED these
+      'General Mental Health', 'Crisis Support', 'Therapy',
+      'Self-Care', 'Mindfulness', 'Support Groups' // MAKE SURE ALL ARE INCLUDED
     ]
   },
   description: {
@@ -59,13 +53,5 @@ const resourceSchema = new mongoose.Schema({
 }, {
   timestamps: true
 });
-
-// Index for better performance
-resourceSchema.index({ category: 1, createdAt: -1 });
-resourceSchema.index({ featured: 1, createdAt: -1 });
-resourceSchema.index({ title: 'text', description: 'text' });
-
-// Prevent duplicate URLs
-resourceSchema.index({ url: 1 }, { unique: true });
 
 export default mongoose.model('Resource', resourceSchema);

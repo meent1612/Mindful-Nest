@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useAuth } from '../context/AuthContext';
 import '../styles/ResourcesPage.css';
 
 const ResourcesPage = () => {
@@ -8,6 +9,17 @@ const ResourcesPage = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+  const [newResource, setNewResource] = useState({ // Add state for new resource form
+    title: '',
+    url: '',
+    category: '',
+    description: '',
+    type: 'Website'
+  });
+  const [showAddForm, setShowAddForm] = useState(false);
+  const [submitLoading, setSubmitLoading] = useState(false);
+
+  const { user, token } = useAuth(); // Get user and token from context
 
   const categories = [
     'all', 'ADHD', 'Addiction', 'Anxiety', 'Depression',
@@ -39,6 +51,46 @@ const ResourcesPage = () => {
       setLoading(false);
     }
   };
+
+  
+  // ADD THIS FUNCTION: Create new resource with token
+  const createResource = async (e) => {
+    e.preventDefault();
+    
+    if (!token) {
+      setError('Please log in to add resources');
+      return;
+    }
+
+    setSubmitLoading(true);
+    try {
+      const response = await axios.post('http://localhost:5000/api/resources', newResource, {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      });
+
+      // Add the new resource to the list
+      setResources(prev => [response.data.data, ...prev]);
+      setNewResource({ title: '', url: '', category: '', description: '', type: 'Website' });
+      setShowAddForm(false);
+      setError('');
+    } catch (err) {
+      setError(err.response?.data?.message || 'Failed to create resource');
+    } finally {
+      setSubmitLoading(false);
+    }
+  };
+
+  // ADD THIS FUNCTION: Handle input changes for new resource
+  const handleNewResourceChange = (e) => {
+    const { name, value } = e.target;
+    setNewResource(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
 
   const getDemoResources = () => [
     {
@@ -149,7 +201,80 @@ const ResourcesPage = () => {
             Discover helpful resources and support for your mental health journey. 
             All resources are available to everyone without registration.
           </p>
-        </div>
+        {user && (
+          <>
+            <button 
+              className="add-resource-btn"
+              onClick={() => setShowAddForm(!showAddForm)}
+            >
+              {showAddForm ? 'Cancel' : 'Add New Resource'}
+            </button>
+            {showAddForm && (
+              <form className="add-resource-form" onSubmit={createResource}>
+                <div className="form-group">
+                  <input
+                    type="text"
+                    name="title"
+                    placeholder="Resource Title"
+                    value={newResource.title}
+                    onChange={handleNewResourceChange}
+                    required
+                  />
+                </div>
+                <div className="form-group">
+                  <input
+                    type="url"
+                    name="url"
+                    placeholder="Resource URL"
+                    value={newResource.url}
+                    onChange={handleNewResourceChange}
+                    required
+                  />
+                </div>
+                <div className="form-group">
+                  <select
+                    name="category"
+                    value={newResource.category}
+                    onChange={handleNewResourceChange}
+                    required
+                  >
+                    <option value="">Select Category</option>
+                    {categories.filter(cat => cat !== 'all').map(category => (
+                      <option key={category} value={category}>{category}</option>
+                    ))}
+                  </select>
+                </div>
+                <div className="form-group">
+                  <select
+                    name="type"
+                    value={newResource.type}
+                    onChange={handleNewResourceChange}
+                  >
+                    <option value="Website">Website</option>
+                    <option value="Article">Article</option>
+                    <option value="Video">Video</option>
+                    <option value="Hotline">Hotline</option>
+                    <option value="App">App</option>
+                    <option value="Podcast">Podcast</option>
+                  </select>
+                </div>
+                <div className="form-group">
+                  <textarea
+                    name="description"
+                    placeholder="Description"
+                    value={newResource.description}
+                    onChange={handleNewResourceChange}
+                    rows="3"
+                  />
+                </div>
+                <button type="submit" disabled={submitLoading} className="auth-button">
+                  {submitLoading ? 'Adding...' : 'Add Resource'}
+                </button>
+              </form>
+            )}
+          </>
+        )}
+      </div>
 
         <div className="resources-filters">
           <h3 className="filter-title">Filter by Category</h3>
