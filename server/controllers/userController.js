@@ -101,7 +101,7 @@ export const loginUser = async (req, res) => {
 
 export const getUserProfile = async (req, res) => {
   try {
-    const user = await User.findById(req.userId);
+    const user = await User.findById(req.user._id); 
     if (!user) {
       return res.status(404).json({ error: "User not found" });
     }
