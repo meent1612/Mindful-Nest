@@ -208,6 +208,80 @@
   gap: 0.5rem;
 }
 
+/* Add Resource Button */
+.add-resource-btn {
+  background: linear-gradient(135deg, #3E4D34, #2D3A27);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 25px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+}
+
+.add-resource-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(62, 77, 52, 0.3);
+}
+
+/* Add Resource Form */
+.add-resource-form {
+  background: #f8f9fa;
+  padding: 2rem;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  border: 1px solid #e9ecef;
+}
+
+.add-resource-form h3 {
+  color: #3E4D34;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.add-resource-form .form-group {
+  margin-bottom: 1rem;
+}
+
+.add-resource-form input,
+.add-resource-form select,
+.add-resource-form textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-family: inherit;
+}
+
+.add-resource-form button {
+  background: #3E4D34;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.add-resource-form button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+/* Debug info (optional) */
+.debug-info {
+  background: #f0f8ff;
+  padding: 1rem;
+  border-radius: 8px;
+  margin: 1rem 0;
+  font-size: 0.8rem;
+  word-break: break-all;
+}
 
 @media (max-width: 768px) {
   .resources-title {
@@ -247,3 +321,11 @@
     padding: 1.2rem;
   }
 }
+
+
+
+
+
+
+
+
