@@ -52,6 +52,7 @@ import CrisisCompanion from './components/CrisisCompanion';
 import HealthWellnessHub from './components/HealthWellnessHub';
 import { AuthProvider } from './context/AuthContext';
 import PrivateRoute from './components/PrivateRoute';
+import HelplinePage from './components/HelplinePage';
 
 function App() {
   return (
@@ -66,8 +67,7 @@ function App() {
         <Route path="/resources" element={<ResourcesPage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path ="/safe-letter-box" element={<SafeLetterBox />} />
-        <Route path="/crisis-companion" element={<CrisisCompanion />} />
+        <Route path="/helplines" element={<HelplinePage/>} />
         <Route path="/health-wellness-hub" element={<HealthWellnessHub />} />
           {/* Main sections */}
         <Route path="/mental-health" element={<MentalHealth />} />
@@ -97,6 +97,14 @@ function App() {
         <Route path ="/health-wellness/illness-disability" element={<IllnessDisability />} />
         <Route path = "/mental-health-journal" element={
           <PrivateRoute><MentalHealthJournal/></PrivateRoute>
+        }
+        />
+        <Route path = "/crisis-companion" element={
+          <PrivateRoute><CrisisCompanion/></PrivateRoute>
+        }
+        />
+        <Route path = "/safe-letter-box" element={
+          <PrivateRoute><SafeLetterBox/></PrivateRoute>
         }
         />
 
