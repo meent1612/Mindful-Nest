@@ -132,7 +132,12 @@ function App() {
          <Route path="/relationships/love-and-friendship" element={<LoveFriendship />} />
          <Route path="/relationships/domestic-abuse" element={<DomesticAbuse />} />
          
-        <Route path="/treatment" element={<Treatment />} />
+        <Route path="/treatment" 
+          element={
+            <PrivateRoute>
+              <Treatment />
+            </PrivateRoute>
+          } />
         </Routes>
         <Footer />
       </div>

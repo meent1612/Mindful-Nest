@@ -243,7 +243,7 @@ const Treatment = () => {
 
   return (
     <div className="container treatment-page">
-      <h2 className="text-center mb-4 fw-bold text-primary">
+      <h2 className="text-center mb-4 fw-bold" style={{ color: '#3E4D34' }}>
         Mental Wellness Toolkit
       </h2>
 
@@ -278,16 +278,16 @@ const Treatment = () => {
         </li>
       </ul>
 
-      {/* Assessment Tab */}
+      {/* Assessment Tab - Redesigned */}
       {activeTab === "assessment" && (
-        <div className="card p-4 shadow-sm mb-4">
-          <h3 className="mb-3">Create Your Personalized Treatment Plan</h3>
-          <p className="text-muted mb-4">
+        <div className="assessment-card">
+          <h3 className="assessment-title">Create Your Personalized Treatment Plan</h3>
+          <p className="assessment-subtitle">
             Tell us what you're struggling with, and we'll create a personalized plan with milestones to help you.
           </p>
           
-          <form onSubmit={handleAssessmentSubmit}>
-            <div className="mb-3">
+          <form onSubmit={handleAssessmentSubmit} className="assessment-form">
+            <div className="form-group">
               <label className="form-label">What are you primarily struggling with?</label>
               <select 
                 className="form-select"
@@ -307,7 +307,7 @@ const Treatment = () => {
             
             <button 
               type="submit" 
-              className="btn btn-primary"
+              className="assessment-submit-btn"
               disabled={loading || !problemArea}
             >
               {loading ? "Creating Your Plan..." : "Create My Plan"}
@@ -316,7 +316,7 @@ const Treatment = () => {
         </div>
       )}
 
-      {/* Treatment Plan Tab */}
+      {/* Treatment Plan Tab - Unchanged */}
       {activeTab === "plan" && (
         <div>
           {currentPlan ? (
@@ -479,7 +479,7 @@ const Treatment = () => {
         </div>
       )}
 
-      {/* Coping Strategies Tab */}
+      {/* Coping Strategies Tab - Unchanged */}
       {activeTab === "coping" && (
         <div>
           <div className="d-flex justify-content-between align-items-center mb-4">
