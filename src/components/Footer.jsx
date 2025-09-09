@@ -31,7 +31,7 @@ const Footer = () => {
               <li><Link to="/health-wellness">Health & Wellness</Link></li>
               <li><Link to="/relationships">Relationships</Link></li>
               <li><Link to="/treatment">Treatment</Link></li>
-              <li><Link to="/mental-health-journal">Mental Health Journal</Link></li>
+              <li><Link to="/health-wellness-hub">Health Wellness Hub</Link></li>
             </ul>
           </div>
 
