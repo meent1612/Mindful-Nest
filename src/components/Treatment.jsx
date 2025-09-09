@@ -1,91 +1,323 @@
+// components/Treatment.js
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import api from "../api";
 import "../styles/Treatment.css";
 
 const Treatment = () => {
-  const [text, setText] = useState("");
-  const [type, setType] = useState("plan");
-  const [entries, setEntries] = useState([]);
+  const [activeTab, setActiveTab] = useState("assessment"); // 'assessment', 'plan', 'coping'
+  const [problemArea, setProblemArea] = useState("");
+  const [treatmentPlans, setTreatmentPlans] = useState([]);
+  const [currentPlan, setCurrentPlan] = useState(null);
+  const [helplines, setHelplines] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
-  // Fetch entries from backend
+  // Fetch user's treatment plans on component mount
   useEffect(() => {
-    axios
-      .get("http://localhost:5000/api/treatment")
-      .then((res) => setEntries(res.data))
-      .catch((err) => console.error(err));
+    fetchTreatmentPlans();
   }, []);
 
-  // Handle form submit
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const fetchTreatmentPlans = async () => {
     try {
-      await axios.post("http://localhost:5000/api/treatment", {
-        user: "DemoUser", // later replace with actual logged-in user
-        type,
-        text,
-      });
-      setText("");
-      const res = await axios.get("http://localhost:5000/api/treatment");
-      setEntries(res.data);
+      const res = await api.get("/api/treatment/plans");
+      setTreatmentPlans(res.data.treatmentPlans || []);
     } catch (err) {
-      console.error(err);
+      console.error("Error fetching treatment plans:", err);
+      setError(err.response?.data?.message || "Failed to load treatment plans.");
     }
+  };
+
+  const handleAssessmentSubmit = async (e) => {
+    e.preventDefault();
+    if (!problemArea) return;
+
+    setLoading(true);
+    setError("");
+    try {
+      const res = await api.post("/api/treatment/plan", { problemArea });
+      setCurrentPlan(res.data.treatmentPlan);
+      setHelplines(res.data.helplines || []);
+      setActiveTab("plan");
+      fetchTreatmentPlans(); // Refresh the list of plans
+    } catch (err) {
+      console.error("Error creating treatment plan:", err);
+      setError(err.response?.data?.message || "Failed to create treatment plan.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleMilestoneToggle = async (planId, milestoneIndex, completed) => {
+    try {
+      await api.put(`/api/treatment/plan/${planId}/milestone/${milestoneIndex}`, { completed });
+      fetchTreatmentPlans(); // Refresh to get updated data
+      
+      // If we're currently viewing this plan, update it
+      if (currentPlan && currentPlan._id === planId) {
+        const updatedPlan = { ...currentPlan };
+        updatedPlan.milestones[milestoneIndex].completed = completed;
+        updatedPlan.milestones[milestoneIndex].dateCompleted = completed ? new Date() : null;
+        setCurrentPlan(updatedPlan);
+      }
+    } catch (err) {
+      console.error("Error updating milestone:", err);
+      setError(err.response?.data?.message || "Failed to update milestone.");
+    }
+  };
+
+  const calculateProgress = (plan) => {
+    if (!plan || !plan.milestones.length) return 0;
+    const completed = plan.milestones.filter(m => m.completed).length;
+    return (completed / plan.milestones.length) * 100;
+  };
+
+  const viewPlan = (plan) => {
+    setCurrentPlan(plan);
+    setActiveTab("plan");
   };
 
   return (
     <div className="container treatment-page">
-      <h2 className="text-center mb-4">Treatment Plans & Coping Strategies</h2>
+      <h2 className="text-center mb-4 fw-bold text-primary">
+        Mental Wellness Toolkit
+      </h2>
 
-      {/* Form */}
-      <form className="card p-4 shadow-sm mb-5" onSubmit={handleSubmit}>
-        <div className="row g-3">
-          <div className="col-md-3">
-            <select
-              className="form-select"
-              value={type}
-              onChange={(e) => setType(e.target.value)}
-            >
-              <option value="plan">Treatment Plan</option>
-              <option value="coping">Coping Strategy</option>
-            </select>
-          </div>
+      {error && <div className="alert alert-danger">{error}</div>}
 
-          <div className="col-md-6">
-            <input
-              type="text"
-              className="form-control"
-              placeholder="Write your note here..."
-              value={text}
-              onChange={(e) => setText(e.target.value)}
-              required
-            />
-          </div>
+      {/* Tabs Navigation */}
+      <ul className="nav nav-tabs mb-4">
+        <li className="nav-item">
+          <button 
+            className={`nav-link ${activeTab === "assessment" ? "active" : ""}`}
+            onClick={() => setActiveTab("assessment")}
+          >
+            Assessment
+          </button>
+        </li>
+        <li className="nav-item">
+          <button 
+            className={`nav-link ${activeTab === "plan" ? "active" : ""}`}
+            onClick={() => setActiveTab("plan")}
+            disabled={!treatmentPlans.length}
+          >
+            My Plan
+          </button>
+        </li>
+        <li className="nav-item">
+          <button 
+            className={`nav-link ${activeTab === "coping" ? "active" : ""}`}
+            onClick={() => setActiveTab("coping")}
+          >
+            Coping Strategies
+          </button>
+        </li>
+      </ul>
 
-          <div className="col-md-3 d-grid">
-            <button type="submit" className="btn btn-primary">
-              Add Entry
-            </button>
-          </div>
-        </div>
-      </form>
-
-      {/* List */}
-      <div className="row">
-        {entries.map((entry) => (
-          <div key={entry._id} className="col-md-6 mb-4">
-            <div className={`card shadow-sm border-${entry.type}`}>
-              <div className="card-body">
-                <h5
-                  className={`card-title text-capitalize text-${entry.type}`}
-                >
-                  {entry.type === "plan" ? "📝 Treatment Plan" : "🌱 Coping Strategy"}
-                </h5>
-                <p className="card-text">{entry.text}</p>
-              </div>
+      {/* Assessment Tab */}
+      {activeTab === "assessment" && (
+        <div className="card p-4 shadow-sm mb-4">
+          <h3 className="mb-3">Create Your Personalized Treatment Plan</h3>
+          <p className="text-muted mb-4">
+            Tell us what you're struggling with, and we'll create a personalized plan with milestones to help you.
+          </p>
+          
+          <form onSubmit={handleAssessmentSubmit}>
+            <div className="mb-3">
+              <label className="form-label">What are you primarily struggling with?</label>
+              <select 
+                className="form-select"
+                value={problemArea}
+                onChange={(e) => setProblemArea(e.target.value)}
+                required
+                disabled={loading}
+              >
+                <option value="">Select an option</option>
+                <option value="anxiety">Anxiety</option>
+                <option value="depression">Depression</option>
+                <option value="stress">Stress</option>
+                <option value="sleep">Sleep Problems</option>
+                <option value="other">Other</option>
+              </select>
             </div>
-          </div>
-        ))}
-      </div>
+            
+            <button 
+              type="submit" 
+              className="btn btn-primary"
+              disabled={loading || !problemArea}
+            >
+              {loading ? "Creating Your Plan..." : "Create My Plan"}
+            </button>
+          </form>
+        </div>
+      )}
+
+      {/* Treatment Plan Tab */}
+      {activeTab === "plan" && (
+        <div>
+          {currentPlan ? (
+            <div className="card p-4 shadow-sm mb-4">
+              <div className="d-flex justify-content-between align-items-center mb-3">
+                <h3>{currentPlan.title}</h3>
+                <button 
+                  className="btn btn-outline-secondary btn-sm"
+                  onClick={() => setCurrentPlan(null)}
+                >
+                  View All Plans
+                </button>
+              </div>
+              
+              <p className="text-muted mb-4">{currentPlan.description}</p>
+              
+              {/* Progress Bar */}
+              <div className="mb-4">
+                <div className="d-flex justify-content-between align-items-center mb-2">
+                  <span className="text-muted">Progress</span>
+                  <span className="fw-bold">
+                    {Math.round(calculateProgress(currentPlan))}% Complete
+                  </span>
+                </div>
+                <div className="progress" style={{ height: "20px" }}>
+                  <div 
+                    className="progress-bar" 
+                    role="progressbar" 
+                    style={{ width: `${calculateProgress(currentPlan)}%` }}
+                    aria-valuenow={calculateProgress(currentPlan)} 
+                    aria-valuemin="0" 
+                    aria-valuemax="100"
+                  >
+                    {Math.round(calculateProgress(currentPlan))}%
+                  </div>
+                </div>
+              </div>
+              
+              {/* Milestones List */}
+              <h5 className="mb-3">Milestones</h5>
+              <div className="list-group">
+                {currentPlan.milestones.map((milestone, index) => (
+                  <div key={index} className="list-group-item">
+                    <div className="form-check d-flex align-items-center">
+                      <input
+                        className="form-check-input me-3"
+                        type="checkbox"
+                        checked={milestone.completed}
+                        onChange={(e) => handleMilestoneToggle(currentPlan._id, index, e.target.checked)}
+                        id={`milestone-${index}`}
+                      />
+                      <label 
+                        className={`form-check-label flex-grow-1 ${milestone.completed ? "text-decoration-line-through text-muted" : ""}`}
+                        htmlFor={`milestone-${index}`}
+                      >
+                        {milestone.text}
+                      </label>
+                      {milestone.completed && milestone.dateCompleted && (
+                        <small className="text-muted ms-2">
+                          Completed on {new Date(milestone.dateCompleted).toLocaleDateString()}
+                        </small>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+              
+              {/* Helpline Recommendations */}
+              {helplines.length > 0 && (
+                <div className="mt-4">
+                  <h5 className="mb-3">Recommended Bangladeshi Helplines</h5>
+                  <div className="row">
+                    {helplines.map(helpline => (
+                      <div key={helpline._id} className="col-md-6 mb-3">
+                        <div className="card h-100">
+                          <div className="card-body">
+                            <h6 className="card-title">{helpline.name}</h6>
+                            <p className="card-text">{helpline.description}</p>
+                            <div className="d-flex justify-content-between align-items-center">
+                              <a href={`tel:${helpline.phone}`} className="btn btn-outline-primary btn-sm">
+                                {helpline.phone}
+                              </a>
+                              {helpline.website && (
+                                <a href={helpline.website} target="_blank" rel="noopener noreferrer" className="btn btn-link btn-sm">
+                                  Visit Website
+                                </a>
+                              )}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+          ) : (
+            <div>
+              <h3 className="mb-4">Your Treatment Plans</h3>
+              
+              {treatmentPlans.length > 0 ? (
+                <div className="row">
+                  {treatmentPlans.map(plan => (
+                    <div key={plan._id} className="col-md-6 mb-4">
+                      <div className="card h-100">
+                        <div className="card-body">
+                          <h5 className="card-title">{plan.title}</h5>
+                          <p className="card-text">{plan.description}</p>
+                          
+                          <div className="mb-3">
+                            <div className="d-flex justify-content-between align-items-center mb-1">
+                              <small className="text-muted">Progress</small>
+                              <small className="fw-bold">{Math.round(calculateProgress(plan))}%</small>
+                            </div>
+                            <div className="progress" style={{ height: "8px" }}>
+                              <div 
+                                className="progress-bar" 
+                                role="progressbar" 
+                                style={{ width: `${calculateProgress(plan)}%` }}
+                                aria-valuenow={calculateProgress(plan)} 
+                                aria-valuemin="0" 
+                                aria-valuemax="100"
+                              ></div>
+                            </div>
+                          </div>
+                          
+                          <button 
+                            className="btn btn-outline-primary btn-sm"
+                            onClick={() => viewPlan(plan)}
+                          >
+                            {plan.completed ? "View Completed Plan" : "Continue Plan"}
+                          </button>
+                        </div>
+                        <div className="card-footer text-muted">
+                          Created on {new Date(plan.createdAt).toLocaleDateString()}
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <div className="text-center py-5">
+                  <p className="text-muted">You don't have any treatment plans yet.</p>
+                  <button 
+                    className="btn btn-primary"
+                    onClick={() => setActiveTab("assessment")}
+                  >
+                    Create Your First Plan
+                  </button>
+                </div>
+              )}
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* Coping Strategies Tab */}
+      {activeTab === "coping" && (
+        <div>
+          <h3 className="mb-4">Coping Strategies Library</h3>
+          <p className="text-muted">This feature is coming soon! You'll be able to browse coping strategies and save your favorites.</p>
+          <button className="btn btn-outline-primary" disabled>
+            Browse Strategies
+          </button>
+        </div>
+      )}
     </div>
   );
 };
