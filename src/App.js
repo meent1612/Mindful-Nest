@@ -66,8 +66,6 @@ function App() {
         <Route path="/resources" element={<ResourcesPage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path ="/safe-letter-box" element={<SafeLetterBox />} />
-        <Route path="/crisis-companion" element={<CrisisCompanion />} />
         <Route path="/health-wellness-hub" element={<HealthWellnessHub />} />
         <Route path ="/helplines" element={<HelplinePage/>}/>
           {/* Main sections */}
@@ -98,6 +96,14 @@ function App() {
         <Route path ="/health-wellness/illness-disability" element={<IllnessDisability />} />
         <Route path = "/mental-health-journal" element={
           <PrivateRoute><MentalHealthJournal/></PrivateRoute>
+        }
+        />
+        <Route path = "/safe-letter-box" element={
+          <PrivateRoute><SafeLetterBox/></PrivateRoute>
+        }
+        />
+        <Route path = "/crisis-companion" element={
+          <PrivateRoute><CrisisCompanion /></PrivateRoute>
         }
         />
 

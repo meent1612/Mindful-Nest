@@ -261,9 +261,6 @@ const CrisisCompanion = () => {
             <h1 className="health-wellness-title">Crisis Companion 🚨 </h1>
             <p className="health-wellness-subtitle">Welcome back, {user?.name}</p>
           </div>
-          <button onClick={handleLogout} className="logout-btn">
-            Logout
-          </button>
         </div>
         </div>
       <Link className="back-to-wellness" to="/health-wellness-hub">← Back to Health Wellness Hub </Link>

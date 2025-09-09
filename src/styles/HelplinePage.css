@@ -14,6 +14,10 @@
   margin-bottom: 1.5rem;
 }
 
+.card-body {
+  padding: 0;
+}
+
 .card-title {
   color: #3E4D34;
   font-family: 'Playfair Display', serif;
@@ -49,6 +53,7 @@
   border-radius: 8px;
   font-family: inherit;
   background: white;
+  font-size: 1rem;
 }
 
 .search-input:focus {
@@ -61,6 +66,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 1.5rem;
+  margin-bottom: 2rem;
 }
 
 .helpline-card {
@@ -101,6 +107,7 @@
   align-items: center;
   text-decoration: none;
   cursor: pointer;
+  font-size: 0.95rem;
 }
 
 .call-btn:hover {
@@ -127,6 +134,15 @@ mark {
   text-align: center;
 }
 
+.helpline-container h3 {
+  color: #3E4D34;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  margin: 2rem 0 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #e9ecef;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .helpline-container {
@@ -144,6 +160,10 @@ mark {
   .helpline-grid {
     grid-template-columns: 1fr;
   }
+  
+  .helpline-container h3 {
+    font-size: 1.4rem;
+  }
 }
 
 @media (max-width: 576px) {
@@ -157,5 +177,14 @@ mark {
   
   .helpline-card .card-title {
     font-size: 1.2rem;
+  }
+  
+  .call-btn {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .helpline-container h3 {
+    font-size: 1.3rem;
   }
 }
