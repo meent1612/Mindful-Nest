@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import api from "../api";
+import { useAuth } from "../context/AuthContext"; 
 import "../styles/ProblemChecker.css";
 
 const ProblemChecker = () => {
@@ -7,8 +8,15 @@ const ProblemChecker = () => {
   const [result, setResult] = useState(null);
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const { user } = useAuth(); // Get user from context
 
   const handleCheck = async () => {
+
+    if(!user) {
+      window.location.href = "/login?returnTo=/problem-checker";
+      return;
+    }
+    
     if (!text.trim()) {
       setError("Please describe your feelings first");
       return;
