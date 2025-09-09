@@ -38,12 +38,6 @@ const MindfulNavbar = () => {
               {/* Conditionally render login/register or user menu */}
               {user ? (
                 <>
-                  <Nav.Link as={Link} to="/dashboard" className="nav-link-utility">
-                    Dashboard
-                  </Nav.Link>
-                  <Nav.Link as={Link} to="/problem-checker" className="nav-link-utility">
-                    Problem Checker
-                  </Nav.Link>
                   <Nav.Link className="nav-link-utility" onClick={handleLogout}>
                     Logout
                   </Nav.Link>

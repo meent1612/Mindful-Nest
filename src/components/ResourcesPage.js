@@ -28,17 +28,12 @@ const ResourcesPage = () => {
     try {
       setLoading(true);
       setError('');
+      // Try to fetch from your API first
       const response = await axios.get('http://localhost:5000/api/resources');
-
-      if (response.data.success) {
-        setResources(response.data.data || []);
-      } else {
-        throw new Error(response.data.message || 'Failed to fetch resources');
-      }
+      setResources(response.data.data || response.data);
     } catch (err) {
-      console.error('Error fetching resources:', err);
-      setError('Failed to load resources. Please try again later.');
-
+      console.log('API not available, using demo resources');
+      // If API fails, use demo resources
       setResources(getDemoResources());
     } finally {
       setLoading(false);
@@ -72,6 +67,33 @@ const ResourcesPage = () => {
       description: 'Resources for anxiety and depression treatment',
       type: 'Website',
       featured: true
+    },
+    {
+      _id: '4',
+      title: 'Mindfulness Meditation Guide',
+      url: 'https://www.mindful.org/meditation/mindfulness-getting-started/',
+      category: 'Mindfulness',
+      description: 'Learn mindfulness meditation techniques for stress reduction',
+      type: 'Article',
+      featured: true
+    },
+    {
+      _id: '5',
+      title: 'Mental Health America',
+      url: 'https://www.mhanational.org/',
+      category: 'General Mental Health',
+      description: 'Nation\'s leading community-based nonprofit dedicated to mental health',
+      type: 'Website',
+      featured: true
+    },
+    {
+      _id: '6',
+      title: 'Crisis Text Line',
+      url: 'https://www.crisistextline.org/',
+      category: 'Crisis Support',
+      description: 'Free, 24/7 mental health support via text message',
+      type: 'Hotline',
+      featured: true
     }
   ];
 
@@ -97,6 +119,9 @@ const ResourcesPage = () => {
       'Self-Care': '#2ecc71',
       'Mindfulness': '#8e44ad',
       'Support Groups': '#16a085',
+      'Addiction': '#d35400',
+      'Stress': '#c0392b',
+      'General Mental Health': '#2980b9',
       'default': '#3E4D34'
     };
     return colors[category] || colors.default;
@@ -118,17 +143,16 @@ const ResourcesPage = () => {
   return (
     <div className="resources-page">
       <div className="resources-container">
-
-        
         <div className="resources-header">
           <h1 className="resources-title">Mental Health Resources</h1>
           <p className="resources-subtitle">
-            Curated collection of helpful resources and support services
+            Discover helpful resources and support for your mental health journey. 
+            All resources are available to everyone without registration.
           </p>
         </div>
 
         <div className="resources-filters">
-          <h2 className="filter-title">Filter by Category</h2>
+          <h3 className="filter-title">Filter by Category</h3>
           <div className="filter-buttons">
             {categories.map(category => (
               <button
@@ -137,68 +161,61 @@ const ResourcesPage = () => {
                 onClick={() => setSelectedCategory(category)}
                 style={{
                   backgroundColor: selectedCategory === category ? getCategoryColor(category) : 'white',
-                  color: selectedCategory === category ? 'white' : getCategoryColor(category),
-                  borderColor: getCategoryColor(category)
+                  borderColor: getCategoryColor(category),
+                  color: selectedCategory === category ? 'white' : getCategoryColor(category)
                 }}
               >
-                {category === 'all' ? 'All Resources' : category}
+                {category.charAt(0).toUpperCase() + category.slice(1)}
               </button>
             ))}
           </div>
         </div>
 
-
-        <div className="resources-content">
-          {filteredResources.length === 0 ? (
-            <div className="empty-state">
-              <div className="empty-icon">📚</div>
-              <h3>No resources found</h3>
-              <p>Try selecting a different category or check back later for new resources.</p>
-            </div>
-          ) : (
-            <div className="resources-grid">
-              {filteredResources.map(resource => (
-                <div key={resource._id} className="resource-card">
-                  <div
-                    className="resource-category-badge"
-                    style={{ backgroundColor: getCategoryColor(resource.category) }}
-                  >
-                    {resource.category}
-                  </div>
-
-                  <div className="resource-content">
-                    <h3 className="resource-title">{resource.title}</h3>
-                    <p className="resource-description">
-                      {resource.description}
-                    </p>
-
-                    <div className="resource-type">
-                      <span className="type-badge">{resource.type}</span>
-                    </div>
-
-                    <a
-                      href={resource.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="resource-link"
-                    >
-                      Visit Resource →
-                    </a>
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
-
-
         {error && (
           <div className="error-message">
-            <span>⚠</span>
-            <p>{error}</p>
+            <span>⚠️</span>
+            {error}
           </div>
         )}
 
+        <div className="resources-grid">
+          {filteredResources.length > 0 ? (
+            filteredResources.map(resource => (
+              <div key={resource._id} className="resource-card">
+                <span 
+                  className="resource-category-badge"
+                  style={{ backgroundColor: getCategoryColor(resource.category) }}
+                >
+                  {resource.category}
+                </span>
+                
+                <div className="resource-content">
+                  <h3 className="resource-title">{resource.title}</h3>
+                  <p className="resource-description">{resource.description}</p>
+                  
+                  <div className="resource-type">
+                    <span className="type-badge">{resource.type}</span>
+                  </div>
+                  
+                  <a 
+                    href={resource.url} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="resource-link"
+                  >
+                    Visit Resource →
+                  </a>
+                </div>
+              </div>
+            ))
+          ) : (
+            <div className="empty-state">
+              <div className="empty-icon">🔍</div>
+              <h3>No resources found</h3>
+              <p>No resources available in the "{selectedCategory}" category.</p>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
