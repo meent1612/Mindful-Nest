@@ -1,28 +1,45 @@
-import React, { useState } from "react";
+// components/Login.js
+import React, { useState, useEffect } from "react";
 import api from "../api";
 import { useAuth } from "../context/AuthContext";
-import { useNavigate, useLocation, Link } from "react-router-dom"; // Add useLocation
+import { useNavigate, useLocation, Link } from "react-router-dom";
 import "../styles/Auth.css";
 
 const Login = () => {
-  const { login } = useAuth();
+  const { user, login } = useAuth();
   const navigate = useNavigate();
-  const location = useLocation(); // Get location data
+  const location = useLocation();
   
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [mounted, setMounted] = useState(false);
 
-  // Get the intended destination or default to dashboard
-  const from = location.state?.from?.pathname || "/dashboard";
+  // Get the intended destination or default to home
+  const from = location.state?.from?.pathname || "/";
+
+  useEffect(() => {
+    setMounted(true);
+    
+    // If already logged in, redirect immediately
+    if (user) {
+      console.log('Already logged in, redirecting to:', from);
+      navigate(from, { replace: true });
+    }
+    
+    return () => setMounted(false);
+  }, [user, navigate, from]);
 
   const handleChange = (e) => {
+    if (!mounted) return;
     setFormData({ ...formData, [e.target.name]: e.target.value });
-    setError(""); // Clear error when user starts typing
+    setError("");
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!mounted) return;
+    
     setLoading(true);
     setError("");
 
@@ -30,7 +47,6 @@ const Login = () => {
       const result = await login(formData);
       
       if (result.success) {
-        // Redirect to the intended page instead of hardcoded path
         navigate(from, { replace: true });
       } else {
         setError(result.error);
@@ -38,9 +54,23 @@ const Login = () => {
     } catch (err) {
       setError(err.response?.data?.message || "Login failed");
     } finally {
-      setLoading(false);
+      if (mounted) {
+        setLoading(false);
+      }
     }
   };
+
+  // Don't show anything if already logged in (will redirect)
+  if (user) {
+    return (
+      <div className="auth-container">
+        <div className="auth-card">
+          <h2>Redirecting...</h2>
+          <p>You are already logged in.</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="auth-container">
@@ -83,7 +113,11 @@ const Login = () => {
         <div className="auth-footer">
           <p>
             Don't have an account?{" "}
-            <Link to="/register" className="auth-link">
+            <Link 
+              to="/register" 
+              state={{ from: location.state?.from || { pathname: "/" } }}
+              className="auth-link"
+            >
               Sign up
             </Link>
           </p>
