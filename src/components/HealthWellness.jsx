@@ -12,6 +12,7 @@ const HealthWellness = () => {
     'Weight Management',
     'Work & Career',
     'Illness & Disability',
+    "BMI Calculator",
    
   ];
 

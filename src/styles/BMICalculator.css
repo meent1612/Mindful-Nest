@@ -1,0 +1,218 @@
+/* BMI Calculator Styles - Mental Health Journal Theme */
+.bmi-container {
+  background: white;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin: 1.5rem auto;
+  max-width: 600px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+}
+
+.bmi-container h2 {
+  color: #3E4D34;
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.input-group {
+  margin-bottom: 1.2rem;
+}
+
+.input-group label {
+  display: block;
+  color: #3E4D34;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 0.9rem;
+  border: 1px solid #ced4da;
+  border-radius: 8px;
+  font-family: inherit;
+  background: white;
+  font-size: 1rem;
+}
+
+.input-group input:focus {
+  outline: none;
+  border-color: #3E4D34;
+  box-shadow: 0 0 0 3px rgba(62, 77, 52, 0.1);
+}
+
+.bmi-container button {
+  background-color: #3E4D34;
+  color: white;
+  border: none;
+  padding: 0.9rem 1.8rem;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  width: 100%;
+  font-size: 1.1rem;
+  margin-top: 0.5rem;
+}
+
+.bmi-container button:hover {
+  background-color: #2D3A27;
+  transform: translateY(-2px);
+}
+
+.result {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #e9ecef;
+}
+
+.result h4 {
+  color: #3E4D34;
+  font-size: 1.4rem;
+  margin-bottom: 0.8rem;
+}
+
+.result p {
+  color: #6c757d;
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  padding: 0.8rem;
+  border-radius: 8px;
+  background-color: #f8f9fa;
+}
+
+.bmi-chart {
+  display: flex;
+  margin: 1.5rem 0;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.bar {
+  flex: 1;
+  padding: 0.8rem 0.4rem;
+  text-align: center;
+  font-size: 0.8rem;
+  color: white;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.bar.underweight {
+  background-color: #4fc3f7;
+}
+
+.bar.underweight.active {
+  background-color: #0288d1;
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(2, 136, 209, 0.5);
+}
+
+.bar.normal {
+  background-color: #66bb6a;
+}
+
+.bar.normal.active {
+  background-color: #2e7d32;
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(46, 125, 50, 0.5);
+}
+
+.bar.overweight {
+  background-color: #ffa726;
+}
+
+.bar.overweight.active {
+  background-color: #f57c00;
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(245, 124, 0, 0.5);
+}
+
+.bar.obese {
+  background-color: #ef5350;
+}
+
+.bar.obese.active {
+  background-color: #c62828;
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(198, 40, 40, 0.5);
+}
+
+.resources {
+  margin-top: 1.5rem;
+  padding: 1.2rem;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  border-left: 4px solid #3E4D34;
+}
+
+.resources h5 {
+  color: #3E4D34;
+  font-size: 1.2rem;
+  margin-bottom: 0.8rem;
+}
+
+.resources ul {
+  list-style: none;
+  padding: 0;
+}
+
+.resources li {
+  margin-bottom: 0.8rem;
+}
+
+.resources a {
+  color: #0288d1;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.resources a:hover {
+  color: #01579b;
+  text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .bmi-container {
+    padding: 1.5rem;
+    margin: 1rem;
+  }
+  
+  .bmi-container h2 {
+    font-size: 1.8rem;
+  }
+  
+  .bmi-chart {
+    flex-direction: column;
+  }
+  
+  .bar {
+    padding: 0.6rem;
+    margin-bottom: 1px;
+  }
+}
+
+@media (max-width: 480px) {
+  .bmi-container {
+    padding: 1.2rem;
+  }
+  
+  .bmi-container h2 {
+    font-size: 1.6rem;
+  }
+  
+  .result h4 {
+    font-size: 1.2rem;
+  }
+  
+  .resources {
+    padding: 1rem;
+  }
+}
