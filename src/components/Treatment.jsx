@@ -3,19 +3,153 @@ import api from "../api";
 import "../styles/Treatment.css";
 
 const Treatment = () => {
-  const [activeTab, setActiveTab] = useState("assessment"); // 'assessment', 'plan', 'coping'
+  const [activeTab, setActiveTab] = useState("assessment");
   const [problemArea, setProblemArea] = useState("");
   const [treatmentPlans, setTreatmentPlans] = useState([]);
   const [currentPlan, setCurrentPlan] = useState(null);
-  const [helplines, setHelplines] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [deletingPlanId, setDeletingPlanId] = useState(null);
+  const [copingStrategies, setCopingStrategies] = useState([]);
+  const [filteredStrategies, setFilteredStrategies] = useState([]);
+  const [activeCategory, setActiveCategory] = useState("all");
+  const [favorites, setFavorites] = useState([]);
+  const [showFavorites, setShowFavorites] = useState(false);
+
+  // Predefined coping strategies
+  const predefinedStrategies = [
+    {
+      id: 1,
+      title: "Deep Breathing",
+      description: "Focus on taking slow, deep breaths to calm your nervous system.",
+      category: "relaxation",
+      duration: "5-10 minutes",
+      difficulty: "easy"
+    },
+    {
+      id: 2,
+      title: "Mindful Walking",
+      description: "Pay attention to each step and your surroundings as you walk.",
+      category: "mindfulness",
+      duration: "10-15 minutes",
+      difficulty: "easy"
+    },
+    {
+      id: 3,
+      title: "Progressive Muscle Relaxation",
+      description: "Tense and relax each muscle group in your body progressively.",
+      category: "relaxation",
+      duration: "10-15 minutes",
+      difficulty: "medium"
+    },
+    {
+      id: 4,
+      title: "Gratitude Journaling",
+      description: "Write down three things you're grateful for today.",
+      category: "cognitive",
+      duration: "5-10 minutes",
+      difficulty: "easy"
+    },
+    {
+      id: 5,
+      title: "5-4-3-2-1 Grounding",
+      description: "Name 5 things you see, 4 things you feel, 3 things you hear, 2 things you smell, and 1 thing you taste.",
+      category: "mindfulness",
+      duration: "3-5 minutes",
+      difficulty: "easy"
+    },
+    {
+      id: 6,
+      title: "Art Therapy",
+      description: "Express your feelings through drawing, painting, or coloring.",
+      category: "creative",
+      duration: "15-30 minutes",
+      difficulty: "medium"
+    },
+    {
+      id: 7,
+      title: "Call a Friend",
+      description: "Reach out to someone you trust for a conversation.",
+      category: "social",
+      duration: "10-30 minutes",
+      difficulty: "easy"
+    },
+    {
+      id: 8,
+      title: "Yoga Stretches",
+      description: "Perform gentle yoga poses to release tension.",
+      category: "physical",
+      duration: "10-15 minutes",
+      difficulty: "medium"
+    },
+    {
+      id: 9,
+      title: "Thought Challenging",
+      description: "Identify and challenge negative or irrational thoughts.",
+      category: "cognitive",
+      duration: "10-15 minutes",
+      difficulty: "hard"
+    },
+    {
+      id: 10,
+      title: "Nature Immersion",
+      description: "Spend time in nature, noticing the sights and sounds around you.",
+      category: "mindfulness",
+      duration: "15-30 minutes",
+      difficulty: "easy"
+    }
+  ];
+
+  // Categories for filtering
+  const categories = [
+    { id: "all", name: "All Strategies" },
+    { id: "relaxation", name: "Relaxation" },
+    { id: "mindfulness", name: "Mindfulness" },
+    { id: "physical", name: "Physical" },
+    { id: "social", name: "Social" },
+    { id: "cognitive", name: "Cognitive" },
+    { id: "creative", name: "Creative" }
+  ];
 
   // Fetch user's treatment plans on component mount
   useEffect(() => {
     fetchTreatmentPlans();
+    setCopingStrategies(predefinedStrategies);
+    setFilteredStrategies(predefinedStrategies);
+    
+    // In a real app, you would fetch favorites from the backend
+    const userFavorites = [1, 3, 7]; // Example favorite IDs
+    setFavorites(userFavorites);
   }, []);
+
+  // Filter strategies when category changes
+  useEffect(() => {
+    if (activeCategory === "all") {
+      setFilteredStrategies(copingStrategies);
+    } else {
+      const filtered = copingStrategies.filter(
+        strategy => strategy.category === activeCategory
+      );
+      setFilteredStrategies(filtered);
+    }
+  }, [activeCategory, copingStrategies]);
+
+  // Filter strategies when favorites toggle changes
+  useEffect(() => {
+    if (showFavorites) {
+      const favoriteStrategies = copingStrategies.filter(
+        strategy => favorites.includes(strategy.id)
+      );
+      setFilteredStrategies(favoriteStrategies);
+    } else if (activeCategory !== "all") {
+      const filtered = copingStrategies.filter(
+        strategy => strategy.category === activeCategory
+      );
+      setFilteredStrategies(filtered);
+    } else {
+      setFilteredStrategies(copingStrategies);
+    }
+  }, [showFavorites, favorites, copingStrategies, activeCategory]);
 
   const fetchTreatmentPlans = async () => {
     try {
@@ -36,7 +170,6 @@ const Treatment = () => {
     try {
       const res = await api.post("/api/treatment/plan", { problemArea });
       setCurrentPlan(res.data.treatmentPlan);
-      setHelplines(res.data.helplines || []);
       setActiveTab("plan");
       fetchTreatmentPlans(); // Refresh the list of plans
     } catch (err) {
@@ -98,6 +231,14 @@ const Treatment = () => {
   const viewPlan = (plan) => {
     setCurrentPlan(plan);
     setActiveTab("plan");
+  };
+
+  const toggleFavorite = (strategyId) => {
+    if (favorites.includes(strategyId)) {
+      setFavorites(favorites.filter(id => id !== strategyId));
+    } else {
+      setFavorites([...favorites, strategyId]);
+    }
   };
 
   return (
@@ -255,35 +396,6 @@ const Treatment = () => {
                   </div>
                 ))}
               </div>
-              
-              {/* Helpline Recommendations */}
-              {helplines.length > 0 && (
-                <div className="mt-4">
-                  <h5 className="mb-3">Recommended Bangladeshi Helplines</h5>
-                  <div className="row">
-                    {helplines.map(helpline => (
-                      <div key={helpline._id} className="col-md-6 mb-3">
-                        <div className="card h-100">
-                          <div className="card-body">
-                            <h6 className="card-title">{helpline.name}</h6>
-                            <p className="card-text">{helpline.description}</p>
-                            <div className="d-flex justify-content-between align-items-center">
-                              <a href={`tel:${helpline.phone}`} className="btn btn-outline-primary btn-sm">
-                                {helpline.phone}
-                              </a>
-                              {helpline.website && (
-                                <a href={helpline.website} target="_blank" rel="noopener noreferrer" className="btn btn-link btn-sm">
-                                  Visit Website
-                                </a>
-                              )}
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
             </div>
           ) : (
             <div>
@@ -370,11 +482,91 @@ const Treatment = () => {
       {/* Coping Strategies Tab */}
       {activeTab === "coping" && (
         <div>
-          <h3 className="mb-4">Coping Strategies Library</h3>
-          <p className="text-muted">This feature is coming soon! You'll be able to browse coping strategies and save your favorites.</p>
-          <button className="btn btn-outline-primary" disabled>
-            Browse Strategies
-          </button>
+          <div className="d-flex justify-content-between align-items-center mb-4">
+            <h3>Coping Strategies Library</h3>
+            <div className="form-check form-switch">
+              <input 
+                className="form-check-input" 
+                type="checkbox" 
+                id="favoritesToggle"
+                checked={showFavorites}
+                onChange={() => setShowFavorites(!showFavorites)}
+              />
+              <label className="form-check-label" htmlFor="favoritesToggle">
+                Show Favorites Only
+              </label>
+            </div>
+          </div>
+
+          {/* Category Filter */}
+          <div className="mb-4">
+            <div className="d-flex flex-wrap gap-2">
+              {categories.map(category => (
+                <button
+                  key={category.id}
+                  className={`btn ${activeCategory === category.id ? 'btn-primary' : 'btn-outline-primary'}`}
+                  onClick={() => {
+                    setActiveCategory(category.id);
+                    setShowFavorites(false);
+                  }}
+                >
+                  {category.name}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Strategies Grid */}
+          <div className="row">
+            {filteredStrategies.length > 0 ? (
+              filteredStrategies.map(strategy => (
+                <div key={strategy.id} className="col-md-6 col-lg-4 mb-4">
+                  <div className="card h-100 coping-card">
+                    <div className="card-body">
+                      <div className="d-flex justify-content-between align-items-start">
+                        <h5 className="card-title">{strategy.title}</h5>
+                        <button 
+                          className={`btn btn-sm ${favorites.includes(strategy.id) ? 'btn-warning' : 'btn-outline-warning'}`}
+                          onClick={() => toggleFavorite(strategy.id)}
+                          title={favorites.includes(strategy.id) ? "Remove from favorites" : "Add to favorites"}
+                        >
+                          {favorites.includes(strategy.id) ? '★' : '☆'}
+                        </button>
+                      </div>
+                      <p className="card-text">{strategy.description}</p>
+                      <div className="mt-auto">
+                        <div className="d-flex justify-content-between align-items-center">
+                          <span className="badge bg-secondary text-capitalize">{strategy.category}</span>
+                          <small className="text-muted">{strategy.duration}</small>
+                        </div>
+                        <div className="mt-2">
+                          <span className={`badge ${strategy.difficulty === 'easy' ? 'bg-success' : strategy.difficulty === 'medium' ? 'bg-warning' : 'bg-danger'}`}>
+                            Difficulty: {strategy.difficulty}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))
+            ) : (
+              <div className="col-12 text-center py-5">
+                <p className="text-muted">
+                  {showFavorites 
+                    ? "You haven't added any strategies to your favorites yet." 
+                    : "No strategies found in this category."}
+                </p>
+                {showFavorites && (
+                  <button 
+                    className="btn btn-primary mt-2"
+                    onClick={() => setShowFavorites(false)}
+                  >
+                    Browse All Strategies
+                  </button>
+                )}
+              </div>
+            )}
+          </div>
         </div>
       )}
     </div>
