@@ -173,7 +173,7 @@ const SafeLetterBox = () => {
     return (
       <div className="health-wellness-page">
         <div className="auth-container">
-          <h1 className="health-wellness-title">Safe Letter Box 💌</h1>
+          <h1 className="health-wellness-title">Safe Letter Box </h1>
           <p className="health-wellness-subtitle">
             Please log in or register to access your letters
           </p>
@@ -215,12 +215,12 @@ const SafeLetterBox = () => {
           <div>
             <h1 className="health-wellness-title">Safe Letter Box 💌</h1>
             <p className="health-wellness-subtitle">Write letters to your past, future, or others</p>
+              <p className="health-wellness-subtitle">Welcome back, {user?.name}</p>
           </div>
           <button onClick={handleLogout} className="logout-btn">Logout</button>
         </div>
-        
         <div className="back-link">
-          <Link to="/health-wellness" className="back-to-wellness">← Back to Health & Wellness</Link>
+          <Link to="/health-wellness-hub" className="back-to-wellness">← Back to Health Wellness Hub</Link>
         </div>
 
         {error && <div className="error-message">{error}</div>}

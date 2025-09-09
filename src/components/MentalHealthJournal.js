@@ -292,7 +292,7 @@ const MentalHealthJournal = () => {
         
         <div className="journal-header">
           <div>
-            <h1 className="health-wellness-title">Mental Health Journal</h1>
+            <h1 className="health-wellness-title">Mental Health Journal 📓</h1>
             <p className="health-wellness-subtitle">Welcome back, {user?.name}</p>
           </div>
           <button onClick={handleLogout} className="logout-btn">
@@ -301,8 +301,8 @@ const MentalHealthJournal = () => {
         </div>
         
         <div className="back-link">
-          <Link to="/health-wellness" className="back-to-wellness">
-            ← Back to Health & Wellness
+          <Link to="/health-wellness-hub" className="back-to-wellness">
+            ← Back to Health Wellness Hub
           </Link>
         </div>
 

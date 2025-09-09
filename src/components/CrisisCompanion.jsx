@@ -6,16 +6,24 @@ const API_BASE = 'http://localhost:5000/api';
 const CrisisCompanion = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [user, setUser] = useState(null);
-  const [crisisData, setCrisisData] = useState({
+  const [draftData, setDraftData] = useState({
+    emergencyContacts: [],
+    personalReminders: [],
+    copingStrategies: []
+  });
+  const [savedData, setSavedData] = useState({
+    emergencyContacts: [],
+    personalReminders: [],
+    copingStrategies: []
+  });
+  const [savedErrors, setSavedErrors] = useState({
     emergencyContacts: [],
     personalReminders: [],
     copingStrategies: []
   });
   const [currentStep, setCurrentStep] = useState(0);
   const [isActive, setIsActive] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState('');
-  const [contactError, setContactError] = useState('');
+  const [errorMsg, setErrorMsg] = useState('');
   const navigate = useNavigate();
 
   const crisisSteps = [
@@ -29,7 +37,6 @@ const CrisisCompanion = () => {
   useEffect(() => {
     const token = localStorage.getItem('token');
     const userData = localStorage.getItem('user');
-    
     if (token && userData) {
       setIsAuthenticated(true);
       setUser(JSON.parse(userData));
@@ -44,23 +51,27 @@ const CrisisCompanion = () => {
     localStorage.removeItem('user');
     setIsAuthenticated(false);
     setUser(null);
-    setCrisisData({ emergencyContacts: [], personalReminders: [], copingStrategies: [] });
+    setDraftData({ emergencyContacts: [], personalReminders: [], copingStrategies: [] });
+    setSavedData({ emergencyContacts: [], personalReminders: [], copingStrategies: [] });
+    setSavedErrors({ emergencyContacts: [], personalReminders: [], copingStrategies: [] });
   };
 
   const fetchCrisisData = async (token) => {
-    setIsLoading(true);
     try {
       const response = await fetch(`${API_BASE}/crisis-data`, {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       if (response.ok) {
         const data = await response.json();
-        setCrisisData(data);
+        setSavedData(data);
+        setSavedErrors({
+          emergencyContacts: data.emergencyContacts.map(()=>({})),
+          personalReminders: data.personalReminders.map(()=>({})),
+          copingStrategies: data.copingStrategies.map(()=>({}))
+        });
       }
     } catch (err) {
       console.error('Error fetching crisis data:', err);
-    } finally {
-      setIsLoading(false);
     }
   };
 
@@ -80,323 +91,296 @@ const CrisisCompanion = () => {
     }
   };
 
-  // Validation functions
+  // Validation
   const validatePhoneNumber = (phone) => {
-    // Remove any non-digit characters
-    const cleanedPhone = phone.replace(/\D/g, '');
-    
-    // Check if phone contains only numbers
-    if (!/^\d+$/.test(cleanedPhone)) {
-      return { isValid: false, error: 'Phone number can only contain numbers' };
-    }
-    
-    // Check phone number length (adjust for your country's requirements)
-    if (cleanedPhone.length < 10) {
-      return { isValid: false, error: 'Phone number must be at least 10 digits' };
-    }
-    
-    if (cleanedPhone.length > 15) {
-      return { isValid: false, error: 'Phone number cannot exceed 15 digits' };
-    }
-    
+    const cleaned = phone.replace(/\D/g, '');
+    if (!/^\d+$/.test(cleaned)) return { isValid: false, error: 'Phone can only contain numbers' };
+    if (cleaned.length !== 11) return { isValid: false, error: 'Phone must be exactly 11 digits' };
     return { isValid: true, error: '' };
   };
 
-  const isDuplicateContact = (name, phone, currentIndex = -1) => {
-    return crisisData.emergencyContacts.some((contact, index) => 
-      index !== currentIndex && ( // Exclude the current contact being edited
-        contact.name.toLowerCase() === name.toLowerCase() || 
-        contact.phone.replace(/\D/g, '') === phone.replace(/\D/g, '')
-      )
+  const isDuplicateContact = (name, phone, excludeIndex = -1) => {
+    return savedData.emergencyContacts.some((c,i) => 
+      i !== excludeIndex &&
+      (c.name.toLowerCase() === name.toLowerCase() || c.phone.replace(/\D/g,'') === phone.replace(/\D/g,''))
     );
   };
 
-  const validateContact = (name, phone, relationship, currentIndex = -1) => {
-    if (!name.trim()) {
-      return { isValid: false, error: 'Name is required' };
-    }
-    
-    if (!phone.trim()) {
-      return { isValid: false, error: 'Phone number is required' };
-    }
-    
-    const phoneValidation = validatePhoneNumber(phone);
-    if (!phoneValidation.isValid) {
-      return phoneValidation;
-    }
-    
-    if (!relationship.trim()) {
-      return { isValid: false, error: 'Relationship is required' };
-    }
-    
-    if (isDuplicateContact(name, phone, currentIndex)) {
-      return { isValid: false, error: 'This contact already exists in your emergency list' };
-    }
-    
+  const validateContact = (contact, index=-1) => {
+    if (!contact.name.trim()) return { isValid: false, error: 'Name required' };
+    if (!contact.phone.trim()) return { isValid: false, error: 'Phone required' };
+    const phoneValidation = validatePhoneNumber(contact.phone);
+    if (!phoneValidation.isValid) return phoneValidation;
+    if (!contact.relationship.trim()) return { isValid: false, error: 'Relationship required' };
+    if (isDuplicateContact(contact.name, contact.phone, index)) return { isValid: false, error: 'Duplicate contact' };
     return { isValid: true, error: '' };
   };
 
-  // Crisis mode navigation
-  const startCrisisMode = () => {
-    setIsActive(true);
-    setCurrentStep(0);
+  const validateText = (text) => {
+    if (!text.trim()) return { isValid: false, error: 'Cannot be empty' };
+    return { isValid: true, error: '' };
   };
 
-  const nextStep = () => {
-    if (currentStep < crisisSteps.length - 1) {
-      setCurrentStep(currentStep + 1);
+  // Draft Handlers
+  const addDraft = (type) => {
+    setDraftData(prev => ({
+      ...prev,
+      [type]: [...prev[type], type==='emergencyContacts'? {name:'',phone:'',relationship:''}:'']
+    }));
+    setErrorMsg('');
+  };
+
+  const updateDraft = (type,index,field,value) => {
+    setDraftData(prev=>{
+      const updated = [...prev[type]];
+      if(type==='emergencyContacts') updated[index][field]=value;
+      else updated[index]=value;
+      return {...prev,[type]:updated};
+    });
+    setErrorMsg('');
+  };
+
+  const removeDraft = (type,index) => {
+    setDraftData(prev=>{
+      const updated = [...prev[type]];
+      updated.splice(index,1);
+      return {...prev,[type]:updated};
+    });
+  };
+
+  const saveDraft = (type,index) => {
+    if(type==='emergencyContacts'){
+      const contact = draftData.emergencyContacts[index];
+      const validation = validateContact(contact);
+      if(!validation.isValid){ setErrorMsg(validation.error); return; }
+      setSavedData(prev=>{
+        const updated = [...prev.emergencyContacts, contact];
+        saveCrisisData({...prev, emergencyContacts: updated});
+        return {...prev, emergencyContacts: updated};
+      });
+      removeDraft(type,index);
     } else {
-      setIsActive(false);
+      const value = draftData[type][index];
+      const validation = validateText(value);
+      if(!validation.isValid){ setErrorMsg(validation.error); return; }
+      setSavedData(prev=>{
+        const updated = [...prev[type], value];
+        saveCrisisData({...prev,[type]:updated});
+        return {...prev,[type]:updated};
+      });
+      removeDraft(type,index);
     }
+    setErrorMsg('');
   };
 
-  const prevStep = () => {
-    if (currentStep > 0) setCurrentStep(currentStep - 1);
+  // Saved Handlers
+  const updateSaved = (type,index,field,value)=>{
+    setSavedData(prev=>{
+      const updated = [...prev[type]];
+      if(type==='emergencyContacts') updated[index][field]=value;
+      else updated[index]=value;
+
+      if(type==='emergencyContacts'){
+        const validation = validateContact(updated[index], index);
+        setSavedErrors(prevErrors=>{
+          const err = [...prevErrors.emergencyContacts];
+          err[index]=validation.isValid? {} : {error: validation.error};
+          return {...prevErrors, emergencyContacts: err};
+        });
+      } else {
+        const validation = validateText(updated[index]);
+        setSavedErrors(prevErrors=>{
+          const err = [...prevErrors[type]];
+          err[index]=validation.isValid? {} : {error: validation.error};
+          return {...prevErrors, [type]: err};
+        });
+      }
+
+      saveCrisisData({...prev,[type]:updated});
+      return {...prev,[type]:updated};
+    });
   };
 
-  // CRUD for Emergency Contacts
-  const addEmergencyContact = () => {
-    setContactError('');
-    const newContact = { name: '', phone: '', relationship: '' };
-    const updated = {
-      ...crisisData,
-      emergencyContacts: [...crisisData.emergencyContacts, newContact]
-    };
-    setCrisisData(updated);
+  const removeSaved = (type,index)=>{
+    setSavedData(prev=>{
+      const updated = [...prev[type]];
+      updated.splice(index,1);
+      saveCrisisData({...prev,[type]:updated});
+      return {...prev,[type]:updated};
+    });
+    setSavedErrors(prev=>{
+      const err = [...prev[type]];
+      err.splice(index,1);
+      return {...prev,[type]:err};
+    });
   };
 
-  const updateEmergencyContact = (index, field, value) => {
-    const updatedContacts = [...crisisData.emergencyContacts];
-    updatedContacts[index][field] = value;
-    const updated = { ...crisisData, emergencyContacts: updatedContacts };
-    setCrisisData(updated);
-    
-    // Clear error when user starts typing
-    if (contactError) {
-      setContactError('');
-    }
-  };
-
-  const saveEmergencyContact = (index) => {
-    const contact = crisisData.emergencyContacts[index];
-    const validation = validateContact(contact.name, contact.phone, contact.relationship, index);
-    
-    if (!validation.isValid) {
-      setContactError(validation.error);
-      return;
-    }
-    
-    setContactError('');
-    saveCrisisData(crisisData);
-  };
-
-  const removeEmergencyContact = (index) => {
-    const updatedContacts = [...crisisData.emergencyContacts];
-    updatedContacts.splice(index, 1);
-    const updated = { ...crisisData, emergencyContacts: updatedContacts };
-    setCrisisData(updated);
-    saveCrisisData(updated);
-    setContactError('');
-  };
-
-  // CRUD for Personal Reminders
-  const addReminder = () => {
-    const updated = { ...crisisData, personalReminders: [...crisisData.personalReminders, ''] };
-    setCrisisData(updated);
-    saveCrisisData(updated);
-  };
-
-  const updateReminder = (index, value) => {
-    const updatedReminders = [...crisisData.personalReminders];
-    updatedReminders[index] = value;
-    const updated = { ...crisisData, personalReminders: updatedReminders };
-    setCrisisData(updated);
-    saveCrisisData(updated);
-  };
-
-  const removeReminder = (index) => {
-    const updatedReminders = [...crisisData.personalReminders];
-    updatedReminders.splice(index, 1);
-    const updated = { ...crisisData, personalReminders: updatedReminders };
-    setCrisisData(updated);
-    saveCrisisData(updated);
-  };
-
-  // CRUD for Coping Strategies
-  const addStrategy = () => {
-    const updated = { ...crisisData, copingStrategies: [...crisisData.copingStrategies, ''] };
-    setCrisisData(updated);
-    saveCrisisData(updated);
-  };
-
-  const updateStrategy = (index, value) => {
-    const updatedStrategies = [...crisisData.copingStrategies];
-    updatedStrategies[index] = value;
-    const updated = { ...crisisData, copingStrategies: updatedStrategies };
-    setCrisisData(updated);
-    saveCrisisData(updated);
-  };
-
-  const removeStrategy = (index) => {
-    const updatedStrategies = [...crisisData.copingStrategies];
-    updatedStrategies.splice(index, 1);
-    const updated = { ...crisisData, copingStrategies: updatedStrategies };
-    setCrisisData(updated);
-    saveCrisisData(updated);
-  };
-
- if (!isAuthenticated) {
-  return (
-    <div className="health-wellness-page">
-      <div className="auth-prompt">
-        <h1>Crisis Companion 🚨</h1>
-        <p>Please log in or register to access crisis support</p>
-        <div className="auth-buttons">
-          <Link to="/login" className="auth-btn login-btn">Login</Link>
-          <Link to="/register" className="auth-btn register-btn">Register</Link>
+   if (!isAuthenticated) {
+    return (
+      <div className="health-wellness-page">
+        <div className="auth-container">
+          <h1 className="health-wellness-title">Crisis Companion</h1>
+          <p className="health-wellness-subtitle">
+            Please log in or register to access your companion
+          </p>
+          
+          <div className="auth-buttons-container">
+            <div className="auth-button-card">
+              <h3>Already have an account?</h3>
+              <p>Sign in to access your journal entries</p>
+              <button 
+                onClick={() => navigate('/login')}
+                className="auth-btn login-btn"
+              >
+                Login
+              </button>
+            </div>
+            
+            <div className="auth-button-card">
+              <h3>New to our page?</h3>
+              <p>Create an account to start your journey with us</p>
+              <button 
+                onClick={() => navigate('/register')}
+                className="auth-btn register-btn"
+              >
+                Register
+              </button>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  );
-}
+    );
+  }
 
   return (
     <div className="health-wellness-page">
-      <h1>Crisis Companion 🚨</h1>
-      <button onClick={handleLogout}>Logout</button>
-      <Link to="/health-wellness">← Back to Health & Wellness</Link>
+      <div className="health-wellness-container">
+        
+        <div className="journal-header">
+          <div>
+            <h1 className="health-wellness-title">Crisis Companion 🚨 </h1>
+            <p className="health-wellness-subtitle">Welcome back, {user?.name}</p>
+          </div>
+          <button onClick={handleLogout} className="logout-btn">
+            Logout
+          </button>
+        </div>
+        </div>
+      <Link className="back-to-wellness" to="/health-wellness-hub">← Back to Health Wellness Hub </Link>
 
       {!isActive ? (
         <div className="crisis-companion-setup">
+          {errorMsg && <div className="error-message">{errorMsg}</div>}
+
+          {/* Emergency Contacts */}
           <h2>Emergency Contacts</h2>
-          {contactError && <div className="error-message">{contactError}</div>}
-          
-          {crisisData.emergencyContacts.map((contact, i) => (
-            <div key={i} className="contact-form">
-              <input
-                placeholder="Name *"
-                value={contact.name}
-                onChange={e => updateEmergencyContact(i, 'name', e.target.value)}
-                className={!contact.name && contactError ? 'error' : ''}
-              />
-              <input
-                placeholder="Phone Number *"
-                value={contact.phone}
-                onChange={e => updateEmergencyContact(i, 'phone', e.target.value)}
-                className={!contact.phone && contactError ? 'error' : ''}
-              />
-              <input
-                placeholder="Relationship *"
-                value={contact.relationship}
-                onChange={e => updateEmergencyContact(i, 'relationship', e.target.value)}
-                className={!contact.relationship && contactError ? 'error' : ''}
-              />
-              <div className="contact-actions">
-                <button 
-                  onClick={() => saveEmergencyContact(i)}
-                  className="save-btn"
-                >
-                  ✓ Save
-                </button>
-                <button 
-                  onClick={() => removeEmergencyContact(i)}
-                  className="remove-btn"
-                >
-                  🗑️ Remove
-                </button>
-              </div>
+          {draftData.emergencyContacts.map((c,i)=>(
+            <div key={i}>
+              <input placeholder="Name" value={c.name} onChange={e=>updateDraft('emergencyContacts',i,'name',e.target.value)}/>
+              <input placeholder="Phone" value={c.phone} onChange={e=>updateDraft('emergencyContacts',i,'phone',e.target.value)}/>
+              <input placeholder="Relationship" value={c.relationship} onChange={e=>updateDraft('emergencyContacts',i,'relationship',e.target.value)}/>
+              <button className ="save-btn" onClick={()=>saveDraft('emergencyContacts',i)}>Save</button>
+              <button className="remove-btn" onClick={()=>removeDraft('emergencyContacts',i)}>Remove</button>
             </div>
           ))}
-          
-          <button onClick={addEmergencyContact} className="add-btn">
-            + Add Emergency Contact
-          </button>
+          <button className="add-btn" onClick={()=>addDraft('emergencyContacts')}>+ Add Contact</button>
 
+          <h4>Saved Contacts</h4>
+          {savedData.emergencyContacts.map((c,i)=>(
+            <div key={i}>
+              <input value={c.name} onChange={e=>updateSaved('emergencyContacts',i,'name',e.target.value)} className={savedErrors.emergencyContacts[i]?.error?'error':''}/>
+              <input value={c.phone} onChange={e=>updateSaved('emergencyContacts',i,'phone',e.target.value)} className={savedErrors.emergencyContacts[i]?.error?'error':''}/>
+              <input value={c.relationship} onChange={e=>updateSaved('emergencyContacts',i,'relationship',e.target.value)} className={savedErrors.emergencyContacts[i]?.error?'error':''}/>
+              {savedErrors.emergencyContacts[i]?.error && <span className="error-msg">{savedErrors.emergencyContacts[i].error}</span>}
+              <button className="remove-btn" onClick={()=>removeSaved('emergencyContacts',i)}>Remove</button>
+            </div>
+          ))}
+
+          {/* Personal Reminders */}
           <h2>Personal Reminders</h2>
-          {crisisData.personalReminders.map((reminder, i) => (
-            <div key={i} className="reminder-form">
-              <input
-                placeholder="Write a comforting reminder"
-                value={reminder}
-                onChange={e => updateReminder(i, e.target.value)}
-              />
-              <button onClick={() => removeReminder(i)} className="remove-btn">
-                Remove
-              </button>
+          {draftData.personalReminders.map((r,i)=>(
+            <div key={i}>
+              <input value={r} placeholder="Reminder" onChange={e=>updateDraft('personalReminders',i,null,e.target.value)}/>
+              <button className = "save-btn" onClick={()=>saveDraft('personalReminders',i)}>Save</button>
+              <button className="remove-btn" onClick={()=>removeDraft('personalReminders',i)}>Remove</button>
             </div>
           ))}
-          <button onClick={addReminder} className="add-btn">
-            + Add Reminder
-          </button>
+          <button className="add-btn" onClick={()=>addDraft('personalReminders')}>+ Add Reminder</button>
 
+          <h4>Saved Reminders</h4>
+          {savedData.personalReminders.map((r,i)=>(
+            <div key={i}>
+              <input value={r} onChange={e=>updateSaved('personalReminders',i,null,e.target.value)} className={savedErrors.personalReminders[i]?.error?'error':''}/>
+              {savedErrors.personalReminders[i]?.error && <span className="error-msg">{savedErrors.personalReminders[i].error}</span>}
+              <button className="remove-btn" onClick={()=>removeSaved('personalReminders',i)}>Remove</button>
+            </div>
+          ))}
+
+          {/* Coping Strategies */}
           <h2>Coping Strategies</h2>
-          {crisisData.copingStrategies.map((strategy, i) => (
-            <div key={i} className="strategy-form">
-              <input
-                placeholder="Describe a coping strategy"
-                value={strategy}
-                onChange={e => updateStrategy(i, e.target.value)}
-              />
-              <button onClick={() => removeStrategy(i)} className="remove-btn">
-                Remove
-              </button>
+          {draftData.copingStrategies.map((s,i)=>(
+            <div key={i}>
+              <input value={s} placeholder="Strategy" onChange={e=>updateDraft('copingStrategies',i,null,e.target.value)}/>
+              <button className = "save-btn" onClick={()=>saveDraft('copingStrategies',i)}>Save</button>
+              <button className="remove-btn" onClick={()=>removeDraft('copingStrategies',i)}>Remove</button>
             </div>
           ))}
-          <button onClick={addStrategy} className="add-btn">
-            + Add Strategy
-          </button>
+          <button className="add-btn" onClick={()=>addDraft('copingStrategies')}>+ Add Strategy</button>
 
-          <button onClick={startCrisisMode} className="start-crisis-btn">
-            🚨 Start Crisis Companion
-          </button>
+          <h4>Saved Strategies</h4>
+          {savedData.copingStrategies.map((s,i)=>(
+            <div key={i}>
+              <input value={s} onChange={e=>updateSaved('copingStrategies',i,null,e.target.value)} className={savedErrors.copingStrategies[i]?.error?'error':''}/>
+              {savedErrors.copingStrategies[i]?.error && <span className="error-msg">{savedErrors.copingStrategies[i].error}</span>}
+              <button className="remove-btn" onClick={()=>removeSaved('copingStrategies',i)}>Remove</button>
+            </div>
+          ))}
+
+          <button className="start-crisis-btn" onClick={()=>setIsActive(true)}>🚨 Start Crisis Companion</button>
         </div>
       ) : (
         <div className="crisis-mode-active">
           <h2>Step {currentStep + 1}: {crisisSteps[currentStep].title}</h2>
           <p>{crisisSteps[currentStep].description}</p>
 
-          {currentStep === 2 && crisisData.emergencyContacts.length > 0 && (
+          {currentStep === 2 && savedData.emergencyContacts.length > 0 && (
             <div>
               <h4>Your Emergency Contacts:</h4>
-              {crisisData.emergencyContacts.map((c, i) => (
+              {savedData.emergencyContacts.map((c, i) => (
                 <div key={i} className="emergency-contact">
                   <strong>{c.name}</strong> - {c.relationship}: {c.phone}
-                  <button 
-                    onClick={() => window.open(`tel:${c.phone}`)}
-                    className="call-btn"
-                  >
-                    📞 Call
-                  </button>
+                  <button className="call-btn" onClick={() => window.open(`tel:${c.phone}`)}>📞 Call</button>
                 </div>
               ))}
             </div>
           )}
 
-          {currentStep === 3 && crisisData.personalReminders.length > 0 && (
+          {currentStep === 3 && savedData.personalReminders.length > 0 && (
             <div>
               <h4>Your Reminders:</h4>
-              {crisisData.personalReminders.map((r, i) => (
-                <p key={i} className="reminder-text">"{r}"</p>
+              {savedData.personalReminders.map((r, i) => (
+                <p key={i}>"{r}"</p>
               ))}
             </div>
           )}
 
-          {currentStep === 4 && crisisData.copingStrategies.length > 0 && (
+          {currentStep === 4 && savedData.copingStrategies.length > 0 && (
             <div>
               <h4>Your Strategies:</h4>
-              {crisisData.copingStrategies.map((s, i) => (
-                <p key={i} className="strategy-text">{s}</p>
+              {savedData.copingStrategies.map((s, i) => (
+                <p key={i}>{s}</p>
               ))}
             </div>
           )}
 
           <div className="step-navigation">
             {currentStep > 0 && (
-              <button onClick={prevStep} className="nav-btn">
-                ← Previous
-              </button>
+              <button className="nav-btn" onClick={() => setCurrentStep(currentStep - 1)}>← Previous</button>
             )}
-            <button onClick={nextStep} className="nav-btn">
+            <button className="nav-btn" onClick={() => {
+              if (currentStep < crisisSteps.length - 1) setCurrentStep(currentStep + 1);
+              else setIsActive(false);
+            }}>
               {currentStep === crisisSteps.length - 1 ? 'Finish' : 'Next →'}
             </button>
           </div>
