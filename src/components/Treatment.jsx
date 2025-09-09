@@ -1,4 +1,3 @@
-// components/Treatment.js
 import React, { useState, useEffect } from "react";
 import api from "../api";
 import "../styles/Treatment.css";
@@ -11,6 +10,7 @@ const Treatment = () => {
   const [helplines, setHelplines] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [deletingPlanId, setDeletingPlanId] = useState(null);
 
   // Fetch user's treatment plans on component mount
   useEffect(() => {
@@ -62,6 +62,30 @@ const Treatment = () => {
     } catch (err) {
       console.error("Error updating milestone:", err);
       setError(err.response?.data?.message || "Failed to update milestone.");
+    }
+  };
+
+  const handleDeletePlan = async (planId) => {
+    if (!window.confirm("Are you sure you want to delete this treatment plan? This action cannot be undone.")) {
+      return;
+    }
+
+    setDeletingPlanId(planId);
+    try {
+      await api.delete(`/api/treatment/plan/${planId}`);
+      
+      // If we're currently viewing the deleted plan, clear it
+      if (currentPlan && currentPlan._id === planId) {
+        setCurrentPlan(null);
+      }
+      
+      // Refresh the list of plans
+      fetchTreatmentPlans();
+    } catch (err) {
+      console.error("Error deleting treatment plan:", err);
+      setError(err.response?.data?.message || "Failed to delete treatment plan.");
+    } finally {
+      setDeletingPlanId(null);
     }
   };
 
@@ -158,12 +182,25 @@ const Treatment = () => {
             <div className="card p-4 shadow-sm mb-4">
               <div className="d-flex justify-content-between align-items-center mb-3">
                 <h3>{currentPlan.title}</h3>
-                <button 
-                  className="btn btn-outline-secondary btn-sm"
-                  onClick={() => setCurrentPlan(null)}
-                >
-                  View All Plans
-                </button>
+                <div>
+                  <button 
+                    className="btn btn-outline-secondary btn-sm me-2"
+                    onClick={() => setCurrentPlan(null)}
+                  >
+                    View All Plans
+                  </button>
+                  <button 
+                    className="btn btn-outline-danger btn-sm"
+                    onClick={() => handleDeletePlan(currentPlan._id)}
+                    disabled={deletingPlanId === currentPlan._id}
+                  >
+                    {deletingPlanId === currentPlan._id ? (
+                      <span className="spinner-border spinner-border-sm" />
+                    ) : (
+                      "Delete Plan"
+                    )}
+                  </button>
+                </div>
               </div>
               
               <p className="text-muted mb-4">{currentPlan.description}</p>
@@ -250,7 +287,15 @@ const Treatment = () => {
             </div>
           ) : (
             <div>
-              <h3 className="mb-4">Your Treatment Plans</h3>
+              <div className="d-flex justify-content-between align-items-center mb-4">
+                <h3>Your Treatment Plans</h3>
+                <button 
+                  className="btn btn-outline-primary"
+                  onClick={() => setActiveTab("assessment")}
+                >
+                  Create New Plan
+                </button>
+              </div>
               
               {treatmentPlans.length > 0 ? (
                 <div className="row">
@@ -258,7 +303,21 @@ const Treatment = () => {
                     <div key={plan._id} className="col-md-6 mb-4">
                       <div className="card h-100">
                         <div className="card-body">
-                          <h5 className="card-title">{plan.title}</h5>
+                          <div className="d-flex justify-content-between align-items-start mb-2">
+                            <h5 className="card-title">{plan.title}</h5>
+                            <button 
+                              className="btn btn-sm btn-outline-danger"
+                              onClick={() => handleDeletePlan(plan._id)}
+                              disabled={deletingPlanId === plan._id}
+                              title="Delete plan"
+                            >
+                              {deletingPlanId === plan._id ? (
+                                <span className="spinner-border spinner-border-sm" />
+                              ) : (
+                                "✕"
+                              )}
+                            </button>
+                          </div>
                           <p className="card-text">{plan.description}</p>
                           
                           <div className="mb-3">
