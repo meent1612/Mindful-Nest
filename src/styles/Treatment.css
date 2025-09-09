@@ -34,6 +34,16 @@
 .treatment-page .card {
   border-radius: 12px;
   border: 1px solid #e9ecef;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.treatment-page .card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1) !important;
+}
+
+.treatment-page .coping-card {
+  border-left: 4px solid #20c997;
 }
 
 .treatment-page .progress {
@@ -73,19 +83,6 @@
   font-size: 0.875rem;
 }
 
-.entry-card {
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.entry-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1) !important;
-}
-
-.plan-card {
-  border-left: 4px solid #0d6efd;
-}
-
-.coping-card {
-  border-left: 4px solid #20c997;
+.badge {
+  font-size: 0.75rem;
 }
