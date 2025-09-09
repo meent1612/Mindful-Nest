@@ -1,0 +1,161 @@
+/* Helpline Page Styles - Mental Health Journal Theme */
+.helpline-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+}
+
+.header-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1.5rem;
+}
+
+.card-title {
+  color: #3E4D34;
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+}
+
+.card-text {
+  color: #6c757d;
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.badge {
+  background-color: #f8f9fa;
+  color: #3E4D34;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-weight: 600;
+  border: 1px solid #3E4D34;
+  display: inline-block;
+}
+
+.search-container {
+  margin-bottom: 1.5rem;
+}
+
+.search-input {
+  width: 100%;
+  padding: 0.9rem;
+  border: 1px solid #ced4da;
+  border-radius: 8px;
+  font-family: inherit;
+  background: white;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #3E4D34;
+  box-shadow: 0 0 0 3px rgba(62, 77, 52, 0.1);
+}
+
+.helpline-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.helpline-card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e9ecef;
+  transition: all 0.3s ease;
+}
+
+.helpline-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12);
+}
+
+.helpline-card .card-title {
+  font-size: 1.4rem;
+  margin-bottom: 0.8rem;
+  font-weight: 600;
+}
+
+.helpline-card .card-subtitle {
+  color: #6c757d;
+  font-size: 0.95rem;
+  margin-bottom: 1.2rem;
+}
+
+.call-btn {
+  background-color: #3E4D34;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.call-btn:hover {
+  background-color: #2D3A27;
+  transform: translateY(-2px);
+  color: white;
+}
+
+.call-btn .icon {
+  margin-right: 0.5rem;
+}
+
+mark {
+  background-color: rgba(62, 77, 52, 0.2);
+  padding: 2px 4px;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.helpline-container > p {
+  color: #6c757d;
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .helpline-container {
+    padding: 1rem;
+  }
+  
+  .header-card {
+    padding: 1.5rem;
+  }
+  
+  .card-title {
+    font-size: 1.8rem;
+  }
+  
+  .helpline-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 576px) {
+  .card-title {
+    font-size: 1.6rem;
+  }
+  
+  .helpline-card {
+    padding: 1.2rem;
+  }
+  
+  .helpline-card .card-title {
+    font-size: 1.2rem;
+  }
+}
