@@ -1,16 +1,20 @@
-// components/Login.js (Fixed)
 import React, { useState } from "react";
 import api from "../api";
 import { useAuth } from "../context/AuthContext";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, useLocation, Link } from "react-router-dom"; // Add useLocation
 import "../styles/Auth.css";
 
 const Login = () => {
   const { login } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation(); // Get location data
+  
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+
+  // Get the intended destination or default to dashboard
+  const from = location.state?.from?.pathname || "/dashboard";
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -26,7 +30,8 @@ const Login = () => {
       const result = await login(formData);
       
       if (result.success) {
-        navigate("/problem-checker");
+        // Redirect to the intended page instead of hardcoded path
+        navigate(from, { replace: true });
       } else {
         setError(result.error);
       }
