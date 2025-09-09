@@ -52,7 +52,7 @@ import CrisisCompanion from './components/CrisisCompanion';
 import HealthWellnessHub from './components/HealthWellnessHub';
 import { AuthProvider } from './context/AuthContext';
 import PrivateRoute from './components/PrivateRoute';
-
+import HelplinePage from './components/HelplinePage';
 function App() {
   return (
   <AuthProvider>
@@ -69,6 +69,7 @@ function App() {
         <Route path ="/safe-letter-box" element={<SafeLetterBox />} />
         <Route path="/crisis-companion" element={<CrisisCompanion />} />
         <Route path="/health-wellness-hub" element={<HealthWellnessHub />} />
+        <Route path ="/helplines" element={<HelplinePage/>}/>
           {/* Main sections */}
         <Route path="/mental-health" element={<MentalHealth />} />
          <Route path="/mental-health/adhd" element={<ADHD />} />
