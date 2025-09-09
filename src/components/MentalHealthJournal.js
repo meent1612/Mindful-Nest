@@ -295,9 +295,6 @@ const MentalHealthJournal = () => {
             <h1 className="health-wellness-title">Mental Health Journal 📓</h1>
             <p className="health-wellness-subtitle">Welcome back, {user?.name}</p>
           </div>
-          <button onClick={handleLogout} className="logout-btn">
-            Logout
-          </button>
         </div>
         
         <div className="back-link">

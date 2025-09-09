@@ -217,7 +217,6 @@ const SafeLetterBox = () => {
             <p className="health-wellness-subtitle">Write letters to your past, future, or others</p>
               <p className="health-wellness-subtitle">Welcome back, {user?.name}</p>
           </div>
-          <button onClick={handleLogout} className="logout-btn">Logout</button>
         </div>
         <div className="back-link">
           <Link to="/health-wellness-hub" className="back-to-wellness">← Back to Health Wellness Hub</Link>
