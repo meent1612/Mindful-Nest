@@ -6,10 +6,11 @@ const treatmentSchema = new mongoose.Schema({
     ref: "User",
     required: true,
   },
+  // keep only coping here
   type: {
     type: String,
-    enum: ["plan", "coping"],
-    required: true,
+    enum: ["coping"],
+    default: "coping",
   },
   content: {
     type: String,
