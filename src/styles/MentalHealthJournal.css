@@ -252,7 +252,7 @@
 
 .cancel-btn {
   background-color: #6c757d;
-  color: white;
+  color: red;
 }
 
 .cancel-btn:hover {
