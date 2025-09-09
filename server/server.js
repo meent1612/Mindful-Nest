@@ -9,6 +9,7 @@ import problemRoutes from './routes/problemRoutes.js';
 import userRoutes from './routes/user.js';
 import crisisDataRoutes from './routes/crisisDataRoutes.js';
 import letterRoutes from './routes/letterRoutes.js';
+import treatmentRoutes from './routes/treatmentRoutes.js';
 
 // Load environment variables first
 dotenv.config();
@@ -43,6 +44,10 @@ app.use('/api/journal-entries', journalRoutes);
 app.use('/api/crisis-data', crisisDataRoutes);
 app.use('/api/letters', letterRoutes);
 app.use('/api/auth', userRoutes);
+app.use('/api/treatment', treatmentRoutes);
+app.get('/api/treatment/test', (req, res) => {
+  res.json({ message: 'Treatment route test - working!' });
+});
 
 // Health check endpoint
 app.get('/api/health', (req, res) => {
