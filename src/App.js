@@ -53,6 +53,7 @@ import HealthWellnessHub from './components/HealthWellnessHub';
 import { AuthProvider } from './context/AuthContext';
 import PrivateRoute from './components/PrivateRoute';
 import HelplinePage from './components/HelplinePage';
+import BMIcalculator from './components/BMICalculator';
 function App() {
   return (
   <AuthProvider>
@@ -94,6 +95,9 @@ function App() {
         <Route path ="/health-wellness/weight-management" element={<WeightManagement />} />
         <Route path = "/health-wellness/work-career" element={<WorkCareer />} />
         <Route path ="/health-wellness/illness-disability" element={<IllnessDisability />} />
+        <Route path ="/health-wellness/bmi-calculator" element={<BMIcalculator/>} />
+
+         {/* Mental Health Journal and related pages */}
         <Route path = "/mental-health-journal" element={
           <PrivateRoute><MentalHealthJournal/></PrivateRoute>
         }
