@@ -54,6 +54,7 @@ import { AuthProvider } from './context/AuthContext';
 import PrivateRoute from './components/PrivateRoute';
 import HelplinePage from './components/HelplinePage';
 import BMIcalculator from './components/BMICalculator';
+import CarbonFootprintDisplay from './components/CarbonFootprintDisplay';
 function App() {
   return (
   <AuthProvider>
@@ -141,7 +142,7 @@ function App() {
          <Route path="/relationships/emotional-intelligence" element={<EmotionalIntelligence />} />
          <Route path="/relationships/love-and-friendship" element={<LoveFriendship />} />
          <Route path="/relationships/domestic-abuse" element={<DomesticAbuse />} />
-         
+
         <Route path="/treatment" 
           element={
             <PrivateRoute>
@@ -150,6 +151,7 @@ function App() {
           } />
         </Routes>
         <Footer />
+        <CarbonFootprintDisplay />
       </div>
     </Router>
     </AuthProvider>
