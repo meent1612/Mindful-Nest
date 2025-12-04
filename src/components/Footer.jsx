@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/footer.css';
+import CarbonFootprintDisplay from './CarbonFootprintDisplay';
 
 const Footer = () => {
   return (
@@ -71,6 +72,7 @@ const Footer = () => {
         </div>
 
       </div>
+      <CarbonFootprintDisplay /> 
     </footer>
   );
 };
