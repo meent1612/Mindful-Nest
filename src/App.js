@@ -60,7 +60,8 @@ function App() {
   <AuthProvider>
     <Router>
       <div className="App">
-        <MindfulNavbar />        
+        <MindfulNavbar /> 
+              
         <Routes>
         <Route path="/" element={<Homepage />} /> 
         <Route path="/contact" element={<ContactUs />} /> 
@@ -151,7 +152,6 @@ function App() {
           } />
         </Routes>
         <Footer />
-        <CarbonFootprintDisplay />
       </div>
     </Router>
     </AuthProvider>
